@@ -1,0 +1,29 @@
+If you're not using graphite, then you're missing out.
+
+http://graphite.wikidot.com/
+
+Essentially, you can throw data at it and get graphs out.
+
+If you want performance metrics from a Solaris system, then you want to
+simply throw kstats into graphite and let it handle the graphing.
+
+So, given that kar is a kstat archive, I've added the capability to
+(simply) extract the statistics out of the kar archives and transform
+it into the correct form for graphite to consume.
+
+The new graphite command will output the data in the correct format. It
+has a subset of the normal kar subcommands - so you can generate the
+right output for iostat, mpstat, and the like.
+
+The idea isn't that this is a complete solution. I'm expecting that you
+may wish to process the data. In particular, you may wish to prefix
+each line to match your graphite naming convention (adding the hostname
+would be a good idea). And you may wish to trim the statistics.
+
+If you just want *everything* raw, then try
+
+graphite print :::
+
+The simplest way to add a prefix is with sed:
+
+graphite iostat | sed 's:^:myhost.:'

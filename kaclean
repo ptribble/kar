@@ -1,0 +1,46 @@
+#!/bin/sh
+#
+# kar - kstat activity reporter
+#
+# This is the kar data directory clear, kaclean
+#
+
+usage() {
+	echo "Usage: $0 [dir [days_to_keep] ]"
+	exit 1
+}
+
+#
+# define output locations, either from defaults or supplied arguments
+#
+case $# in
+0)
+	ODIR="/var/adm/ka"
+	KDAYS="30"
+	;;
+1)
+	ODIR="$1"
+	KDAYS="30"
+	;;
+2)
+	ODIR="$1"
+	KDAYS="$2"
+	;;
+*)
+	usage
+	;;
+esac
+
+#
+# check destination directory is valid; exit if not, on the grounds
+# that it's already clean
+#
+if [ ! -d "$ODIR" ]; then
+	echo "ERROR: missing output directory $ODIR"
+	exit 0
+fi
+
+#
+# very simplistic cleanup
+#
+find ${ODIR} -type f -mtime +${KDAYS} -exec rm {} \;

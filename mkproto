@@ -1,0 +1,69 @@
+#!/bin/sh
+#
+# generate a prototype file for input to pkgmk
+#
+# feed to pkgmk like so:
+#  pkgmk -d /tmp -f tt -r `pwd` TRIBkar
+#
+
+JARDIR=usr/share/kar
+LIBDIR=usr/lib/ka
+OWNER="root bin"
+SYSOWNER="root sys"
+KCOL="kar_collector"
+
+MYARCH=$1
+PKGTYPE="standalone"
+
+echo "i pkginfo=./pkginfo.${MYARCH}"
+
+if [ "X$2" = "Xdeps" ]; then
+  JFCVERS="1.0.17"
+  JFCPKGVER="1017"
+  PKGTYPE="withdeps"
+cat > depend <<EOF
+P TRIBjfreechart-${JFCPKGVER}
+EOF
+  echo "i depend=./depend"
+fi
+
+case $MYARCH in
+i386)
+	echo "f none /${LIBDIR}/${KCOL}=bin/i386/${KCOL} 0755 ${OWNER}"
+	;;
+sparc)
+	echo "f none /${LIBDIR}/${KCOL}=bin/sparc/${KCOL} 0755 ${OWNER}"
+	;;
+esac
+
+echo "f none /usr/lib/ka/kadc=kadc 0755 ${OWNER}"
+echo "f none /usr/lib/ka/kaclean=kaclean 0755 ${OWNER}"
+echo "f none /usr/lib/ka/README=README 0644 ${OWNER}"
+echo "f none /usr/bin/kar=kar.installed 0755 ${OWNER}"
+echo "d none /usr/share 0755 ${SYSOWNER}"
+echo "d none /usr/share/kar 0755 ${SYSOWNER}"
+echo "d none /usr/share/man 0755 ${OWNER}"
+echo "d none /usr/share/man/man1 0755 ${OWNER}"
+echo "d none /usr/share/man/man1m 0755 ${OWNER}"
+echo "f none /usr/share/man/man1/kar.1=man1/kar.1 0644 ${OWNER}"
+echo "f none /usr/share/man/man1m/kadc.1m=man1/kadc.1m 0644 ${OWNER}"
+echo "d none /var/adm/ka 0755 sys sys"
+
+if [ "X$PKGTYPE" = "Xstandalone" ]; then
+  for path in lib/java/*.jar
+  do
+	pname=`basename $path`
+	echo "f none /${JARDIR}/${pname}=${path} 0644 ${OWNER}"
+  done
+else
+  for path in lib/java/jcommon* lib/java/jfreechart*
+  do
+	pname=`basename $path`
+	echo "s none /${JARDIR}/${pname}=../jfreechart-${JFCVERS}/${pname}"
+  done
+  for path in `ls -1 lib/java/*.jar | grep -v /jcommon | grep -v /jfreechart`
+  do
+	pname=`basename $path`
+	echo "f none /${JARDIR}/${pname}=${path} 0644 ${OWNER}"
+  done
+fi

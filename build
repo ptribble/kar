@@ -1,0 +1,84 @@
+#!/bin/sh
+#
+# build kar
+#
+# Usage:
+#
+# ./build -doc
+#    Generates the javadoc
+#
+# ./build
+#    Builds all the java classes, and recompiles the native library.
+#
+# If you have the ON build tools installed, then jstyle gets run.
+#
+
+PATH=/usr/jdk/instances/jdk1.6.0/bin:$PATH
+export PATH
+
+JKDIR=`dirname $0`
+LIBDIR=${JKDIR}/lib
+JARLIBDIR=${LIBDIR}/java
+JAVA=java
+JAVAC=javac
+JKJAR=${JARLIBDIR}/jkstat.jar
+KJAR=${JARLIBDIR}/kar.jar
+HJAR=${JARLIBDIR}/jheatchart-0.6.jar
+ALLJARS=${JKJAR}:${KJAR}
+BUILDJARS=${JKJAR}:${HJAR}
+
+#
+# run
+# ./build pmd
+# to use this, these checks should always pass, it's a regression if
+# any warnings appear. Of course, you must have pmd in your path
+#
+PMDCHECKS="braces,imports,unusedcode,typeresolution,coupling,clone,sunsecure,finalizers,strictexception,migrating"
+
+case $1 in
+-doc)
+	rm -fr javadoc
+	mkdir javadoc
+	javadoc -classpath $BUILDJARS:. -d javadoc uk.co.petertribble.kar
+	exit 0
+	;;
+clean)
+	rm -f `find uk/co -name '*.class'`
+	rm -f `find . -type f -name '*~'`
+	exit 0
+	;;
+pmd)
+	pmd uk $PMDCHECKS
+	exit 0
+	;;
+packages)
+	cat kar | sed 's:^JARLIBDIR=.*$:JARLIBDIR=/usr/share/kar:' > kar.installed
+	./mkproto i386 $2 > prototype.i386
+	./mkproto sparc $2 > prototype.sparc
+	pkgmk -d /tmp -f prototype.i386 -r `pwd` TRIBkar
+	pkgtrans -s /tmp /tmp/TRIBkar-i386.pkg TRIBkar
+	rm -fr /tmp/TRIBkar
+	pkgmk -d /tmp -f prototype.sparc -r `pwd` TRIBkar
+	pkgtrans -s /tmp /tmp/TRIBkar-sparc.pkg TRIBkar
+	rm -fr /tmp/TRIBkar
+	ls -l /tmp/TRIBkar-sparc.pkg /tmp/TRIBkar-i386.pkg
+	rm prototype.i386 prototype.sparc
+	rm kar.installed
+	rm -f depend
+	exit 0
+	;;
+esac
+
+XFLAGS="-Xlint -Xlint:-serial"
+
+if [ -x /opt/onbld/bin/jstyle ]; then
+	/opt/onbld/bin/jstyle `find uk/co/petertribble -name '*.java'`
+fi
+
+javac ${XFLAGS} -classpath .:${BUILDJARS} uk/co/petertribble/kar/*.java
+javac ${XFLAGS} -classpath .:${BUILDJARS} uk/co/petertribble/kar/graphite/*.java
+
+jar -cf ${KJAR} `find uk/co/petertribble/kar -name '*.class'` help/*
+
+mkdir -p bin/`/usr/bin/uname -p`
+cc -o bin/`/usr/bin/uname -p`/kar_collector -lkstat src/kar_collector.c

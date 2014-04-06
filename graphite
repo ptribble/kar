@@ -1,0 +1,103 @@
+#!/bin/sh
+#
+# run the kar graphite feeder
+#
+
+JKDIR=`dirname $0`
+LIBDIR=${JKDIR}/lib
+JARLIBDIR=${LIBDIR}/java
+JAVA=/usr/bin/java
+
+ODIR="/var/adm/ka"
+OFILE="ka-`/bin/date +'%F'`"
+
+usage() {
+    echo "Usage: graphite subcommand [options]"
+    echo "Available subcommands:"
+    echo " sar [-e time] [-f zipfile] [-s time]"
+    echo " iostat [-P] [-e time] [-f zipfile] [-s time]"
+    echo " fsstat [-e time] [-f zipfile] [-s time]"
+    echo " mpstat [-e time] [-f zipfile] [-s time]"
+    echo " print [-e time] [-f zipfile] [-s time] pattern [ ... ]"
+    echo " load [-f zipfile]"
+}
+
+case $# in
+0)
+    usage
+    exit 1
+    ;;
+*)
+    SUBCOMMAND=$1
+    shift
+    ;;
+esac
+
+JKJAR=${JARLIBDIR}/jkstat.jar
+KJAR=${JARLIBDIR}/kar.jar
+ALLJARS=${JKJAR}:${KJAR}
+
+#
+# common argument check. If -f is specified, be happy with it.
+# if no -f flag, we add one of our own. Need to add all other valid arguments
+# to the getopts list to shut getopts up, though
+#
+fflag=
+while getopts Ppe:s:f: flag
+do
+    case $flag in
+    f)
+	fflag=1
+	INFILE="$OPTARG"
+	FLAGS="-f ${INFILE}"
+	shift
+	shift
+	;;
+    esac
+done
+
+if [ -z "$fflag" ]; then
+    OFILE="ka-`/bin/date +'%F'`.zip"
+    INFILE="${ODIR}/${OFILE}"
+    if [ -f "${INFILE}" ]; then
+	FLAGS="-f ${INFILE}"
+    fi
+fi
+
+
+case $SUBCOMMAND in
+'load')
+    JKCLASS=uk.co.petertribble.kar.graphite.GraphiteLoad
+    ;;
+
+'sar')
+    JKCLASS=uk.co.petertribble.kar.graphite.GraphiteSar
+    ;;
+
+'iostat')
+    JKCLASS=uk.co.petertribble.kar.graphite.GraphiteIOstat
+    ;;
+
+'fsstat')
+    JKCLASS=uk.co.petertribble.kar.graphite.GraphiteFSstat
+    ;;
+
+'mpstat')
+    JKCLASS=uk.co.petertribble.kar.graphite.GraphiteMPstat
+    ;;
+
+'print')
+    JKCLASS=uk.co.petertribble.kar.graphite.GraphitePrint
+    ;;
+
+*)
+    usage
+    exit 1
+    ;;
+
+esac
+
+#
+# launch the class specified
+#
+$JAVA -cp ${ALLJARS} ${JKCLASS} $FLAGS $*

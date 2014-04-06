@@ -1,0 +1,64 @@
+#!/bin/sh
+#
+# kar - kstat activity reporter
+#
+# This is the kar data collector, kadc
+#
+
+usage() {
+	echo "Usage: $0 [dir [file] ]"
+	exit 1
+}
+
+#
+# define output locations, either from defaults or supplied arguments
+#
+case $# in
+0)
+	ODIR="/var/adm/ka"
+	OFILE="ka-`/bin/date +'%F'`"
+	;;
+1)
+	ODIR="$1"
+	OFILE="ka-`/bin/date +'%F'`"
+	;;
+2)
+	ODIR="$1"
+	OFILE="$2"
+	;;
+*)
+	usage
+	;;
+esac
+
+#
+# check destination directory is valid
+#
+if [ ! -d "$ODIR" ]; then
+	/bin/mkdir -p $ODIR
+fi
+if [ ! -d "$ODIR" ]; then
+	echo "ERROR: missing output directory $ODIR"
+	usage
+fi
+
+#
+# check destination file, it should be a bare name without slashes
+#
+case $OFILE in
+*/*)
+	echo "ERROR: output file must be a plain filename"
+	usage
+	;;
+esac
+
+DSTFILE="${ODIR}/${OFILE}"
+
+TDIR="/tmp/kar-$$"
+/bin/mkdir -p $TDIR
+cd $TDIR
+TFILE=`/bin/date '+%F-%T'`
+/usr/lib/ka/kar_collector > $TFILE
+/bin/zip -q $DSTFILE $TFILE
+cd /
+/bin/rm -fr $TDIR

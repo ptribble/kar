@@ -1,0 +1,223 @@
+1.1
+
+Update jkstat to 1.1
+
+Update jfreechart to 1.0.17
+
+NOTE: As a result, Java 6 or later is now required
+
+kar browser graphs work
+
+1.0
+
+NOTE: Post version 1.0, new features will appear in v2.0 and later
+which will require a minimum Java 7
+
+Catch potential null pointer
+
+Update jkstat to 1.0
+
+Smarten up package build
+
+0.10
+
+Update jkstat to 0.69
+
+Tweak json cacheing for those that need it
+
+Add cpustat subcommand, a cross between load average, mpstat, and vmstat
+
+0.9
+
+Update jkstat to 0.67
+
+Update jfreechart to 1.0.14
+
+Update jstripchart to 0.95
+
+Update jingle
+
+Fix iostat usage message
+
+graphite command and namespace, to generate output in a form that can
+be thrown at graphite
+
+iostat filters on IO kstats, as the current collector actually has that
+information
+
+Add manpages for kar and kadc
+
+Can build SVR4 packages
+
+iostat subcommand understands -p, and behaves like iostat(1M) wrt the
+-p and -P flags
+
+Add JHeatChart to generate heatmaps
+
+Add cpuheat subcommand which will generate a cpu utilization heatmap
+
+Add ioheat subcommand which will generate an I/O utilization heatmap
+
+0.8
+
+Update jkstat to 0.61
+
+Java 7 compatibility: don't instantiate KstatResources
+
+GraphList class to generate the list of graphs. Use that instead of the
+shell approach in the kar script, which didn't work at all for JSON
+format archives, making the graphs subcommand useful again.
+
+Add fsstat read/write operations and bytes to graphs.
+
+Can graph values as well as rates
+
+Add load average graph (actually, still the avenrun kstats)
+
+Add process count graph
+
+Add free memory graph
+
+0.7
+
+Remove old kar_collector; rename json_collector as kar_collector
+
+Remove conversion subcommands and scripts
+
+Remove support for old kar format; all input files must be json format.
+
+Update jkstat to 0.50
+
+Clean up javadoc
+
+0.6.5
+
+FLAG DAY: This is an intermediate release, which supports both the old
+(private) kar format and the new JSON format. Later versions will drop
+support for the old format completely. Really, you only want this
+release if you want to migrate from the old format. See
+README.migration for migration details. If you're not migrating data,
+go straight to 0.7.
+
+Update jumble.jar
+
+Update jkstat to 0.45
+
+Added json_collector, which collects data in json format. In the next
+release json_collector will become kar_collector and the old
+kar_collector will be removed.
+
+The json collector ignores statistics with empty names
+
+kar script actually passes input file to subcommands
+
+convert and convertdir subcommands to allow conversion of old kar
+archives into new json format. These subcommands only exists in 0.6.5
+as the support needed for them is removed in later versions
+
+load subcommand prints load averages
+
+0.6
+
+Update jumble.jar
+
+jstyle clean
+
+add zfs arc size to graph list
+
+increase max heap - building graphs chews memory
+
+carry on with subsequent graphs if one graph fails
+
+eliminate unnecessary setLayout() calls
+
+remove unnecessary static initialization blocks
+
+Update jkstat to 0.43
+
+Fix the sparc kar_collector, which was printing zero for 32-bit values
+(doh, again)
+
+print subcommand no longer fails with non-numeric statistics
+
+print subcommand only prints the statistics you ask for
+
+fix print usage message
+
+Iostat fields shouldn't run together
+
+README.ploticus gives examples of how to use ploticus and 'kar print'
+to make graphs.
+
+need kar subcommand just to make one chart - see linegraph and
+areagraph subcommands
+
+0.5.1
+
+Update jkstat to 0.42
+
+The graphs are generated many times quicker. All the graphs combined
+now take about the same time as it used to take to generate just one.
+
+0.5
+
+sparc kar_collector now executable (doh)
+
+kar print subcommand, to show given statistics (which can then be fed
+into something else).
+
+Improved Install.sh, added UnInstall.sh and Update.sh
+
+0.4
+
+Update jkstat to 0.41, add jstripchart
+
+Changes to match api variations in jkstat 0.41
+
+fixed info subcommand so it works again (slightly different arguments)
+
+graph subcommand, creates a useful set of charts
+
+Fixed fsstat so the scaling is correct - out by a factor of 1024.
+
+Updated jingle and jumble.
+
+browser subcommand
+
+mpstat output sorted
+
+iostat output sorted
+
+iostat -P to hide disk statistics, -M to show rates im M/s not k/s
+
+0.3
+
+mpstat subcommand
+
+reset stats for mpstat, iostat correctly when system restarts
+
+iostat -z
+
+better argument handling in kar script
+
+refactor start and end time argument handling
+
+fsstat subcommand
+
+0.2
+
+kar command, with sar subcommand for default output
+
+new data collector, kar_collector replaces kstat -p
+
+kar_collector has a new output format, typically half the space
+required, and almost saves half the cpu needed for jkstat to process
+the files
+
+kar iostat subcommand, iostat -x output
+
+needs jkstat 0.38
+
+0.1
+
+Initial prototype, just the data collector

@@ -1,0 +1,217 @@
+#!/bin/sh
+#
+# run the kar utilities
+#
+
+JKDIR=`dirname $0`
+LIBDIR=${JKDIR}/lib
+JARLIBDIR=${LIBDIR}/java
+JAVA=/usr/bin/java
+
+#
+# if installed then the locations change
+#
+INSTALLED=false
+if [ "$INSTALLED" = "true" ]; then
+    JARLIBDIR=/usr/share/kar
+fi
+
+ODIR="/var/adm/ka"
+OFILE="ka-`/bin/date +'%F'`"
+
+usage() {
+    echo "Usage: kar subcommand [options]"
+    echo "Available subcommands:"
+    echo " sar [-e time] [-f zipfile] [-s time]"
+    echo " iostat [-z] [-P] [-M] [-e time] [-f zipfile] [-s time]"
+    echo " fsstat [-z] [-e time] [-f zipfile] [-s time]"
+    echo " mpstat [-e time] [-f zipfile] [-s time]"
+    echo " cpustat [-e time] [-f zipfile] [-s time]"
+    echo " graphs [-f zipfile] -o dir"
+    echo " cpuheat [-e time] [-f zipfile] [-o output_png] [-s time]"
+    echo " ioheat [-e time] [-f zipfile] [-o output_png] [-s time]"
+    echo " areagraph [-f zipfile] -o filename kstat_spec"
+    echo " linegraph [-f zipfile] -o filename kstat_spec"
+    echo " print [-e time] [-f zipfile] [-s time] pattern [ ... ]"
+    echo " info [-f zipfile]"
+    echo " load [-f zipfile]"
+    echo " browser [dir]"
+}
+
+case $# in
+0)
+    usage
+    exit 1
+    ;;
+*)
+    SUBCOMMAND=$1
+    shift
+    ;;
+esac
+
+JKJAR=${JARLIBDIR}/jkstat.jar
+KJAR=${JARLIBDIR}/kar.jar
+JCJAR=${JARLIBDIR}/jcommon-1.0.21.jar
+JFJAR=${JARLIBDIR}/jfreechart-1.0.17.jar
+JFJARS=${JCJAR}:${JFJAR}
+JUMBLEJAR=${JARLIBDIR}/jumble.jar
+HJAR=${JARLIBDIR}/jheatchart-0.6.jar
+ALLJARS=${JKJAR}:${KJAR}:${HJAR}:${JFJARS}
+GRAPHJARS=${ALLJARS}:${JFJARS}:${JUMBLEJAR}
+
+make_graphs() {
+    if [ -z "$GRAPHDIR" ]; then
+	echo "graph: Need to specify output root"
+	usage
+	exit 1
+    fi
+    if [ ! -d "$GRAPHDIR" ]; then
+	mkdir -p "$GRAPHDIR"
+    fi
+    SPECFILE="${GRAPHDIR}/graphspec.$$"
+    /bin/rm -f $SPECFILE
+    JFLAGS="-Djava.awt.headless=true -Xmx2500m"
+    $JAVA -cp ${GRAPHJARS} $JFLAGS uk.co.petertribble.kar.GraphList -f ${INFILE} | sed s:XX_DIR:${GRAPHDIR}: > ${SPECFILE}
+    $JAVA -cp ${GRAPHJARS} $JFLAGS uk.co.petertribble.kar.Graphs -f ${INFILE} -s ${SPECFILE}
+    /bin/rm -f ${SPECFILE}
+}
+
+#
+# common argument check. If -f is specified, be happy with it.
+# if no -f flag, we add one of our own. Need to add all other valid arguments
+# to the getopts list to shut getopts up, though
+#
+fflag=
+oflag=
+while getopts ISNMPpze:s:f:F:o:T: flag
+do
+    case $flag in
+    f)
+	fflag=1
+	INFILE="$OPTARG"
+	FLAGS="-f ${INFILE}"
+	shift
+	shift
+	;;
+    F)
+	fflag=1
+	INFILE="$OPTARG"
+	FLAGS="-F ${INFILE}"
+	shift
+	shift
+	;;
+    o)
+	oflag=1
+	GRAPHDIR="$OPTARG"
+	shift
+	shift
+	;;
+    esac
+done
+
+if [ -z "$fflag" ]; then
+    OFILE="ka-`/bin/date +'%F'`.zip"
+    INFILE="${ODIR}/${OFILE}"
+    if [ -f "${INFILE}" ]; then
+	FLAGS="-f ${INFILE}"
+    fi
+fi
+
+
+case $SUBCOMMAND in
+'graphlist')
+    JKCLASS=uk.co.petertribble.kar.GraphList
+    ;;
+
+'info')
+    JKCLASS=uk.co.petertribble.kar.KarInfo
+    ;;
+
+'load')
+    JKCLASS=uk.co.petertribble.kar.Load
+    ;;
+
+'sar')
+    JKCLASS=uk.co.petertribble.kar.Sar
+    ;;
+
+'iostat')
+    JKCLASS=uk.co.petertribble.kar.IOstat
+    ;;
+
+'fsstat')
+    JKCLASS=uk.co.petertribble.kar.FSstat
+    ;;
+
+'mpstat')
+    JKCLASS=uk.co.petertribble.kar.MPstat
+    ;;
+
+'cpustat')
+    JKCLASS=uk.co.petertribble.kar.CPUstat
+    ;;
+
+'cpuheat')
+    JFLAGS="-Djava.awt.headless=true -Xmx2500m"
+    JKCLASS=uk.co.petertribble.kar.CpuHeat
+    ;;
+
+'ioheat')
+    JFLAGS="-Djava.awt.headless=true -Xmx2500m"
+    JKCLASS=uk.co.petertribble.kar.IOHeat
+    ;;
+
+'print')
+    JKCLASS=uk.co.petertribble.kar.Print
+    ;;
+
+'browser')
+    JKCLASS=uk.co.petertribble.kar.KarBrowser
+case $# in
+0)
+    FLAGS="${ODIR}"
+    ;;
+*)
+    FLAGS=""
+    ;;
+esac
+    ;;
+
+'graphs')
+    make_graphs $FLAGS $*
+    exit 0
+    ;;
+
+'linegraph')
+    if [ -z "$oflag" ]; then
+	echo "Missing output file"
+	exit 1
+    fi
+    JFLAGS="-Djava.awt.headless=true -Xmx2500m"
+    JKCLASS=uk.co.petertribble.jkstat.gui.KstatPngImage
+    $JAVA -cp ${GRAPHJARS} $JFLAGS ${JKCLASS} -z ${INFILE} -o ${GRAPHDIR} $*
+    exit 0
+    ;;
+
+'areagraph')
+    if [ -z "$oflag" ]; then
+	echo "Missing output file"
+	exit 1
+    fi
+    JFLAGS="-Djava.awt.headless=true -Xmx2500m"
+    JKCLASS=uk.co.petertribble.jkstat.gui.KstatAreaPngImage
+    $JAVA -cp ${GRAPHJARS} $JFLAGS ${JKCLASS} -z ${INFILE} -o ${GRAPHDIR} $*
+    exit 0
+    ;;
+
+*)
+    usage
+    exit 1
+    ;;
+
+esac
+
+#
+# launch the class specified
+#
+$JAVA -cp ${ALLJARS} $JFLAGS ${JKCLASS} $FLAGS $*
