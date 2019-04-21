@@ -59,7 +59,7 @@ public class KarBrowser extends JFrame implements ListSelectionListener,
     private File dir;
     private JPanel kpanel;
     private JPanel cpanel;
-    private JList flist;
+    private JList <File> flist;
     private KstatTreePanel ktp;
     private ChartBuilderPanel cbp;
 
@@ -116,7 +116,7 @@ public class KarBrowser extends JFrame implements ListSelectionListener,
 	// These shenanigans are to sort the files most recent first
 	List <File> files = Arrays.asList(dir.listFiles(new KarFileFilter()));
 	Collections.reverse(files);
-	flist = new JList(new Vector <File> (files));
+	flist = new JList <File> (new Vector <File> (files));
 	flist.addListSelectionListener(this);
 	flist.setCellRenderer(new KarListCellRenderer());
 
@@ -246,10 +246,7 @@ public class KarBrowser extends JFrame implements ListSelectionListener,
 
     public void valueChanged(ListSelectionEvent e) {
         if (!e.getValueIsAdjusting() && (flist.getSelectedIndex() != -1)) {
-	    Object o = flist.getSelectedValue();
-	    if (o instanceof File) {
-		showFile((File) o);
-	    }
+	    showFile(flist.getSelectedValue());
         }
     }
 
