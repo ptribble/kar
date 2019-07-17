@@ -27,18 +27,8 @@ HJAR=${JARLIBDIR}/jheatchart-0.6.jar
 ALLJARS=${JKJAR}:${KJAR}
 BUILDJARS=${JKJAR}:${HJAR}
 
-#
-# run
-# ./build pmd
-# to use this, you must have pmd in your path
-#
-# new PMD version has rulesets
-#
-PMDRULES="imports typeresolution clone finalizers sunsecure unusedcode braces migrating strictexception"
-PMDCATRULES="security"
-
 case $1 in
--doc)
+doc|-doc)
 	rm -fr javadoc
 	mkdir javadoc
 	javadoc -classpath $BUILDJARS:. -d javadoc uk.co.petertribble.kar
@@ -47,9 +37,13 @@ case $1 in
 clean)
 	rm -f `find uk/co -name '*.class'`
 	rm -f `find . -type f -name '*~'`
+	rm -fr javadoc
 	exit 0
 	;;
-pmd)
+pmd|-pmd)
+	#
+	# new PMD version has rulesets
+	#
 	RULESETS=""
 	for RULE in $PMDRULES
 	do
@@ -93,4 +87,4 @@ javac ${XFLAGS} -classpath .:${BUILDJARS} uk/co/petertribble/kar/graphite/*.java
 jar -cf ${KJAR} `find uk/co/petertribble/kar -name '*.class'` help/*
 
 mkdir -p bin/`/usr/bin/uname -p`
-cc -o bin/`/usr/bin/uname -p`/kar_collector -lkstat src/kar_collector.c
+gcc -o bin/`/usr/bin/uname -p`/kar_collector -lkstat src/kar_collector.c
