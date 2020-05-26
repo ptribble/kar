@@ -1,11 +1,9 @@
-.TH "KADC" "1M" "Apr 6, 2014" "kar 1\&.1"
+.TH "KADC" "1M" "May 26, 2020"
 .SH "NAME"
 kadc \- data collector for kar
 .SH "SYNOPSIS"
-.LP
 /usr/lib/ka/kadc
 .SH DESCRIPTION
-.LP
 The kstat activity reporter, kar, extends sar (the system activity
 reporter) by saving all kstats regularly, rather then a predefined
 subset. This allows a much wider range of statistics to be monitored,
@@ -23,5 +21,4 @@ The data archives are zip files named by date, stored in the
 each reporting interval, the file being a dump of the entire kstat
 hierarchy in JSON format.
 .SH SEE ALSO
-.LP
 kar(1), kstat(1M), kstat(3KSTAT)
