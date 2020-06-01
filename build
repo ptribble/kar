@@ -27,6 +27,9 @@ HJAR=${JARLIBDIR}/jheatchart-0.6.jar
 ALLJARS=${JKJAR}:${KJAR}
 BUILDJARS=${JKJAR}:${HJAR}
 
+PMDRULES="imports typeresolution clone finalizers sunsecure unusedcode braces migrating strictexception"
+PMDCATRULES="security"
+
 case $1 in
 doc|-doc)
 	rm -fr javadoc
