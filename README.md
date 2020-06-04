@@ -16,7 +16,7 @@ framework and do any aggregation or analysis when the user needs it.
 
 The result is a system that is as complete as the kstat framework, and
 is immediately extensible - new kstats get picked up automatically
-rather than kaving to modify the framework. And because the raw data is
+rather than having to modify the framework. And because the raw data is
 saved, it can be analysed and displayed in any way you see fit: you
 aren't limited to the handful of results that the authors of sar
 thought you might need.
