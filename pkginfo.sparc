@@ -1,7 +1,7 @@
 PKG="TRIBkar"
 NAME="Kstat Activity Reporter"
 ARCH="sparc"
-VERSION="1.1"
+VERSION="1.2"
 CATEGORY="application"
 VENDOR="Peter Tribble"
 EMAIL="peter.tribble@gmail.com"

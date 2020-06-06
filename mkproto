@@ -18,8 +18,8 @@ PKGTYPE="standalone"
 echo "i pkginfo=./pkginfo.${MYARCH}"
 
 if [ "X$2" = "Xdeps" ]; then
-  JFCVERS="1.0.17"
-  JFCPKGVER="1017"
+  JFCVERS="1.5.0"
+  JFCPKGVER="150"
   PKGTYPE="withdeps"
 cat > depend <<EOF
 P TRIBjfreechart-${JFCPKGVER}
