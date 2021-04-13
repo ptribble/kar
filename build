@@ -13,7 +13,7 @@
 # If you have the ON build tools installed, then jstyle gets run.
 #
 
-PATH=/usr/jdk/instances/jdk1.6.0/bin:$PATH
+PATH=/usr/jdk/instances/jdk1.8.0/bin:$PATH
 export PATH
 
 JKDIR=`dirname $0`
@@ -57,7 +57,7 @@ pmd|-pmd)
 	    RULESETS="${RULESETS},category/java/${RULE}.xml"
 	done
 	RULESETS=`echo $RULESETS|sed s:,::`
-	pmd -d uk -R $RULESETS -version 1.5 -auxclasspath `echo lib/java/* | sed 's= =:=g'` 2>/dev/null
+	pmd -d uk -R $RULESETS -version 1.8 -auxclasspath `echo lib/java/* | sed 's= =:=g'` 2>/dev/null
 	exit 0
 	;;
 packages)
