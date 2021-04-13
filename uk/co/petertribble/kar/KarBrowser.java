@@ -152,6 +152,7 @@ public class KarBrowser extends JFrame implements ListSelectionListener,
     }
 
     class winExit extends WindowAdapter {
+	@Override
 	public void windowClosing(WindowEvent we) {
 	    JingleMultiFrame.unregister(KarBrowser.this);
 	}
@@ -161,6 +162,7 @@ public class KarBrowser extends JFrame implements ListSelectionListener,
      * Only show files that look like kar output files.
      */
     class KarFileFilter implements FilenameFilter {
+	@Override
 	public boolean accept(File f, String name) {
 	    return name.startsWith("ka-") && name.endsWith(".zip");
 	}
@@ -170,6 +172,7 @@ public class KarBrowser extends JFrame implements ListSelectionListener,
      * Only show the date portion of the filename in the list.
      */
     class KarListCellRenderer extends DefaultListCellRenderer {
+	@Override
 	public Component getListCellRendererComponent(JList list,
 							Object value,
 							int index,
@@ -244,12 +247,14 @@ public class KarBrowser extends JFrame implements ListSelectionListener,
 	setCursor(c);
     }
 
+    @Override
     public void valueChanged(ListSelectionEvent e) {
         if (!e.getValueIsAdjusting() && (flist.getSelectedIndex() != -1)) {
 	    showFile(flist.getSelectedValue());
         }
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
 	if (e.getSource() == cloneItem) {
 	    new KarBrowser(dir);
