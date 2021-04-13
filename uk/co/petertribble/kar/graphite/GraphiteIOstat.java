@@ -125,7 +125,7 @@ public class GraphiteIOstat {
 	 * If boot time was before today, then we will skip the first interval
 	 * as there is no valid previous measurement.
 	 */
-	boolean skipfirst = (1000*lastboot < midnight);
+	boolean skipfirst = 1000*lastboot < midnight;
 	do {
 	    KstatFilter ksf = new KstatFilter(sjkstat);
 	    ksf.setFilterType(KstatType.KSTAT_TYPE_IO);
@@ -145,7 +145,7 @@ public class GraphiteIOstat {
 
 	    KstatSet kss = new KstatSet(sjkstat, ksf);
 	    // if past the start time, print output
-	    if (!skipfirst && (sjkstat.getTime() > daystart)) {
+	    if (!skipfirst && sjkstat.getTime() > daystart) {
 		for (Kstat ks : new TreeSet <Kstat> (kss.getKstats())) {
 		    /*
 		     * If -p, show everything. If -P, don't show disks.

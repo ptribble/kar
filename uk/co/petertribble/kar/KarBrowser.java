@@ -249,7 +249,7 @@ public class KarBrowser extends JFrame implements ListSelectionListener,
 
     @Override
     public void valueChanged(ListSelectionEvent e) {
-        if (!e.getValueIsAdjusting() && (flist.getSelectedIndex() != -1)) {
+        if (!e.getValueIsAdjusting() && flist.getSelectedIndex() != -1) {
 	    showFile(flist.getSelectedValue());
         }
     }

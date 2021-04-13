@@ -91,7 +91,7 @@ public class PrettyFormat {
     public static String memscale(double l) {
 	double lvalue = l;
 	int i = 0;
-	while ((lvalue > kmax) && (i < 5)) {
+	while (lvalue > kmax && i < 5) {
 	    lvalue = lvalue/kscale;
 	    i++;
 	}

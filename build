@@ -27,7 +27,7 @@ HJAR=${JARLIBDIR}/jheatchart-0.6.jar
 ALLJARS=${JKJAR}:${KJAR}
 BUILDJARS=${JKJAR}:${HJAR}
 
-PMDRULES="imports typeresolution clone finalizers sunsecure unusedcode braces migrating strictexception"
+PMDRULES="basic braces clone empty finalizers imports migrating strictexception sunsecure typeresolution unnecessary unusedcode"
 PMDCATRULES="security"
 
 case $1 in

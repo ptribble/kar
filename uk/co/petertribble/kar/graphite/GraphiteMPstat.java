@@ -125,7 +125,7 @@ public class GraphiteMPstat {
 	 * If boot time was before today, then we will skip the first interval
 	 * as there is no valid previous measurement.
 	 */
-	boolean skipfirst = (1000*lastboot < midnight);
+	boolean skipfirst = 1000*lastboot < midnight;
 	do {
 	    KstatFilter ksf = new KstatFilter(sjkstat);
 	    ksf.addFilter("cpu::sys");
@@ -143,7 +143,7 @@ public class GraphiteMPstat {
 
 	    KstatSet kss = new KstatSet(sjkstat, ksf);
 	    // if past the start time, print output
-	    if (!skipfirst && (sjkstat.getTime() > daystart)) {
+	    if (!skipfirst && sjkstat.getTime() > daystart) {
 		for (Kstat ks : new TreeSet <Kstat> (kss.getKstats())) {
 		    doPrint(sjkstat.getTime(), ks,
 			sjkstat.getKstat("cpu", ks.getInst(), "vm"));
@@ -196,7 +196,7 @@ public class GraphiteMPstat {
 	    foldsnaptime = ksfold.getSnaptime();
 
 	    nminf -=
-		(ksfold.longData("hat_fault") + ksfold.longData("as_fault"));
+		ksfold.longData("hat_fault") + ksfold.longData("as_fault");
 	    nmjf -= ksf.longData("maj_fault");
 	    nxcal -= ksold.longData("xcalls");
 	    nintr -= ksold.longData("intr");
@@ -206,7 +206,7 @@ public class GraphiteMPstat {
 	    nmigr -= ksold.longData("cpumigrate");
 	    nsmtx -= ksold.longData("mutex_adenters");
 	    nsrw -=
-		(ksold.longData("rw_rdfails") + ksold.longData("rw_wrfails"));
+		ksold.longData("rw_rdfails") + ksold.longData("rw_wrfails");
 	    nsyscl -= ksold.longData("syscall");
 	    nusr -= ksold.longData("cpu_nsec_user");
 	    nsys -= ksold.longData("cpu_nsec_kernel");

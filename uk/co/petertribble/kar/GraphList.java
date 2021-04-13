@@ -91,8 +91,8 @@ public class GraphList {
 			+ ks.getModule() + ks.getInstance()
 			+ ".png " + ks.getTriplet() + " rbytes64 obytes64");
 	    }
-	    if ((ks.getType() == KstatType.KSTAT_TYPE_IO)
-			&& (!"usba".equals(ks.getModule()))) {
+	    if (ks.getType() == KstatType.KSTAT_TYPE_IO
+			&& !"usba".equals(ks.getModule())) {
 		System.out.println("Line XX_DIR/io." + ks.getName() + ".png "
 			+ ks.getTriplet() + " nread nwritten");
 	    }

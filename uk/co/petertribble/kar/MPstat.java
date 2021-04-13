@@ -186,7 +186,7 @@ public class MPstat {
 	    foldsnaptime = ksfold.getSnaptime();
 
 	    nminf -=
-		(ksfold.longData("hat_fault") + ksfold.longData("as_fault"));
+		ksfold.longData("hat_fault") + ksfold.longData("as_fault");
 	    nmjf -= ksf.longData("maj_fault");
 	    nxcal -= ksold.longData("xcalls");
 	    nintr -= ksold.longData("intr");
@@ -196,7 +196,7 @@ public class MPstat {
 	    nmigr -= ksold.longData("cpumigrate");
 	    nsmtx -= ksold.longData("mutex_adenters");
 	    nsrw -=
-		(ksold.longData("rw_rdfails") + ksold.longData("rw_wrfails"));
+		ksold.longData("rw_rdfails") + ksold.longData("rw_wrfails");
 	    nsyscl -= ksold.longData("syscall");
 	    nusr -= ksold.longData("cpu_nsec_user");
 	    nsys -= ksold.longData("cpu_nsec_kernel");

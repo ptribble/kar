@@ -101,7 +101,7 @@ public class Sar {
 	}
 	Kstat ksb = sjkstat.getKstat("unix", 0, "system_misc");
 	long boottime = 1000*ksb.longData("boot_time");
-	long firsttime = (boottime > daystart) ? boottime : daystart;
+	long firsttime = boottime > daystart ? boottime : daystart;
 	System.out.printf("%tT%8s%8s%8s%8s\n", new Date(firsttime),
 			"%usr", "%sys", "%wio", "%idle");
 	// times, both current and accumulated
@@ -141,7 +141,7 @@ public class Sar {
 		    nidle += ks.longData("cpu_nsec_idle");
 		}
 	    }
-	    if ((nkernel < okernel) || (nuser < ouser) || (nidle < oidle)) {
+	    if (nkernel < okernel || nuser < ouser || nidle < oidle) {
 		tkernel += okernel;
 		tuser += ouser;
 		tidle += oidle;

@@ -135,7 +135,7 @@ public class GraphiteSar {
 		}
 	    }
 	    // reboot, reset the counters
-	    if ((nkernel < okernel) || (nuser < ouser) || (nidle < oidle)) {
+	    if (nkernel < okernel || nuser < ouser || nidle < oidle) {
 		okernel = 0;
 		ouser = 0;
 		oidle = 0;
