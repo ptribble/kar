@@ -34,4 +34,6 @@ fi
 # remove manpages
 #
 /usr/bin/rm -f /usr/share/man/man1/kar.1
+/usr/bin/rm -f /usr/share/man/man8/kadc.8
+# this was the old location before the rename
 /usr/bin/rm -f /usr/share/man/man1m/kadc.1m

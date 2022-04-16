@@ -44,9 +44,9 @@ echo "d none /usr/share 0755 ${SYSOWNER}"
 echo "d none /usr/share/kar 0755 ${SYSOWNER}"
 echo "d none /usr/share/man 0755 ${OWNER}"
 echo "d none /usr/share/man/man1 0755 ${OWNER}"
-echo "d none /usr/share/man/man1m 0755 ${OWNER}"
+echo "d none /usr/share/man/man8 0755 ${OWNER}"
 echo "f none /usr/share/man/man1/kar.1=man1/kar.1 0644 ${OWNER}"
-echo "f none /usr/share/man/man1m/kadc.1m=man1/kadc.1m 0644 ${OWNER}"
+echo "f none /usr/share/man/man8/kadc.8=man1/kadc.8 0644 ${OWNER}"
 echo "d none /var/adm/ka 0755 sys sys"
 
 if [ "X$PKGTYPE" = "Xstandalone" ]; then

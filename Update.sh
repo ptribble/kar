@@ -38,5 +38,8 @@ if [ -d /usr/share/man/man1 ]; then
 fi
 if [ -d /usr/share/man/man1m ]; then
     /usr/bin/rm -f /usr/share/man/man1m/kadc.1m
-    /usr/bin/cp man1/kadc.1m /usr/share/man/man1m
+fi
+if [ -d /usr/share/man/man8 ]; then
+    /usr/bin/rm -f /usr/share/man/man8/kadc.8
+    /usr/bin/cp man1/kadc.8 /usr/share/man/man8
 fi

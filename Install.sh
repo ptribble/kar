@@ -26,8 +26,8 @@ fi
 if [ -d /usr/share/man/man1 ]; then
     /usr/bin/cp man1/kar.1 /usr/share/man/man1
 fi
-if [ -d /usr/share/man/man1m ]; then
-    /usr/bin/cp man1/kadc.1m /usr/share/man/man1m
+if [ -d /usr/share/man/man8 ]; then
+    /usr/bin/cp man1/kadc.8 /usr/share/man/man8
 fi
 
 CTFILE=/tmp/ka.crontab.$$
