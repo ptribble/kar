@@ -55,7 +55,7 @@ Add manpages for kar and kadc
 
 Can build SVR4 packages
 
-iostat subcommand understands -p, and behaves like iostat(1M) wrt the
+iostat subcommand understands -p, and behaves like iostat(8) wrt the
 -p and -P flags
 
 Add JHeatChart to generate heatmaps
