@@ -29,6 +29,7 @@ BUILDJARS=${JKJAR}:${HJAR}
 
 PMDRULES="basic braces clone empty finalizers imports migrating strictexception sunsecure typeresolution unnecessary unusedcode"
 PMDCATRULES="security"
+PMDCACHE="${HOME}/.pmd/cache.kar"
 
 case $1 in
 doc|-doc)
@@ -57,7 +58,11 @@ pmd|-pmd)
 	    RULESETS="${RULESETS},category/java/${RULE}.xml"
 	done
 	RULESETS=`echo $RULESETS|sed s:,::`
-	pmd -d uk -R $RULESETS -version 1.8 -auxclasspath `echo lib/java/* | sed 's= =:=g'` 2>/dev/null
+	if [ ! -d ${HOME}/.pmd ]; then
+	    mkdir -p ${HOME}/.pmd
+	fi
+	pmd check --cache ${PMDCACHE} -d uk -R $RULESETS --use-version java-1.8 --aux-classpath `echo lib/java/* | sed 's= =:=g'` 2>/dev/null
+	pmd check --cache ${PMDCACHE}.html -d help/*.html  -R category/html/bestpractices.xml 2>/dev/null
 	exit 0
 	;;
 packages)
