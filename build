@@ -39,7 +39,7 @@ doc|-doc)
 	exit 0
 	;;
 clean)
-	rm -f `find uk/co -name '*.class'`
+	rm -f `find uk/co -type f -name '*.class'`
 	rm -f `find . -type f -name '*~'`
 	rm -fr javadoc
 	exit 0
