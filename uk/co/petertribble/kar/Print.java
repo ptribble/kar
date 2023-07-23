@@ -133,7 +133,7 @@ public class Print {
 		    if (i+1 < args.length) {
 			i++;
 			ttype = args[i];
-			if (!("u".equals(ttype)) && !("d".equals(ttype))) {
+			if (!"u".equals(ttype) && !"d".equals(ttype)) {
 			    usage("Error: time format must be d or u");
 			}
 		    } else {
