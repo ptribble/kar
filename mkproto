@@ -56,12 +56,12 @@ if [ "X$PKGTYPE" = "Xstandalone" ]; then
 	echo "f none /${JARDIR}/${pname}=${path} 0644 ${OWNER}"
   done
 else
-  for path in lib/java/jcommon* lib/java/jfreechart*
+  for path in lib/java/jfreechart*
   do
 	pname=`basename $path`
 	echo "s none /${JARDIR}/${pname}=../jfreechart-${JFCVERS}/${pname}"
   done
-  for path in `ls -1 lib/java/*.jar | grep -v /jcommon | grep -v /jfreechart`
+  for path in `ls -1 lib/java/*.jar | grep -v /jfreechart`
   do
 	pname=`basename $path`
 	echo "f none /${JARDIR}/${pname}=${path} 0644 ${OWNER}"

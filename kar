@@ -51,9 +51,8 @@ esac
 
 JKJAR=${JARLIBDIR}/jkstat.jar
 KJAR=${JARLIBDIR}/kar.jar
-JCJAR=${JARLIBDIR}/jcommon-1.0.24.jar
 JFJAR=${JARLIBDIR}/jfreechart-1.5.0.jar
-JFJARS=${JCJAR}:${JFJAR}
+JFJARS=${JFJAR}
 JUMBLEJAR=${JARLIBDIR}/jumble.jar
 HJAR=${JARLIBDIR}/jheatchart-0.6.jar
 ALLJARS=${JKJAR}:${KJAR}:${HJAR}:${JFJARS}
