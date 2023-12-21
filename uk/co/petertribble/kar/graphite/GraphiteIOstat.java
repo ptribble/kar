@@ -186,7 +186,7 @@ public class GraphiteIOstat {
 	Kstat ksold = lastMap.get(ks.getTriplet());
 	if (ksold == null) {
 	    // FIXME first time through we want to print nothing, this path
-	    // is a no-op; any subsequent passses are after a restart and
+	    // is a no-op; any subsequent passes are after a restart and
 	    // we do want to emit data
 	    oldsnaptime = ks.getCrtime();
 	} else {
