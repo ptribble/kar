@@ -57,7 +57,7 @@ pmd|-pmd)
 	do
 	    RULESETS="${RULESETS},category/java/${RULE}.xml"
 	done
-	RULESETS=`echo $RULESETS|sed s:,::`
+	RULESETS=${RULESETS/,/}
 	if [ ! -d ${HOME}/.pmd ]; then
 	    mkdir -p ${HOME}/.pmd
 	fi
