@@ -35,6 +35,13 @@ void do_print(kstat_t *ks)
   int firsts;
 
   /*
+   * Temporary area to handle KSTAT_DATA_CHAR
+   */
+  char dchar[17];
+  char *dcharptr;
+  dcharptr = dchar;
+
+  /*
    * It would be nice if we could return something different at this point
    * as there are kstats that exist in the chain but have no data. Or perhaps
    * just return a new kstat with the type information filled in but no
@@ -96,7 +103,8 @@ void do_print(kstat_t *ks)
 	  }
 	  break;
 	case KSTAT_DATA_CHAR:
-	  printf("\"%s\":\"%s\"", kn->name, kn->value.c);
+	  strlcpy(dcharptr, kn->value.c, 16);
+	  printf("\"%s\":\"%s\"", kn->name, dchar);
 	  break;
 	default:
 	  printf("\"%s\":\"%s\"", kn->name, "junk");
