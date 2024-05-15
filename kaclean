@@ -2,7 +2,7 @@
 #
 # kar - kstat activity reporter
 #
-# This is the kar data directory clear, kaclean
+# This is the kar data directory cleaner, kaclean
 #
 
 usage() {
@@ -43,4 +43,4 @@ fi
 #
 # very simplistic cleanup
 #
-find ${ODIR} -type f -mtime +${KDAYS} -exec rm {} \;
+find "${ODIR}" -type f -mtime +"${KDAYS}" -exec rm {} \;

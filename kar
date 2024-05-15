@@ -3,7 +3,7 @@
 # run the kar utilities
 #
 
-JKDIR=`dirname $0`
+JKDIR=$(dirname $0)
 LIBDIR=${JKDIR}/lib
 JARLIBDIR=${LIBDIR}/java
 JAVA=/usr/bin/java
@@ -68,11 +68,11 @@ make_graphs() {
 	mkdir -p "$GRAPHDIR"
     fi
     SPECFILE="${GRAPHDIR}/graphspec.$$"
-    /bin/rm -f $SPECFILE
+    /bin/rm -f "$SPECFILE"
     JFLAGS="-Djava.awt.headless=true -Xmx2500m"
-    $JAVA -cp ${GRAPHJARS} $JFLAGS uk.co.petertribble.kar.GraphList -f ${INFILE} | sed s:XX_DIR:${GRAPHDIR}: > ${SPECFILE}
-    $JAVA -cp ${GRAPHJARS} $JFLAGS uk.co.petertribble.kar.Graphs -f ${INFILE} -s ${SPECFILE}
-    /bin/rm -f ${SPECFILE}
+    $JAVA -cp "${GRAPHJARS}" $JFLAGS uk.co.petertribble.kar.GraphList -f "${INFILE}" | sed "s:XX_DIR:${GRAPHDIR}:" > "${SPECFILE}"
+    $JAVA -cp "${GRAPHJARS}" $JFLAGS uk.co.petertribble.kar.Graphs -f "${INFILE}" -s "${SPECFILE}"
+    /bin/rm -f "${SPECFILE}"
 }
 
 #
@@ -177,7 +177,7 @@ esac
     ;;
 
 'graphs')
-    make_graphs $FLAGS $*
+    make_graphs $FLAGS "$@"
     exit 0
     ;;
 
@@ -188,7 +188,7 @@ esac
     fi
     JFLAGS="-Djava.awt.headless=true -Xmx2500m"
     JKCLASS=uk.co.petertribble.jkstat.gui.KstatPngImage
-    $JAVA -cp ${GRAPHJARS} $JFLAGS ${JKCLASS} -z ${INFILE} -o ${GRAPHDIR} $*
+    $JAVA -cp "${GRAPHJARS}" $JFLAGS "${JKCLASS}" -z "${INFILE}" -o "${GRAPHDIR}" "$@"
     exit 0
     ;;
 
@@ -199,7 +199,7 @@ esac
     fi
     JFLAGS="-Djava.awt.headless=true -Xmx2500m"
     JKCLASS=uk.co.petertribble.jkstat.gui.KstatAreaPngImage
-    $JAVA -cp ${GRAPHJARS} $JFLAGS ${JKCLASS} -z ${INFILE} -o ${GRAPHDIR} $*
+    $JAVA -cp "${GRAPHJARS}" $JFLAGS "${JKCLASS}" -z "${INFILE}" -o "${GRAPHDIR}" "$@"
     exit 0
     ;;
 
@@ -213,4 +213,4 @@ esac
 #
 # launch the class specified
 #
-$JAVA -cp ${ALLJARS} $JFLAGS ${JKCLASS} $FLAGS $*
+$JAVA -cp "${ALLJARS}" $JFLAGS "${JKCLASS}" $FLAGS "$@"

@@ -3,23 +3,26 @@
 # install kar
 #
 
+bail() {
+    echo "ERROR: $1"
+    exit 1
+}
+
 if [ ! -f kadc ]; then
-    cd `dirname $0`
+    cd $(dirname "$0") || bail "cannot cd to find $0"
 fi
 
 if [ ! -f kadc ]; then
-    echo "Oops. Unable to find kar."
-    exit 1
+    bail "Oops. Unable to find kar."
 fi
 
 if [ -f /usr/lib/ka/kadc ]; then
-    echo "KAR already installed, please uninstall the old version first."
-    exit 1
+    bail "KAR already installed, please uninstall the old version first."
 fi
 
 /usr/bin/mkdir -m 0755 /usr/lib/ka
 /usr/bin/cp kadc kaclean README /usr/lib/ka
-/usr/bin/cp bin/`/usr/bin/uname -p`/kar_collector /usr/lib/ka
+/usr/bin/cp bin/$(/usr/bin/uname -p)/kar_collector /usr/lib/ka
 /usr/bin/mkdir -m 0755 /var/adm/ka
 /usr/bin/chown sys /var/adm/ka
 

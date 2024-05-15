@@ -2,7 +2,7 @@
 #
 # kar - kstat activity reporter
 #
-# This is the kar data collector, kadc
+# This is the kar data collector wrapper, kadc
 #
 
 usage() {
@@ -13,14 +13,15 @@ usage() {
 #
 # define output locations, either from defaults or supplied arguments
 #
+KDATE=$(/bin/date +'%F')
 case $# in
 0)
 	ODIR="/var/adm/ka"
-	OFILE="ka-`/bin/date +'%F'`"
+	OFILE="ka-${KDATE}"
 	;;
 1)
 	ODIR="$1"
-	OFILE="ka-`/bin/date +'%F'`"
+	OFILE="ka-${KDATE}"
 	;;
 2)
 	ODIR="$1"
@@ -35,7 +36,7 @@ esac
 # check destination directory is valid
 #
 if [ ! -d "$ODIR" ]; then
-	/bin/mkdir -p $ODIR
+	/bin/mkdir -p "$ODIR"
 fi
 if [ ! -d "$ODIR" ]; then
 	echo "ERROR: missing output directory $ODIR"
@@ -55,10 +56,10 @@ esac
 DSTFILE="${ODIR}/${OFILE}"
 
 TDIR="/tmp/kar-$$"
-/bin/mkdir -p $TDIR
-cd $TDIR
-TFILE=`/bin/date '+%F-%T'`
-/usr/lib/ka/kar_collector > $TFILE
-/bin/zip -q $DSTFILE $TFILE
+/bin/mkdir -p "$TDIR"
+cd "$TDIR" || exit 1
+TFILE=$(/bin/date '+%F-%T')
+/usr/lib/ka/kar_collector > "$TFILE"
+/bin/zip -q "$DSTFILE" "$TFILE"
 cd /
-/bin/rm -fr $TDIR
+/bin/rm -fr "$TDIR"
