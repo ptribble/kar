@@ -95,4 +95,4 @@ javac ${XFLAGS} -classpath .:${BUILDJARS} uk/co/petertribble/kar/graphite/*.java
 jar -cf ${KJAR} `find uk/co/petertribble/kar -name '*.class'` help/*
 
 mkdir -p bin/`/usr/bin/uname -p`
-gcc -o bin/`/usr/bin/uname -p`/kar_collector -lkstat src/kar_collector.c
+gcc -m64 -o bin/`/usr/bin/uname -p`/kar_collector -lkstat src/kar_collector.c
