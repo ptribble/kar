@@ -11,6 +11,17 @@
 
 
     <rule ref="category/java/security.xml" />
+    <rule ref="category/java/errorprone.xml">
+      <exclude name="AvoidLiteralsInIfCondition"/>
+      <exclude name="AvoidDuplicateLiterals"/>
+      <exclude name="ConstructorCallsOverridableMethod"/>
+      <exclude name="DoNotTerminateVM"/>
+      <exclude name="MissingSerialVersionUID"/>
+      <exclude name="UseProperClassLoader"/>
+      <exclude name="CompareObjectsWithEquals"/>
+      <exclude name="NullAssignment"/>
+      <exclude name="DoNotCallGarbageCollectionExplicitly"/>
+    </rule>
     <rule ref="category/java/bestpractices.xml">
       <exclude name="ReplaceVectorWithList"/>
       <exclude name="AvoidReassigningLoopVariables"/>
