@@ -162,11 +162,11 @@ public class IOstat {
 		if (showpart) {
 		    doPrint(ks);
 		} else if (diskhide) {
-		    if (!ks.getKstatClass().equals("disk")) {
+		    if (!"disk".equals(ks.getKstatClass())) {
 			doPrint(ks);
 		    }
 		} else {
-		    if (!ks.getKstatClass().equals("partition")) {
+		    if (!"partition".equals(ks.getKstatClass())) {
 			doPrint(ks);
 		    }
 		}

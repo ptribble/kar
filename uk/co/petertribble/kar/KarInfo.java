@@ -124,7 +124,7 @@ public class KarInfo {
 	if (args.length != 2) {
 	    usage("Missing arguments.");
 	}
-	if (args[0].equals("-f")) {
+	if ("-f".equals(args[0])) {
 	    try {
 		new KarInfo(new ParseableJSONZipJKstat(args[1]));
 	    } catch (IOException ioe) {

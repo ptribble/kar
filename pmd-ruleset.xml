@@ -11,4 +11,11 @@
 
 
     <rule ref="category/java/security.xml" />
+    <rule ref="category/java/bestpractices.xml">
+      <exclude name="ReplaceVectorWithList"/>
+      <exclude name="AvoidReassigningLoopVariables"/>
+      <exclude name="SystemPrintln"/>
+      <exclude name="UseVarargs"/>
+      <exclude name="PreserveStackTrace"/>
+    </rule>
 </ruleset>
