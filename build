@@ -1,14 +1,22 @@
 #!/bin/sh
 #
+# SPDX-License-Identifier: CDDL-1.0
+#
 # build kar
 #
 # Usage:
 #
-# ./build -doc
-#    Generates the javadoc
-#
 # ./build
 #    Builds all the java classes, and recompiles the native library.
+#
+# ./build pmd
+#    Runs the pmd static code analysis tool, if it's installed
+#
+# ./build doc
+#    Generates the javadoc
+#
+# ./build packages
+#    Creates SVR4 packages
 #
 # If you have the ON build tools installed, then jstyle gets run.
 #
@@ -27,8 +35,14 @@ HJAR=${JARLIBDIR}/jheatchart-0.6.jar
 ALLJARS=${JKJAR}:${KJAR}
 BUILDJARS=${JKJAR}:${HJAR}
 
-PMDRULES="basic braces clone empty finalizers imports migrating strictexception sunsecure typeresolution unnecessary unusedcode"
-PMDCATRULES="security"
+#
+# run
+# ./build pmd
+# to use this, you must have pmd in your path
+#
+# new PMD version 7 only has categories, configured in pmd-ruleset.xml
+#
+PMDRULES="./pmd-ruleset.xml"
 PMDCACHE="${HOME}/.pmd/cache.kar"
 
 case $1 in
@@ -45,23 +59,10 @@ clean)
 	exit 0
 	;;
 pmd|-pmd)
-	#
-	# new PMD version has rulesets
-	#
-	RULESETS=""
-	for RULE in $PMDRULES
-	do
-	    RULESETS="${RULESETS},rulesets/java/${RULE}.xml"
-	done
-	for RULE in $PMDCATRULES
-	do
-	    RULESETS="${RULESETS},category/java/${RULE}.xml"
-	done
-	RULESETS=${RULESETS/,/}
 	if [ ! -d ${HOME}/.pmd ]; then
 	    mkdir -p ${HOME}/.pmd
 	fi
-	pmd check --cache ${PMDCACHE} -d uk -R $RULESETS --use-version java-1.8 --aux-classpath `echo lib/java/* | sed 's= =:=g'` 2>/dev/null
+	pmd check --cache ${PMDCACHE} -d uk -R ${PMDRULES} --use-version java-1.8 --aux-classpath `echo lib/java/* | sed 's= =:=g'` 2>/dev/null
 	pmd check --cache ${PMDCACHE}.html -d help/*.html  -R category/html/bestpractices.xml 2>/dev/null
 	exit 0
 	;;
