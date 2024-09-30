@@ -39,23 +39,12 @@ public class GraphiteIOstat {
 
     private String stime;
     private String etime;
-    private String filename;
+    private String filename; //NOPMD
     private boolean diskhide;
     private boolean showpart;
     private Map <String, Kstat> lastMap;
 
     private long oldsnaptime;
-
-    private double dr;
-    private double dw;
-    private double dkr;
-    private double dkw;
-    private double dwait;
-    private double dactv;
-    private double dwsvc;
-    private double dasvc;
-    private int dpw;
-    private int dpb;
 
     /**
      * Display iostat output.
@@ -154,11 +143,11 @@ public class GraphiteIOstat {
 		    if (showpart) {
 			doPrint(sjkstat.getTime(), ks);
 		    } else if (diskhide) {
-			if (!ks.getKstatClass().equals("disk")) {
+			if (!"disk".equals(ks.getKstatClass())) {
 			    doPrint(sjkstat.getTime(), ks);
 			}
 		    } else {
-			if (!ks.getKstatClass().equals("partition")) {
+			if (!"partition".equals(ks.getKstatClass())) {
 			    doPrint(sjkstat.getTime(), ks);
 			}
 		    }
@@ -205,16 +194,16 @@ public class GraphiteIOstat {
 	long midpoint = t - snapdelta/2000000;
 	midpoint /= 1000;
 
-	dr = nr*1000000000.0/snapdelta;
- 	dw = nw*1000000000.0/snapdelta;
-	dkr = nkr*1000000000.0/(snapdelta*1024.0);
- 	dkw = nkw*1000000000.0/(snapdelta*1024.0);
-	dwait = nwlentime/((double) snapdelta);
-	dactv = nrlentime/((double) snapdelta);
-	dwsvc = (nr+nw == 0) ? 0.0 : dwait/(1000.0*((double) nr+nw));
-	dasvc = (nr+nw == 0) ? 0.0 : dactv/(1000.0*((double) nr+nw));
-	dpw = (int) (0.5 + 100.0*nwtime/snapdelta);
-	dpb = (int) (0.5 + 100.0*nrtime/snapdelta);
+	double dr = nr*1000000000.0/snapdelta;
+ 	double dw = nw*1000000000.0/snapdelta;
+	double dkr = nkr*1000000000.0/(snapdelta*1024.0);
+ 	double dkw = nkw*1000000000.0/(snapdelta*1024.0);
+	double dwait = nwlentime/((double) snapdelta);
+	double dactv = nrlentime/((double) snapdelta);
+	double dwsvc = (nr+nw == 0) ? 0.0 : dwait/(1000.0*((double) nr+nw));
+	double dasvc = (nr+nw == 0) ? 0.0 : dactv/(1000.0*((double) nr+nw));
+	int dpw = (int) (0.5 + 100.0*nwtime/snapdelta);
+	int dpb = (int) (0.5 + 100.0*nrtime/snapdelta);
 
 	System.out.printf("%s %.2f %d\n",
 		"iostat." + ks.getName() + ".reads",

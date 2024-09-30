@@ -45,21 +45,6 @@ public class GraphiteMPstat {
     private long oldsnaptime;
     private long foldsnaptime;
 
-    private long dminf;
-    private long dmjf;
-    private long dxcal;
-    private long dintr;
-    private long dithr;
-    private long dcsw;
-    private long dicsw;
-    private long dmigr;
-    private long dsmtx;
-    private long dsrw;
-    private long dsyscl;
-    private long dusr;
-    private long dsys;
-    private long didl;
-
     /**
      * Display MPstat output.
      *
@@ -218,20 +203,20 @@ public class GraphiteMPstat {
 	long midpoint = t - snapdelta/2000000;
 	midpoint /= 1000;
 
-	dminf = Math.round(nminf*1000000000.0/fsnapdelta);
-	dmjf = Math.round(nmjf*1000000000.0/fsnapdelta);
-	dxcal = Math.round(nxcal*1000000000.0/snapdelta);
- 	dintr = Math.round(nintr*1000000000.0/snapdelta);
-	dithr = Math.round(nithr*1000000000.0/snapdelta);
-	dcsw = Math.round(ncsw*1000000000.0/snapdelta);
-	dicsw = Math.round(nicsw*1000000000.0/snapdelta);
-	dmigr = Math.round(nmigr*1000000000.0/snapdelta);
-	dsmtx = Math.round(nsmtx*1000000000.0/snapdelta);
-	dsrw = Math.round(nsrw*1000000000.0/snapdelta);
- 	dsyscl = Math.round(nsyscl*1000000000.0/snapdelta);
-	dusr = Math.round(nusr*100.0/snapdelta);
-	dsys = Math.round(nsys*100.0/snapdelta);
-	didl = Math.round(nidl*100.0/snapdelta);
+	long dminf = Math.round(nminf*1000000000.0/fsnapdelta);
+	long dmjf = Math.round(nmjf*1000000000.0/fsnapdelta);
+	long dxcal = Math.round(nxcal*1000000000.0/snapdelta);
+ 	long dintr = Math.round(nintr*1000000000.0/snapdelta);
+	long dithr = Math.round(nithr*1000000000.0/snapdelta);
+	long dcsw = Math.round(ncsw*1000000000.0/snapdelta);
+	long dicsw = Math.round(nicsw*1000000000.0/snapdelta);
+	long dmigr = Math.round(nmigr*1000000000.0/snapdelta);
+	long dsmtx = Math.round(nsmtx*1000000000.0/snapdelta);
+	long dsrw = Math.round(nsrw*1000000000.0/snapdelta);
+ 	long dsyscl = Math.round(nsyscl*1000000000.0/snapdelta);
+	long dusr = Math.round(nusr*100.0/snapdelta);
+	long dsys = Math.round(nsys*100.0/snapdelta);
+	long didl = Math.round(nidl*100.0/snapdelta);
 
 	System.out.printf("%s %d %d\n",
 		"mpstat." + ks.getInstance() + ".minf",
