@@ -149,15 +149,15 @@ public class Print {
 	    if (mflag) {
 		sb.append(showmodule);
 	    }
-	    sb.append(":");
+	    sb.append(':');
 	    if (iflag) {
 		sb.append(showinstance);
 	    }
-	    sb.append(":");
+	    sb.append(':');
 	    if (nflag) {
 		sb.append(showname);
 	    }
-	    sb.append(":");
+	    sb.append(':');
 	    if (sflag) {
 		sb.append(showstatistic);
 	    }
