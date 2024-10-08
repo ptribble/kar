@@ -24,15 +24,13 @@
 PATH=/usr/jdk/instances/jdk1.8.0/bin:$PATH
 export PATH
 
-JKDIR=`dirname $0`
+JKDIR=$(dirname $0)
 LIBDIR=${JKDIR}/lib
 JARLIBDIR=${LIBDIR}/java
-JAVA=java
 JAVAC=javac
 JKJAR=${JARLIBDIR}/jkstat.jar
 KJAR=${JARLIBDIR}/kar.jar
 HJAR=${JARLIBDIR}/jheatchart-0.6.jar
-ALLJARS=${JKJAR}:${KJAR}
 BUILDJARS=${JKJAR}:${HJAR}
 
 #
@@ -49,31 +47,31 @@ case $1 in
 doc|-doc)
 	rm -fr javadoc
 	mkdir javadoc
-	javadoc -classpath $BUILDJARS:. -d javadoc uk.co.petertribble.kar
+	javadoc -classpath "$BUILDJARS:." -d javadoc uk.co.petertribble.kar
 	exit 0
 	;;
 clean)
-	rm -f `find uk/co -type f -name '*.class'`
-	rm -f `find . -type f -name '*~'`
+	rm -f $(find uk/co -type f -name '*.class')
+	rm -f $(find . -type f -name '*~')
 	rm -fr javadoc
 	exit 0
 	;;
 pmd|-pmd)
-	if [ ! -d ${HOME}/.pmd ]; then
-	    mkdir -p ${HOME}/.pmd
+	if [ ! -d "${HOME}/.pmd" ]; then
+	    mkdir -p "${HOME}/.pmd"
 	fi
-	pmd check --cache ${PMDCACHE} -d uk -R ${PMDRULES} --use-version java-1.8 --aux-classpath `echo lib/java/* | sed 's= =:=g'` 2>/dev/null
-	pmd check --cache ${PMDCACHE}.html -d help/*.html  -R category/html/bestpractices.xml 2>/dev/null
+	pmd check --cache "${PMDCACHE}" -d uk -R "${PMDRULES}" --use-version java-1.8 --aux-classpath $(echo lib/java/* | sed 's= =:=g') 2>/dev/null
+	pmd check --cache "${PMDCACHE}.html" -d help/*.html  -R category/html/bestpractices.xml 2>/dev/null
 	exit 0
 	;;
 packages)
 	sed 's:^JARLIBDIR=.*$:JARLIBDIR=/usr/share/kar:' kar > kar.installed
 	./mkproto i386 $2 > prototype.i386
 	./mkproto sparc $2 > prototype.sparc
-	pkgmk -d /tmp -f prototype.i386 -r `pwd` TRIBkar
+	pkgmk -d /tmp -f prototype.i386 -r $(pwd) TRIBkar
 	pkgtrans -s /tmp /tmp/TRIBkar-i386.pkg TRIBkar
 	rm -fr /tmp/TRIBkar
-	pkgmk -d /tmp -f prototype.sparc -r `pwd` TRIBkar
+	pkgmk -d /tmp -f prototype.sparc -r $(pwd) TRIBkar
 	pkgtrans -s /tmp /tmp/TRIBkar-sparc.pkg TRIBkar
 	rm -fr /tmp/TRIBkar
 	ls -l /tmp/TRIBkar-sparc.pkg /tmp/TRIBkar-i386.pkg
@@ -87,13 +85,14 @@ esac
 XFLAGS="-Xlint -Xlint:-serial -Xlint:-rawtypes"
 
 if [ -x /opt/onbld/bin/jstyle ]; then
-	/opt/onbld/bin/jstyle `find uk/co/petertribble -name '*.java'`
+	/opt/onbld/bin/jstyle $(find uk/co/petertribble -name '*.java')
 fi
 
-javac ${XFLAGS} -classpath .:${BUILDJARS} uk/co/petertribble/kar/*.java
-javac ${XFLAGS} -classpath .:${BUILDJARS} uk/co/petertribble/kar/graphite/*.java
+${JAVAC} ${XFLAGS} -classpath ".:${BUILDJARS}" uk/co/petertribble/kar/*.java
+${JAVAC} ${XFLAGS} -classpath ".:${BUILDJARS}" uk/co/petertribble/kar/graphite/*.java
 
-jar -cf ${KJAR} `find uk/co/petertribble/kar -name '*.class'` help/*
+jar -cf "${KJAR}" $(find uk/co/petertribble/kar -name '*.class') help/*
 
-mkdir -p bin/`/usr/bin/uname -p`
-gcc -m64 -o bin/`/usr/bin/uname -p`/kar_collector -lkstat src/kar_collector.c
+ARCH=$(/usr/bin/uname -p)
+mkdir -p bin/"${ARCH}"
+gcc -m64 -o bin/"${ARCH}"/kar_collector -lkstat src/kar_collector.c

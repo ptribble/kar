@@ -1,5 +1,7 @@
 #!/bin/sh
 #
+# SPDX-License-Identifier: CDDL-1.0
+#
 # generate a prototype file for input to pkgmk
 #
 # feed to pkgmk like so:
@@ -61,7 +63,7 @@ else
 	pname=${path##*/}
 	echo "s none /${JARDIR}/${pname}=../jfreechart-${JFCVERS}/${pname}"
   done
-  for path in `ls -1 lib/java/*.jar | grep -v /jfreechart`
+  for path in $(ls -1 lib/java/*.jar | grep -v /jfreechart)
   do
 	pname=${path##*/}
 	echo "f none /${JARDIR}/${pname}=${path} 0644 ${OWNER}"

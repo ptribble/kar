@@ -1,9 +1,11 @@
 #!/bin/sh
 #
+# SPDX-License-Identifier: CDDL-1.0
+#
 # run the kar utilities
 #
 
-JKDIR=$(dirname $0)
+JKDIR=$(dirname "$0")
 LIBDIR=${JKDIR}/lib
 JARLIBDIR=${LIBDIR}/java
 JAVA=/usr/bin/java
@@ -17,7 +19,7 @@ if [ "$INSTALLED" = "true" ]; then
 fi
 
 ODIR="/var/adm/ka"
-OFILE="ka-`/bin/date +'%F'`"
+OFILE="ka-$(/bin/date +'%F')"
 
 usage() {
     echo "Usage: kar subcommand [options]"
