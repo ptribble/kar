@@ -11,6 +11,7 @@
 
 
     <rule ref="category/java/security.xml" />
+    <rule ref="rulesets/java/quickstart.xml">
     <rule ref="category/java/performance.xml">
       <exclude name="AvoidInstantiatingObjectsInLoops"/>
       <exclude name="UseArrayListInsteadOfVector"/>
