@@ -50,6 +50,8 @@ import uk.co.petertribble.jkstat.parse.ParseableJSONZipJKstat;
 public class KarBrowser extends JFrame implements ListSelectionListener,
 	ActionListener {
 
+    private static final long serialVersionUID = 1L;
+
     private JMenuItem exitItem;
     private JMenuItem cloneItem;
     private JMenuItem closeItem;
@@ -172,6 +174,7 @@ public class KarBrowser extends JFrame implements ListSelectionListener,
      * Only show the date portion of the filename in the list.
      */
     class KarListCellRenderer extends DefaultListCellRenderer {
+	private static final long serialVersionUID = 1L;
 	@Override
 	public Component getListCellRendererComponent(JList list,
 							Object value,

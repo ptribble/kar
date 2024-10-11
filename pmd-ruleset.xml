@@ -33,7 +33,6 @@
       <exclude name="AvoidDuplicateLiterals"/>
       <exclude name="ConstructorCallsOverridableMethod"/>
       <exclude name="DoNotTerminateVM"/>
-      <exclude name="MissingSerialVersionUID"/>
       <exclude name="UseProperClassLoader"/>
       <exclude name="CompareObjectsWithEquals"/>
       <exclude name="NullAssignment"/>

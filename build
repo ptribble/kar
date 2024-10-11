@@ -82,7 +82,7 @@ packages)
 	;;
 esac
 
-XFLAGS="-Xlint -Xlint:-serial -Xlint:-rawtypes"
+XFLAGS="-Xlint -Xlint:-rawtypes"
 
 if [ -x /opt/onbld/bin/jstyle ]; then
 	/opt/onbld/bin/jstyle $(find uk/co/petertribble -name '*.java')
