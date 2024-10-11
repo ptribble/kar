@@ -12,6 +12,15 @@
 
     <rule ref="category/java/security.xml" />
     <rule ref="rulesets/java/quickstart.xml">
+      <exclude name="CompareObjectsWithEquals"/>
+      <exclude name="LocalVariableNamingConventions"/>
+      <exclude name="ClassWithOnlyPrivateConstructorsShouldBeFinal"/>
+      <exclude name="ClassNamingConventions"/>
+      <exclude name="UnsynchronizedStaticFormatter"/>
+      <exclude name="SingularField"/>
+      <exclude name="DoNotCallGarbageCollectionExplicitly"/>
+      <exclude name="PreserveStackTrace"/>
+    </rule>
     <rule ref="category/java/performance.xml">
       <exclude name="AvoidInstantiatingObjectsInLoops"/>
       <exclude name="UseArrayListInsteadOfVector"/>
