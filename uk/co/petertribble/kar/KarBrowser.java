@@ -73,7 +73,7 @@ public class KarBrowser extends JFrame implements ListSelectionListener,
     public KarBrowser(File dir) {
 	this.dir = dir;
 
-	addWindowListener(new winExit());
+	addWindowListener(new WindowExit());
 
 	JMenuBar jm = new JMenuBar();
 
@@ -153,7 +153,7 @@ public class KarBrowser extends JFrame implements ListSelectionListener,
 	usage();
     }
 
-    class winExit extends WindowAdapter {
+    class WindowExit extends WindowAdapter {
 	@Override
 	public void windowClosing(WindowEvent we) {
 	    JingleMultiFrame.unregister(KarBrowser.this);

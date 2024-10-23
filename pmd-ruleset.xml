@@ -15,7 +15,6 @@
       <exclude name="CompareObjectsWithEquals"/>
       <exclude name="LocalVariableNamingConventions"/>
       <exclude name="ClassWithOnlyPrivateConstructorsShouldBeFinal"/>
-      <exclude name="ClassNamingConventions"/>
       <exclude name="UnsynchronizedStaticFormatter"/>
       <exclude name="SingularField"/>
       <exclude name="DoNotCallGarbageCollectionExplicitly"/>
