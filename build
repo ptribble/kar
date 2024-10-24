@@ -18,8 +18,6 @@
 # ./build packages
 #    Creates SVR4 packages
 #
-# If you have the ON build tools installed, then jstyle gets run.
-#
 
 PATH=/usr/jdk/instances/jdk1.8.0/bin:$PATH
 export PATH
@@ -83,10 +81,6 @@ packages)
 esac
 
 XFLAGS="-Xlint -Xlint:-rawtypes"
-
-if [ -x /opt/onbld/bin/jstyle ]; then
-	/opt/onbld/bin/jstyle $(find uk/co/petertribble -name '*.java')
-fi
 
 ${JAVAC} ${XFLAGS} -classpath ".:${BUILDJARS}" uk/co/petertribble/kar/*.java
 ${JAVAC} ${XFLAGS} -classpath ".:${BUILDJARS}" uk/co/petertribble/kar/graphite/*.java
