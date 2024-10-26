@@ -62,7 +62,7 @@ public class Print {
      * @param args  The command line arguments
      */
     public Print(String[] args) {
-	kstatPatterns = new HashSet <String> ();
+	kstatPatterns = new HashSet<>();
 	parseArgs(args);
 	if (kstatPatterns.isEmpty()) {
 	    usage("Must supply a pattern.");
@@ -185,7 +185,7 @@ public class Print {
 	    sjkstat.next();
 	}
 	do {
-	    for (Kstat ks : new TreeSet <Kstat> (ksf.getKstats())) {
+	    for (Kstat ks : new TreeSet <Kstat>(ksf.getKstats())) {
 		if (showstatistic == null) {
 		    for (String s : ksf.filteredStatistics(ks)) {
 			printOut(sjkstat.getTime(), ks, s);

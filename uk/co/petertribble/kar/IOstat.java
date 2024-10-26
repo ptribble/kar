@@ -68,7 +68,7 @@ public class IOstat {
      * @param args  The command line arguments
      */
     public IOstat(String[] args) {
-	lastMap = new HashMap <String, Kstat> ();
+	lastMap = new HashMap<>();
 	parseArgs(args);
 	try {
 	    accumulate(new ParseableJSONZipJKstat(filename));
@@ -154,7 +154,7 @@ public class IOstat {
 				+ "wsvc_t asvc_t  %w  %b device");
 	    }
 	    KstatSet kss = new KstatSet(sjkstat, ksf);
-	    for (Kstat ks : new TreeSet <Kstat> (kss.getKstats())) {
+	    for (Kstat ks : new TreeSet <Kstat>(kss.getKstats())) {
 		/*
 		 * If -p, show everything. If -P, don't show disks. Otherwise,
 		 * don't show partitions.

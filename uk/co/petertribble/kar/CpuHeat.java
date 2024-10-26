@@ -55,7 +55,7 @@ public class CpuHeat {
      * @param args  The command line arguments
      */
     public CpuHeat(String[] args) {
-	lastMap = new HashMap <String, Kstat> ();
+	lastMap = new HashMap<>();
 	parseArgs(args);
 	try {
 	    accumulate(new ParseableJSONZipJKstat(filename));

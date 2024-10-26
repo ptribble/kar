@@ -49,7 +49,7 @@ public class GraphiteFSstat {
      * @param args  The command line arguments
      */
     public GraphiteFSstat(String[] args) {
-	lastMap = new HashMap <String, Kstat> ();
+	lastMap = new HashMap<>();
 	parseArgs(args);
 	try {
 	    accumulate(new ParseableJSONZipJKstat(filename));

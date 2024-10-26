@@ -44,8 +44,8 @@ public class KarInfo {
      * @param sjkstat a SequencedJKstat
      */
     public KarInfo(SequencedJKstat sjkstat) {
-	firstKstats = new HashMap <String, Kstat> ();
-	lastKstats = new HashMap <String, Kstat> ();
+	firstKstats = new HashMap<>();
+	lastKstats = new HashMap<>();
 	readAll(sjkstat);
 	countStats();
     }

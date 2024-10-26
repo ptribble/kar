@@ -56,7 +56,7 @@ public class IOHeat {
      * @param args  The command line arguments
      */
     public IOHeat(String[] args) {
-	lastMap = new HashMap <String, Kstat> ();
+	lastMap = new HashMap<>();
 	parseArgs(args);
 	try {
 	    accumulate(new ParseableJSONZipJKstat(filename));

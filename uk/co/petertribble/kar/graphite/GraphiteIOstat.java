@@ -52,7 +52,7 @@ public class GraphiteIOstat {
      * @param args  The command line arguments
      */
     public GraphiteIOstat(String[] args) {
-	lastMap = new HashMap <String, Kstat> ();
+	lastMap = new HashMap<>();
 	parseArgs(args);
 	try {
 	    accumulate(new ParseableJSONZipJKstat(filename));
@@ -135,7 +135,7 @@ public class GraphiteIOstat {
 	    KstatSet kss = new KstatSet(sjkstat, ksf);
 	    // if past the start time, print output
 	    if (!skipfirst && sjkstat.getTime() > daystart) {
-		for (Kstat ks : new TreeSet <Kstat> (kss.getKstats())) {
+		for (Kstat ks : new TreeSet <Kstat>(kss.getKstats())) {
 		    /*
 		     * If -p, show everything. If -P, don't show disks.
 		     * Otherwise, don't show partitions.

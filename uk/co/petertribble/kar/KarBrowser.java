@@ -118,7 +118,7 @@ public class KarBrowser extends JFrame implements ListSelectionListener,
 	// These shenanigans are to sort the files most recent first
 	List <File> files = Arrays.asList(dir.listFiles(new KarFileFilter()));
 	Collections.reverse(files);
-	flist = new JList <File> (new Vector <File> (files));
+	flist = new JList<>(new Vector<>(files));
 	flist.addListSelectionListener(this);
 	flist.setCellRenderer(new KarListCellRenderer());
 

@@ -69,7 +69,7 @@ public class MPstat {
      * @param args  The command line arguments
      */
     public MPstat(String[] args) {
-	lastMap = new HashMap <String, Kstat> ();
+	lastMap = new HashMap<>();
 	parseArgs(args);
 	try {
 	    accumulate(new ParseableJSONZipJKstat(filename));
@@ -143,7 +143,7 @@ public class MPstat {
 	    lastboot = boottime;
 
 	    KstatSet kss = new KstatSet(sjkstat, ksf);
-	    for (Kstat ks : new TreeSet <Kstat> (kss.getKstats())) {
+	    for (Kstat ks : new TreeSet <Kstat>(kss.getKstats())) {
 		doPrint(ks, sjkstat.getKstat("cpu", ks.getInst(), "vm"));
 	    }
 	    lastMap.clear();
