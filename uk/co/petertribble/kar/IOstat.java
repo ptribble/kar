@@ -204,8 +204,9 @@ public class IOstat {
 	}
 	long snapdelta = ks.getSnaptime() - oldsnaptime;
 
-	if (!(zerohide && nr == 0 && nw == 0 && nkr == 0 && nkw == 0 &&
-	    nrtime == 0 && nwtime == 0 && nrlentime == 0 && nwlentime == 0)) {
+	if (!(zerohide && nr == 0 && nw == 0 && nkr == 0 && nkw == 0
+	      && nrtime == 0 && nwtime == 0
+	      && nrlentime == 0 && nwlentime == 0)) {
 	dr = nr*1000000000.0/snapdelta;
  	dw = nw*1000000000.0/snapdelta;
 	dkr = nkr*1000000000.0/(snapdelta*1024.0);
@@ -220,14 +221,15 @@ public class IOstat {
 	dasvc = (nr+nw == 0) ? 0.0 : dactv/(1000.0*((double) nr+nw));
 	dpw = (int) (0.5 + 100.0*nwtime/snapdelta);
 	dpb = (int) (0.5 + 100.0*nrtime/snapdelta);
-	System.out.printf("%7.1f %6.1f %6.1f %6.1f %4.1f %4.1f %6.1f %6.1f %3d %3d %s\n",
+	System.out.printf(
+		"%7.1f %6.1f %6.1f %6.1f %4.1f %4.1f %6.1f %6.1f %3d %3d %s\n",
 		dr, dw, dkr, dkw, dwait, dactv, dwsvc, dasvc, dpw, dpb,
 		ks.getName());
 	}
     }
 
     /*
-     * Emit usage message and exit.
+     * Print usage message and exit.
      */
     private void usage() {
 	System.err.println("Usage: iostat [-z] [-P] [-M] [-e time] "
@@ -236,7 +238,7 @@ public class IOstat {
     }
 
     /*
-     * Emit usage message and exit.
+     * Print error, followed by usage message and exit.
      */
     private void usage(String s) {
 	System.err.println(s);

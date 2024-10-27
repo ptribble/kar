@@ -31,7 +31,7 @@ import uk.co.petertribble.jkstat.api.SequencedJKstat;
  *
  * @author Peter Tribble
  */
-public class KarTime {
+public final class KarTime {
 
     private KarTime() {
     }

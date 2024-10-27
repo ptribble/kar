@@ -182,16 +182,16 @@ public class CpuHeat {
     }
 
     /*
-     * Emit usage message and exit.
+     * Print usage message and exit.
      */
     private void usage() {
-	System.err.println("Usage: cpuheat [-e time] [-f filename] " +
-			"[-o output_filename] [-s time]");
+	System.err.println("Usage: cpuheat [-e time] [-f filename] "
+			+ "[-o output_filename] [-s time]");
 	System.exit(1);
     }
 
     /*
-     * Emit usage message and exit.
+     * Print error, followed by usage message and exit.
      */
     private void usage(String s) {
 	System.err.println(s);
@@ -199,7 +199,7 @@ public class CpuHeat {
     }
 
     /**
-     * Display mpstat output.
+     * Display cpuheat output.
      *
      * @param args  The command line arguments
      */

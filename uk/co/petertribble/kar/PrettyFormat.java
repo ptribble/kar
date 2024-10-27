@@ -32,18 +32,18 @@ import java.util.Date;
  *
  * @author Peter Tribble
  */
-public class PrettyFormat {
+public final class PrettyFormat {
 
-    private static final double kscale = 1024.0;
-    private static final double kmax = 8000.0;
+    private static final double KSCALE = 1024.0;
+    private static final double KMAX = 8000.0;
     /*
      * The first name is blank, and is for unconverted bytes, and I have to
      * use String because a char can't be empty.
      */
-    private static final String[] names = { "", "K", "M", "G", "T", "P", "E" };
-    private static final DecimalFormat df = new DecimalFormat("##0");
-    private static final DecimalFormat dfs = new DecimalFormat("##0.0");
-    private static final DecimalFormat dft = new DecimalFormat("00");
+    private static final String[] NAMES = { "", "K", "M", "G", "T", "P", "E" };
+    private static final DecimalFormat DF = new DecimalFormat("##0");
+    private static final DecimalFormat DFS = new DecimalFormat("##0.0");
+    private static final DecimalFormat DFT = new DecimalFormat("00");
     private static DateFormat dt = DateFormat.getDateTimeInstance();
     private static DateFormat dtt = DateFormat.getTimeInstance();
 
@@ -91,11 +91,11 @@ public class PrettyFormat {
     public static String memscale(double l) {
 	double lvalue = l;
 	int i = 0;
-	while (lvalue > kmax && i < 5) {
-	    lvalue = lvalue/kscale;
+	while (lvalue > KMAX && i < 5) {
+	    lvalue = lvalue/KSCALE;
 	    i++;
 	}
-	return df.format(lvalue) + names[i];
+	return DF.format(lvalue) + NAMES[i];
     }
 
     /**
@@ -120,15 +120,15 @@ public class PrettyFormat {
      */
     public static String timescale(double d) {
 	if (d < 10.0) {
-	    return dfs.format(d);
+	    return DFS.format(d);
 	}
 	if (d < 60.0) {
-	    return df.format(d);
+	    return DF.format(d);
 	}
 	long secs = (long) d;
 	long ssecs = secs % 60;
 	long mins = (secs - ssecs)/60;
-	return df.format(mins) + ":" + dft.format(ssecs);
+	return DF.format(mins) + ":" + DFT.format(ssecs);
     }
 
     /**

@@ -112,7 +112,7 @@ public class Load {
     }
 
     /*
-     * Emit usage message and exit.
+     * Print usage message and exit.
      */
     private void usage() {
 	System.err.println("Usage: load [-e time] "
@@ -121,7 +121,7 @@ public class Load {
     }
 
     /*
-     * Emit usage message and exit.
+     * Print usage message and exit.
      */
     private void usage(String s) {
 	System.err.println(s);

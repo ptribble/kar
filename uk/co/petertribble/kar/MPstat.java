@@ -227,7 +227,7 @@ public class MPstat {
     }
 
     /*
-     * Emit usage message and exit.
+     * Print usage message and exit.
      */
     private void usage() {
 	System.err.println("Usage: mpstat [-e time] [-f filename] [-s time]");
@@ -235,7 +235,7 @@ public class MPstat {
     }
 
     /*
-     * Emit usage message and exit.
+     * Print usage message and exit.
      */
     private void usage(String s) {
 	System.err.println(s);

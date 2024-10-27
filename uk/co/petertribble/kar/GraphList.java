@@ -131,7 +131,7 @@ public class GraphList {
     }
 
     /*
-     * Emit usage message and exit.
+     * Print usage message and exit.
      */
     private void usage() {
 	System.err.println("Usage: graphlist [-f zip_filename]");
@@ -139,7 +139,7 @@ public class GraphList {
     }
 
     /*
-     * Emit usage message and exit.
+     * Print usage message and exit.
      */
     private void usage(String s) {
 	System.err.println(s);

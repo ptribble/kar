@@ -141,7 +141,7 @@ public class KarBrowser extends JFrame implements ListSelectionListener,
     }
 
     /*
-     * Emit usage message and exit.
+     * Print usage message and exit.
      */
     private static void usage() {
 	System.err.println("Usage: karbrowser dir_name");
