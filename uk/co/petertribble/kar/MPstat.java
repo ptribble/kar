@@ -42,7 +42,7 @@ public class MPstat {
     private String etime;
     private long dayend;
     private String filename;
-    private Map <String, Kstat> lastMap;
+    private Map<String, Kstat> lastMap;
 
     private long oldsnaptime;
     private long foldsnaptime;
@@ -143,7 +143,7 @@ public class MPstat {
 	    lastboot = boottime;
 
 	    KstatSet kss = new KstatSet(sjkstat, ksf);
-	    for (Kstat ks : new TreeSet <Kstat>(kss.getKstats())) {
+	    for (Kstat ks : new TreeSet<Kstat>(kss.getKstats())) {
 		doPrint(ks, sjkstat.getKstat("cpu", ks.getInst(), "vm"));
 	    }
 	    lastMap.clear();

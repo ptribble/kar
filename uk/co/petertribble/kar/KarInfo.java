@@ -35,8 +35,8 @@ import uk.co.petertribble.jkstat.parse.*;
  */
 public class KarInfo {
 
-    private Map <String, Kstat> firstKstats;
-    private Map <String, Kstat> lastKstats;
+    private Map<String, Kstat> firstKstats;
+    private Map<String, Kstat> lastKstats;
 
     /**
      * Create an new KarInfo object.

@@ -46,7 +46,7 @@ public class IOstat {
     private boolean diskhide;
     private boolean showpart;
     private boolean megabytes;
-    private Map <String, Kstat> lastMap;
+    private Map<String, Kstat> lastMap;
 
     private long oldsnaptime;
     private long lastboot;
@@ -154,7 +154,7 @@ public class IOstat {
 				+ "wsvc_t asvc_t  %w  %b device");
 	    }
 	    KstatSet kss = new KstatSet(sjkstat, ksf);
-	    for (Kstat ks : new TreeSet <Kstat>(kss.getKstats())) {
+	    for (Kstat ks : new TreeSet<Kstat>(kss.getKstats())) {
 		/*
 		 * If -p, show everything. If -P, don't show disks. Otherwise,
 		 * don't show partitions.

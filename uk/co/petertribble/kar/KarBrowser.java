@@ -47,7 +47,7 @@ import uk.co.petertribble.jkstat.parse.ParseableJSONZipJKstat;
  *
  * @author Peter Tribble
  */
-public class KarBrowser extends JFrame implements ListSelectionListener,
+public final class KarBrowser extends JFrame implements ListSelectionListener,
 	ActionListener {
 
     private static final long serialVersionUID = 1L;
@@ -61,17 +61,17 @@ public class KarBrowser extends JFrame implements ListSelectionListener,
     private File dir;
     private JPanel kpanel;
     private JPanel cpanel;
-    private JList <File> flist;
+    private JList<File> flist;
     private KstatTreePanel ktp;
     private ChartBuilderPanel cbp;
 
     /**
      * Create a new Kar output browser.
      *
-     * @param dir The directory containing kar output files.
+     * @param indir The directory containing kar output files.
      */
-    public KarBrowser(File dir) {
-	this.dir = dir;
+    public KarBrowser(File indir) {
+	dir = indir;
 
 	addWindowListener(new WindowExit());
 
@@ -116,7 +116,7 @@ public class KarBrowser extends JFrame implements ListSelectionListener,
 	setJMenuBar(jm);
 
 	// These shenanigans are to sort the files most recent first
-	List <File> files = Arrays.asList(dir.listFiles(new KarFileFilter()));
+	List<File> files = Arrays.asList(dir.listFiles(new KarFileFilter()));
 	Collections.reverse(files);
 	flist = new JList<>(new Vector<>(files));
 	flist.addListSelectionListener(this);

@@ -40,7 +40,7 @@ public class GraphiteMPstat {
     private String stime;
     private String etime;
     private String filename;
-    private Map <String, Kstat> lastMap;
+    private Map<String, Kstat> lastMap;
 
     private long oldsnaptime;
     private long foldsnaptime;
@@ -129,7 +129,7 @@ public class GraphiteMPstat {
 	    KstatSet kss = new KstatSet(sjkstat, ksf);
 	    // if past the start time, print output
 	    if (!skipfirst && sjkstat.getTime() > daystart) {
-		for (Kstat ks : new TreeSet <Kstat>(kss.getKstats())) {
+		for (Kstat ks : new TreeSet<Kstat>(kss.getKstats())) {
 		    doPrint(sjkstat.getTime(), ks,
 			sjkstat.getKstat("cpu", ks.getInst(), "vm"));
 		}

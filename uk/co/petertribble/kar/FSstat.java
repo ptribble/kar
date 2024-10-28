@@ -42,7 +42,7 @@ public class FSstat {
     private long dayend;
     private String filename;
     private boolean zerohide;
-    private Map <String, Kstat> lastMap;
+    private Map<String, Kstat> lastMap;
 
     private long lastboot;
 

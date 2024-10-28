@@ -42,7 +42,7 @@ public class GraphitePrint {
     private String etime;
     private long dayend;
     private String filename; //NOPMD
-    private Set <String> kstatPatterns;
+    private Set<String> kstatPatterns;
 
     // usage 1 is [-M module] [-I instance] [-N name] [-S statistic]
     private boolean mflag;
@@ -173,7 +173,7 @@ public class GraphitePrint {
 	    sjkstat.next();
 	}
 	do {
-	    for (Kstat ks : new TreeSet <Kstat>(ksf.getKstats())) {
+	    for (Kstat ks : new TreeSet<Kstat>(ksf.getKstats())) {
 		if (showstatistic == null) {
 		    for (String s : ksf.filteredStatistics(ks)) {
 			printOut(sjkstat.getTime(), ks, s);

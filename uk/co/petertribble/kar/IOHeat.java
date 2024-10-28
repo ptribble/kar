@@ -45,7 +45,7 @@ public class IOHeat {
     private long dayend;
     private String filename;
     private String ofilename = "/tmp/test.png";
-    private Map <String, Kstat> lastMap;
+    private Map<String, Kstat> lastMap;
     private long oldsnaptime;
     private long lastboot;
     private double[][] accvals;

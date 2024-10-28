@@ -42,7 +42,7 @@ public class GraphiteIOstat {
     private String filename; //NOPMD
     private boolean diskhide;
     private boolean showpart;
-    private Map <String, Kstat> lastMap;
+    private Map<String, Kstat> lastMap;
 
     private long oldsnaptime;
 
@@ -135,7 +135,7 @@ public class GraphiteIOstat {
 	    KstatSet kss = new KstatSet(sjkstat, ksf);
 	    // if past the start time, print output
 	    if (!skipfirst && sjkstat.getTime() > daystart) {
-		for (Kstat ks : new TreeSet <Kstat>(kss.getKstats())) {
+		for (Kstat ks : new TreeSet<Kstat>(kss.getKstats())) {
 		    /*
 		     * If -p, show everything. If -P, don't show disks.
 		     * Otherwise, don't show partitions.
