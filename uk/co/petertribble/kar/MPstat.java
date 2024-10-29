@@ -24,7 +24,6 @@ package uk.co.petertribble.kar;
 
 import java.util.Map;
 import java.util.HashMap;
-import java.util.TreeSet;
 import java.io.IOException;
 import uk.co.petertribble.jkstat.api.*;
 import uk.co.petertribble.jkstat.parse.*;
@@ -143,7 +142,7 @@ public class MPstat {
 	    lastboot = boottime;
 
 	    KstatSet kss = new KstatSet(sjkstat, ksf);
-	    for (Kstat ks : new TreeSet<Kstat>(kss.getKstats())) {
+	    for (Kstat ks : kss.getKstats(true)) {
 		doPrint(ks, sjkstat.getKstat("cpu", ks.getInst(), "vm"));
 	    }
 	    lastMap.clear();

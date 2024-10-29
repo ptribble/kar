@@ -24,7 +24,6 @@ package uk.co.petertribble.kar.graphite;
 
 import java.util.Map;
 import java.util.HashMap;
-import java.util.TreeSet;
 import java.io.IOException;
 import uk.co.petertribble.jkstat.api.*;
 import uk.co.petertribble.jkstat.parse.*;
@@ -129,7 +128,7 @@ public class GraphiteMPstat {
 	    KstatSet kss = new KstatSet(sjkstat, ksf);
 	    // if past the start time, print output
 	    if (!skipfirst && sjkstat.getTime() > daystart) {
-		for (Kstat ks : new TreeSet<Kstat>(kss.getKstats())) {
+		for (Kstat ks : kss.getKstats(true)) {
 		    doPrint(sjkstat.getTime(), ks,
 			sjkstat.getKstat("cpu", ks.getInst(), "vm"));
 		}

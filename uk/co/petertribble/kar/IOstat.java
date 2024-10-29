@@ -24,7 +24,6 @@ package uk.co.petertribble.kar;
 
 import java.util.Map;
 import java.util.HashMap;
-import java.util.TreeSet;
 import java.io.IOException;
 import uk.co.petertribble.jkstat.api.*;
 import uk.co.petertribble.jkstat.parse.*;
@@ -154,7 +153,7 @@ public class IOstat {
 				+ "wsvc_t asvc_t  %w  %b device");
 	    }
 	    KstatSet kss = new KstatSet(sjkstat, ksf);
-	    for (Kstat ks : new TreeSet<Kstat>(kss.getKstats())) {
+	    for (Kstat ks : kss.getKstats(true)) {
 		/*
 		 * If -p, show everything. If -P, don't show disks. Otherwise,
 		 * don't show partitions.

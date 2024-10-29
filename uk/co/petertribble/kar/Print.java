@@ -28,7 +28,6 @@ import uk.co.petertribble.jkstat.parse.*;
 import java.util.Date;
 import java.util.Set;
 import java.util.HashSet;
-import java.util.TreeSet;
 
 /**
  * Print kstats matching a pattern from kar data.
@@ -185,7 +184,7 @@ public class Print {
 	    sjkstat.next();
 	}
 	do {
-	    for (Kstat ks : new TreeSet<Kstat>(ksf.getKstats())) {
+	    for (Kstat ks : ksf.getKstats(true)) {
 		if (showstatistic == null) {
 		    for (String s : ksf.filteredStatistics(ks)) {
 			printOut(sjkstat.getTime(), ks, s);
