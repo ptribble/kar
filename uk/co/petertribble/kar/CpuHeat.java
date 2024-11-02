@@ -26,10 +26,13 @@ import java.awt.Dimension;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.HashMap;
-import java.io.IOException;
-import uk.co.petertribble.jkstat.api.*;
-import uk.co.petertribble.jkstat.parse.*;
 import java.io.File;
+import java.io.IOException;
+import uk.co.petertribble.jkstat.api.Kstat;
+import uk.co.petertribble.jkstat.api.KstatFilter;
+import uk.co.petertribble.jkstat.api.KstatSet;
+import uk.co.petertribble.jkstat.api.SequencedJKstat;
+import uk.co.petertribble.jkstat.parse.ParseableJSONZipJKstat;
 import org.tc33.jheatchart.HeatChart;
 
 /**
