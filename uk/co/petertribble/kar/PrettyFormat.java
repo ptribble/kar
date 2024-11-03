@@ -40,7 +40,7 @@ public final class PrettyFormat {
      * The first name is blank, and is for unconverted bytes, and I have to
      * use String because a char can't be empty.
      */
-    private static final String[] NAMES = { "", "K", "M", "G", "T", "P", "E" };
+    private static final String[] NAMES = {"", "K", "M", "G", "T", "P", "E"};
     private static final DecimalFormat DF = new DecimalFormat("##0");
     private static final DecimalFormat DFS = new DecimalFormat("##0.0");
     private static final DecimalFormat DFT = new DecimalFormat("00");
