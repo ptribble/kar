@@ -86,6 +86,7 @@ fflag=
 oflag=
 while getopts ISNMPpze:s:f:F:o:T: flag
 do
+    # shellcheck disable=SC2213,SC2220
     case $flag in
     f)
 	fflag=1

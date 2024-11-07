@@ -47,6 +47,7 @@ ALLJARS=${JKJAR}:${KJAR}
 fflag=
 while getopts Ppe:s:f: flag
 do
+    # shellcheck disable=SC2213,SC2220
     case $flag in
     f)
 	fflag=1

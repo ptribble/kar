@@ -22,7 +22,7 @@
 PATH=/usr/jdk/instances/jdk1.8.0/bin:$PATH
 export PATH
 
-JKDIR=$(dirname $0)
+JKDIR=$(dirname "$0")
 LIBDIR=${JKDIR}/lib
 JARLIBDIR=${LIBDIR}/java
 JAVAC=javac
