@@ -1,5 +1,7 @@
 #!/bin/ksh
 #
+# SPDX-License-Identifier: CDDL-1.0
+#
 # update kar, just the binaries, leaves the data and cron
 # entries intact
 #
