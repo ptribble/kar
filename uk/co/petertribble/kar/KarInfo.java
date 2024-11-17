@@ -73,41 +73,41 @@ public class KarInfo {
      * Count the number of statistics, and how many are numbers and strings.
      */
     private void countStats() {
-	int num_string = 0;
-	int num_num = 0;
-	int num_zero = 0;
-	int num_changed = 0;
-	int num_ks_changed = 0;
+	int numstring = 0;
+	int numnumeric = 0;
+	int numzero = 0;
+	int numchanged = 0;
+	int numkschanged = 0;
 	for (String s : firstKstats.keySet()) {
 	    Kstat ks1 = firstKstats.get(s);
 	    Kstat ks2 = lastKstats.get(s);
-	    int ks_changed = 0;
+	    int kschanged = 0;
 	    for (String stat : ks1.statistics()) {
 		if (ks1.isNumeric(stat)) {
-		    num_num++;
+		    numnumeric++;
 		    long l1 = ks1.longData(stat);
 		    long l2 = ks2.longData(stat);
 		    if (l2 == 0) {
-			num_zero++;
+			numzero++;
 		    }
 		    if (l2 != l1) {
-			ks_changed = 1;
-			num_changed++;
+			kschanged = 1;
+			numchanged++;
 		    }
 		} else {
-		    num_string++;
+		    numstring++;
 		}
 	    }
-	    num_ks_changed += ks_changed;
+	    numkschanged += kschanged;
 	}
-	int num_total = num_num + num_string;
+	int numtotal = numnumeric + numstring;
 	System.out.println("Total kstats: " + lastKstats.size());
-	System.out.println("Total statistics: " + num_total);
-	System.out.println("Numeric statistics: " + num_num);
-	System.out.println("String statistics: " + num_string);
-	System.out.println("Statistics zero: " + num_zero);
-	System.out.println("Statistics Changed: " + num_changed);
-	System.out.println("Kstats changed: " + num_ks_changed);
+	System.out.println("Total statistics: " + numtotal);
+	System.out.println("Numeric statistics: " + numnumeric);
+	System.out.println("String statistics: " + numstring);
+	System.out.println("Statistics zero: " + numzero);
+	System.out.println("Statistics Changed: " + numchanged);
+	System.out.println("Kstats changed: " + numkschanged);
     }
 
     private static void usage(String message) {

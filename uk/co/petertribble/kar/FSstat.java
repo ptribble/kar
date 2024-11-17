@@ -154,9 +154,9 @@ public class FSstat {
 	long nlookup = ks.longData("nlookup");
 	long nreaddir = ks.longData("nreaddir");
 	long nread = ks.longData("nread");
-	long read_bytes = ks.longData("read_bytes");
+	long readbytes = ks.longData("read_bytes");
 	long nwrite = ks.longData("nwrite");
-	long write_bytes = ks.longData("write_bytes");
+	long writebytes = ks.longData("write_bytes");
 
 	Kstat ksold = lastMap.get(ks.getTriplet());
 	if (ksold != null) {
@@ -168,15 +168,15 @@ public class FSstat {
 	    nlookup -= ksold.longData("nlookup");
 	    nreaddir -= ksold.longData("nreaddir");
 	    nread -= ksold.longData("nread");
-	    read_bytes -= ksold.longData("read_bytes");
+	    readbytes -= ksold.longData("read_bytes");
 	    nwrite -= ksold.longData("nwrite");
-	    write_bytes -= ksold.longData("write_bytes");
+	    writebytes -= ksold.longData("write_bytes");
 	}
 
 	if (!(zerohide && ncreate == 0 && nrename == 0 && nremove == 0
 		&& ngetattr == 0 && nsetattr == 0 && nlookup == 0
-		&& nreaddir == 0 && nread == 0 && read_bytes == 0
-		&& nwrite == 0 && write_bytes == 0)) {
+		&& nreaddir == 0 && nread == 0 && readbytes == 0
+		&& nwrite == 0 && writebytes == 0)) {
 
 	    System.out.printf(
 		"%5s %5s %5s %5s %5s %5s %5s %5s %5s %5s %5s %s\n",
@@ -184,9 +184,9 @@ public class FSstat {
 		PrettyFormat.memscale(nremove), PrettyFormat.memscale(ngetattr),
 		PrettyFormat.memscale(nsetattr), PrettyFormat.memscale(nlookup),
 		PrettyFormat.memscale(nreaddir), PrettyFormat.memscale(nread),
-		PrettyFormat.memscale(read_bytes),
+		PrettyFormat.memscale(readbytes),
 		PrettyFormat.memscale(nwrite),
-		PrettyFormat.memscale(write_bytes),
+		PrettyFormat.memscale(writebytes),
 		ks.getName());
 	}
     }

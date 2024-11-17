@@ -156,9 +156,9 @@ public class GraphiteFSstat {
 	long nlookup = ks.longData("nlookup");
 	long nreaddir = ks.longData("nreaddir");
 	long nread = ks.longData("nread");
-	long read_bytes = ks.longData("read_bytes");
+	long readbytes = ks.longData("read_bytes");
 	long nwrite = ks.longData("nwrite");
-	long write_bytes = ks.longData("write_bytes");
+	long writebytes = ks.longData("write_bytes");
 
 	Kstat ksold = lastMap.get(ks.getTriplet());
 	if (ksold == null) {
@@ -176,9 +176,9 @@ public class GraphiteFSstat {
 	    nlookup -= ksold.longData("nlookup");
 	    nreaddir -= ksold.longData("nreaddir");
 	    nread -= ksold.longData("nread");
-	    read_bytes -= ksold.longData("read_bytes");
+	    readbytes -= ksold.longData("read_bytes");
 	    nwrite -= ksold.longData("nwrite");
-	    write_bytes -= ksold.longData("write_bytes");
+	    writebytes -= ksold.longData("write_bytes");
 	}
 	// this is the interval
 	long snapdelta = snaptime - oldsnaptime;
@@ -215,10 +215,10 @@ public class GraphiteFSstat {
 		nwrite*1000000000.0/snapdelta, midpoint);
 	System.out.printf("%s %.2f %d\n",
 		"fsstat." + ks.getName() + ".read_bytes",
-		read_bytes*1000000000.0/snapdelta, midpoint);
+		readbytes*1000000000.0/snapdelta, midpoint);
 	System.out.printf("%s %.2f %d\n",
 		"fsstat." + ks.getName() + ".write_bytes",
-		write_bytes*1000000000.0/snapdelta, midpoint);
+		writebytes*1000000000.0/snapdelta, midpoint);
     }
 
     /*
