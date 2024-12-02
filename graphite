@@ -27,7 +27,7 @@ usage() {
 case $# in
 0)
     usage
-    exit 1
+    exit 2
     ;;
 *)
     SUBCOMMAND=$1
@@ -95,7 +95,7 @@ case $SUBCOMMAND in
 
 *)
     usage
-    exit 1
+    exit 2
     ;;
 
 esac

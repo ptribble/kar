@@ -43,7 +43,7 @@ usage() {
 case $# in
 0)
     usage
-    exit 1
+    exit 2
     ;;
 *)
     SUBCOMMAND=$1
@@ -64,7 +64,7 @@ make_graphs() {
     if [ -z "$GRAPHDIR" ]; then
 	echo "graph: Need to specify output root"
 	usage
-	exit 1
+	exit 2
     fi
     if [ ! -d "$GRAPHDIR" ]; then
 	mkdir -p "$GRAPHDIR"
@@ -187,7 +187,7 @@ esac
 'linegraph')
     if [ -z "$oflag" ]; then
 	echo "Missing output file"
-	exit 1
+	exit 2
     fi
     JFLAGS="-Djava.awt.headless=true -Xmx2500m"
     JKCLASS=uk.co.petertribble.jkstat.gui.KstatPngImage
@@ -198,7 +198,7 @@ esac
 'areagraph')
     if [ -z "$oflag" ]; then
 	echo "Missing output file"
-	exit 1
+	exit 2
     fi
     JFLAGS="-Djava.awt.headless=true -Xmx2500m"
     JKCLASS=uk.co.petertribble.jkstat.gui.KstatAreaPngImage
@@ -208,7 +208,7 @@ esac
 
 *)
     usage
-    exit 1
+    exit 2
     ;;
 
 esac

@@ -1,5 +1,7 @@
 #!/bin/sh
 #
+# SPDX-License-Identifier: CDDL-1.0
+#
 # kar - kstat activity reporter
 #
 # This is the kar data directory cleaner, kaclean
@@ -7,7 +9,7 @@
 
 usage() {
 	echo "Usage: $0 [dir [days_to_keep] ]"
-	exit 1
+	exit 2
 }
 
 #
