@@ -101,7 +101,7 @@ public class Sar {
 	    sjkstat.next();
 	}
 	Kstat ksb = sjkstat.getKstat("unix", 0, "system_misc");
-	long boottime = 1000*ksb.longData("boot_time");
+	long boottime = 1000 * ksb.longData("boot_time");
 	long firsttime = boottime > daystart ? boottime : daystart;
 	System.out.printf("%tT%8s%8s%8s%8s\n", new Date(firsttime),
 			"%usr", "%sys", "%wio", "%idle");
@@ -114,7 +114,7 @@ public class Sar {
 	long tuser = 0;
 	if (boottime > daystart) {
 	    System.out.printf("%tT        unix restarts\n",
-			new Date(1000*ksb.longData("boot_time")));
+			new Date(1000 * ksb.longData("boot_time")));
 	} else {
 	    // reset times based on first data
 	    for (Kstat ks : sjkstat.getKstats()) {
@@ -151,16 +151,16 @@ public class Sar {
 		oidle = 0;
 		ksb = sjkstat.getKstat("unix", 0, "system_misc");
 		System.out.printf("%tT        unix restarts\n",
-				new Date(1000*ksb.longData("boot_time")));
+				new Date(1000 * ksb.longData("boot_time")));
 	    }
 	    long dkernel = nkernel - okernel;
 	    long duser = nuser - ouser;
 	    long didle = nidle - oidle;
 	    long dtot = dkernel + duser + didle;
 	    // add 0.5 so we round correctly
-	    int fkernel = (int) (0.5 + 100.0*dkernel/dtot);
-	    int fuser = (int) (0.5 + 100.0*duser/dtot);
-	    int fidle = (int) (0.5 + 100.0*didle/dtot);
+	    int fkernel = (int) (0.5 + 100.0 * dkernel / dtot);
+	    int fuser = (int) (0.5 + 100.0 * duser / dtot);
+	    int fidle = (int) (0.5 + 100.0 * didle / dtot);
 	    System.out.printf("%tT%8d%8d%8d%8d\n", new Date(sjkstat.getTime()),
 				fuser, fkernel, 0, fidle);
 	    okernel = nkernel;
@@ -172,9 +172,9 @@ public class Sar {
 	tidle += oidle;
 	System.out.println();
 	long ttot = tkernel + tuser + tidle;
-	int fkernel = (int) (0.5 + 100.0*tkernel/ttot);
-	int fuser = (int) (0.5 + 100.0*tuser/ttot);
-	int fidle = (int) (0.5 + 100.0*tidle/ttot);
+	int fkernel = (int) (0.5 + 100.0 * tkernel / ttot);
+	int fuser = (int) (0.5 + 100.0 * tuser / ttot);
+	int fidle = (int) (0.5 + 100.0 * tidle / ttot);
 	System.out.printf("Average %8d%8d%8d%8d\n",
 				fuser, fkernel, 0, fidle);
     }

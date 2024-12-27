@@ -98,7 +98,7 @@ public class Load {
 	    sjkstat.next();
 	}
 	Kstat ksb = sjkstat.getKstat("unix", 0, "system_misc");
-	long boottime = 1000*ksb.longData("boot_time");
+	long boottime = 1000 * ksb.longData("boot_time");
 	long firsttime = boottime > daystart ? boottime : daystart;
 	System.out.printf("%tT%8s%8s%8s\n", new Date(firsttime),
 			"1min", "5min", "15min");
@@ -106,9 +106,9 @@ public class Load {
 	    Kstat ks = sjkstat.getKstat("unix", 0, "system_misc");
 	    System.out.printf("%tT%8.2f%8.2f%8.2f\n",
 				new Date(sjkstat.getTime()),
-				ks.longData("avenrun_1min")/256.0,
-				ks.longData("avenrun_5min")/256.0,
-				ks.longData("avenrun_15min")/256.0);
+				ks.longData("avenrun_1min") / 256.0,
+				ks.longData("avenrun_5min") / 256.0,
+				ks.longData("avenrun_15min") / 256.0);
 	} while (sjkstat.next() && sjkstat.getTime() < dayend);
     }
 

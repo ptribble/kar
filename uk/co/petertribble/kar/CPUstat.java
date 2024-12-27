@@ -169,19 +169,19 @@ public class CPUstat {
 	}
 	long snapdelta = ks.getSnaptime() - oldsnaptime;
 
- 	dexec = nexec*1000000000.0/snapdelta;
- 	dintr = Math.round(nintr*1000000000.0/snapdelta);
- 	dsyscl = Math.round(nsyscl*1000000000.0/snapdelta);
-	dcsw = Math.round(ncsw*1000000000.0/snapdelta);
-	dusr = Math.round(nusr*100.0/snapdelta);
-	dsys = Math.round(nsys*100.0/snapdelta);
-	didl = Math.round(nidl*100.0/snapdelta);
+ 	dexec = nexec * 1000000000.0 / snapdelta;
+ 	dintr = Math.round(nintr * 1000000000.0 / snapdelta);
+ 	dsyscl = Math.round(nsyscl * 1000000000.0 / snapdelta);
+	dcsw = Math.round(ncsw * 1000000000.0 / snapdelta);
+	dusr = Math.round(nusr * 100.0 / snapdelta);
+	dsys = Math.round(nsys * 100.0 / snapdelta);
+	didl = Math.round(nidl * 100.0 / snapdelta);
 
 	System.out.printf(
 	    "   %6.2f %6.2f %6.2f   %4.1f  %5d %5d %5d  %3d %3d %3d\n",
-		ksl.longData("avenrun_1min")/256.0,
-		ksl.longData("avenrun_5min")/256.0,
-		ksl.longData("avenrun_15min")/256.0,
+		ksl.longData("avenrun_1min") / 256.0,
+		ksl.longData("avenrun_5min") / 256.0,
+		ksl.longData("avenrun_15min") / 256.0,
 		dexec, dintr, dsyscl, dcsw, dusr, dsys, didl);
 
 	ksold = ks;

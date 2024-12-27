@@ -101,7 +101,7 @@ public class GraphiteSar {
 	    sjkstat.next();
 	}
 	Kstat ksb = sjkstat.getKstat("unix", 0, "system_misc");
-	long boottime = 1000*ksb.longData("boot_time");
+	long boottime = 1000 * ksb.longData("boot_time");
 
 	long okernel = 0;
 	long oidle = 0;
@@ -146,11 +146,13 @@ public class GraphiteSar {
 	    long didle = nidle - oidle;
 	    long dtot = dkernel + duser + didle;
 	    // FIXME slew to midpoint
-	    long time = sjkstat.getTime()/1000;
-	    System.out.printf("%s %.2f %d\n", "user", 100.0*duser/dtot, time);
-	    System.out.printf("%s %.2f %d\n", "kernel", 100.0*dkernel/dtot,
+	    long time = sjkstat.getTime() / 1000;
+	    System.out.printf("%s %.2f %d\n", "user", 100.0 * duser / dtot,
 			time);
-	    System.out.printf("%s %.2f %d\n", "idle", 100.0*didle/dtot, time);
+	    System.out.printf("%s %.2f %d\n", "kernel", 100.0 * dkernel / dtot,
+			time);
+	    System.out.printf("%s %.2f %d\n", "idle", 100.0 * didle / dtot,
+			time);
 	    okernel = nkernel;
 	    ouser = nuser;
 	    oidle = nidle;

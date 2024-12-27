@@ -117,7 +117,7 @@ public class GraphiteIOstat {
 	 * If boot time was before today, then we will skip the first interval
 	 * as there is no valid previous measurement.
 	 */
-	boolean skipfirst = 1000*lastboot < midnight;
+	boolean skipfirst = 1000 * lastboot < midnight;
 	do {
 	    KstatFilter ksf = new KstatFilter(sjkstat);
 	    ksf.setFilterType(KstatType.KSTAT_TYPE_IO);
@@ -194,19 +194,21 @@ public class GraphiteIOstat {
 	}
 	long snapdelta = snaptime - oldsnaptime;
 	// and the midpoint is half the interval before the current time
-	long midpoint = t - snapdelta/2000000;
+	long midpoint = t - snapdelta / 2000000;
 	midpoint /= 1000;
 
-	double dr = nr*1000000000.0/snapdelta;
- 	double dw = nw*1000000000.0/snapdelta;
-	double dkr = nkr*1000000000.0/(snapdelta*1024.0);
- 	double dkw = nkw*1000000000.0/(snapdelta*1024.0);
-	double dwait = nwlentime/((double) snapdelta);
-	double dactv = nrlentime/((double) snapdelta);
-	double dwsvc = (nr+nw == 0) ? 0.0 : dwait/(1000.0*((double) nr+nw));
-	double dasvc = (nr+nw == 0) ? 0.0 : dactv/(1000.0*((double) nr+nw));
-	int dpw = (int) (0.5 + 100.0*nwtime/snapdelta);
-	int dpb = (int) (0.5 + 100.0*nrtime/snapdelta);
+	double dr = nr * 1000000000.0 / snapdelta;
+ 	double dw = nw * 1000000000.0 / snapdelta;
+	double dkr = nkr * 1000000000.0 / (snapdelta * 1024.0);
+ 	double dkw = nkw * 1000000000.0 / (snapdelta * 1024.0);
+	double dwait = nwlentime / ((double) snapdelta);
+	double dactv = nrlentime / ((double) snapdelta);
+	double dwsvc = (nr + nw == 0) ? 0.0 : dwait
+	    / (1000.0 * ((double) nr + nw));
+	double dasvc = (nr + nw == 0) ? 0.0 : dactv
+	    / (1000.0 * ((double) nr + nw));
+	int dpw = (int) (0.5 + 100.0 * nwtime / snapdelta);
+	int dpb = (int) (0.5 + 100.0 * nrtime / snapdelta);
 
 	System.out.printf("%s %.2f %d\n",
 		"iostat." + ks.getName() + ".reads",

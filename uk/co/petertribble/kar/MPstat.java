@@ -207,20 +207,20 @@ public class MPstat {
 	long snapdelta = ks.getSnaptime() - oldsnaptime;
 	long fsnapdelta = ksf.getSnaptime() - foldsnaptime;
 
-	dminf = Math.round(nminf*1000000000.0/fsnapdelta);
-	dmjf = Math.round(nmjf*1000000000.0/fsnapdelta);
-	dxcal = Math.round(nxcal*1000000000.0/snapdelta);
- 	dintr = Math.round(nintr*1000000000.0/snapdelta);
-	dithr = Math.round(nithr*1000000000.0/snapdelta);
-	dcsw = Math.round(ncsw*1000000000.0/snapdelta);
-	dicsw = Math.round(nicsw*1000000000.0/snapdelta);
-	dmigr = Math.round(nmigr*1000000000.0/snapdelta);
-	dsmtx = Math.round(nsmtx*1000000000.0/snapdelta);
-	dsrw = Math.round(nsrw*1000000000.0/snapdelta);
- 	dsyscl = Math.round(nsyscl*1000000000.0/snapdelta);
-	dusr = Math.round(nusr*100.0/snapdelta);
-	dsys = Math.round(nsys*100.0/snapdelta);
-	didl = Math.round(nidl*100.0/snapdelta);
+	dminf = Math.round(nminf * 1000000000.0 / fsnapdelta);
+	dmjf = Math.round(nmjf * 1000000000.0 / fsnapdelta);
+	dxcal = Math.round(nxcal * 1000000000.0 / snapdelta);
+ 	dintr = Math.round(nintr * 1000000000.0 / snapdelta);
+	dithr = Math.round(nithr * 1000000000.0 / snapdelta);
+	dcsw = Math.round(ncsw * 1000000000.0 / snapdelta);
+	dicsw = Math.round(nicsw * 1000000000.0 / snapdelta);
+	dmigr = Math.round(nmigr * 1000000000.0 / snapdelta);
+	dsmtx = Math.round(nsmtx * 1000000000.0 / snapdelta);
+	dsrw = Math.round(nsrw * 1000000000.0 / snapdelta);
+ 	dsyscl = Math.round(nsyscl * 1000000000.0 / snapdelta);
+	dusr = Math.round(nusr * 100.0 / snapdelta);
+	dsys = Math.round(nsys * 100.0 / snapdelta);
+	didl = Math.round(nidl * 100.0 / snapdelta);
 
 	System.out.printf(
 	    "%3d %4d %3d %4d %5d %4d %4d %4d %4d %4d %4d %5d  %3d %3d %3d\n",

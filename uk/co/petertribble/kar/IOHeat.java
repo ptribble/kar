@@ -184,7 +184,7 @@ public class IOHeat {
 	 * top, remember)
 	 */
 	// use %busy
-	int offset = 19 - (int) Math.floor(19.99*nrtime/snapdelta);
+	int offset = 19 - (int) Math.floor(19.99 * nrtime / snapdelta);
 	if (offset > 19) {
 	    offset = 19;
 	}

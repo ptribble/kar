@@ -99,7 +99,7 @@ public class Print {
 		    i++;
 		    stime = args[i];
 		} else if ("M".equals(flag)) {
-		    if (i+1 < args.length) {
+		    if (i + 1 < args.length) {
 			mflag = true;
 			i++;
 			showmodule = args[i];
@@ -107,7 +107,7 @@ public class Print {
 			usage("Error: missing argument to -M flag");
 		    }
 		} else if ("I".equals(flag)) {
-		    if (i+1 < args.length) {
+		    if (i + 1 < args.length) {
 			iflag = true;
 			i++;
 			showinstance = args[i];
@@ -115,7 +115,7 @@ public class Print {
 			usage("Error: missing argument to -I flag");
 		    }
 		} else if ("N".equals(flag)) {
-		    if (i+1 < args.length) {
+		    if (i + 1 < args.length) {
 			nflag = true;
 			i++;
 			showname = args[i];
@@ -123,7 +123,7 @@ public class Print {
 			usage("Error: missing argument to -N flag");
 		    }
 		} else if ("S".equals(flag)) {
-		    if (i+1 < args.length) {
+		    if (i + 1 < args.length) {
 			sflag = true;
 			i++;
 			showstatistic = args[i];
@@ -131,7 +131,7 @@ public class Print {
 			usage("Error: missing argument to -S flag");
 		    }
 		} else if ("T".equals(flag)) {
-		    if (i+1 < args.length) {
+		    if (i + 1 < args.length) {
 			i++;
 			ttype = args[i];
 			if (!"u".equals(ttype) && !"d".equals(ttype)) {
@@ -205,12 +205,12 @@ public class Print {
 	if ("u".equals(ttype)) {
 	    if (ks.isNumeric(statistic)) {
 		System.out.printf("%d\t%s:%s\t%8d\n",
-			t/1000,
+			t / 1000,
 			ks.getTriplet(), statistic,
 			ks.getData(statistic));
 	    } else {
 		System.out.printf("%d\t%s:%s\t%s\n",
-			t/1000,
+			t / 1000,
 			ks.getTriplet(), statistic,
 			ks.getData(statistic));
 	    }

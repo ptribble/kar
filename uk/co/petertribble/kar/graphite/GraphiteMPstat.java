@@ -112,7 +112,7 @@ public class GraphiteMPstat {
 	 * If boot time was before today, then we will skip the first interval
 	 * as there is no valid previous measurement.
 	 */
-	boolean skipfirst = 1000*lastboot < midnight;
+	boolean skipfirst = 1000 * lastboot < midnight;
 	do {
 	    KstatFilter ksf = new KstatFilter(sjkstat);
 	    ksf.addFilter("cpu::sys");
@@ -202,23 +202,23 @@ public class GraphiteMPstat {
 	long snapdelta = snaptime - oldsnaptime;
 	long fsnapdelta = fsnaptime - foldsnaptime;
 	// and the midpoint is half the interval before the current time
-	long midpoint = t - snapdelta/2000000;
+	long midpoint = t - snapdelta / 2000000;
 	midpoint /= 1000;
 
-	long dminf = Math.round(nminf*1000000000.0/fsnapdelta);
-	long dmjf = Math.round(nmjf*1000000000.0/fsnapdelta);
-	long dxcal = Math.round(nxcal*1000000000.0/snapdelta);
- 	long dintr = Math.round(nintr*1000000000.0/snapdelta);
-	long dithr = Math.round(nithr*1000000000.0/snapdelta);
-	long dcsw = Math.round(ncsw*1000000000.0/snapdelta);
-	long dicsw = Math.round(nicsw*1000000000.0/snapdelta);
-	long dmigr = Math.round(nmigr*1000000000.0/snapdelta);
-	long dsmtx = Math.round(nsmtx*1000000000.0/snapdelta);
-	long dsrw = Math.round(nsrw*1000000000.0/snapdelta);
- 	long dsyscl = Math.round(nsyscl*1000000000.0/snapdelta);
-	long dusr = Math.round(nusr*100.0/snapdelta);
-	long dsys = Math.round(nsys*100.0/snapdelta);
-	long didl = Math.round(nidl*100.0/snapdelta);
+	long dminf = Math.round(nminf * 1000000000.0 / fsnapdelta);
+	long dmjf = Math.round(nmjf * 1000000000.0 / fsnapdelta);
+	long dxcal = Math.round(nxcal * 1000000000.0 / snapdelta);
+ 	long dintr = Math.round(nintr * 1000000000.0 / snapdelta);
+	long dithr = Math.round(nithr * 1000000000.0 / snapdelta);
+	long dcsw = Math.round(ncsw * 1000000000.0 / snapdelta);
+	long dicsw = Math.round(nicsw * 1000000000.0 / snapdelta);
+	long dmigr = Math.round(nmigr * 1000000000.0 / snapdelta);
+	long dsmtx = Math.round(nsmtx * 1000000000.0 / snapdelta);
+	long dsrw = Math.round(nsrw * 1000000000.0 / snapdelta);
+ 	long dsyscl = Math.round(nsyscl * 1000000000.0 / snapdelta);
+	long dusr = Math.round(nusr * 100.0 / snapdelta);
+	long dsys = Math.round(nsys * 100.0 / snapdelta);
+	long didl = Math.round(nidl * 100.0 / snapdelta);
 
 	System.out.printf("%s %d %d\n",
 		"mpstat." + ks.getInstance() + ".minf",

@@ -110,7 +110,7 @@ public class GraphiteFSstat {
 	 * If boot time was before today, then we will skip the first interval
 	 * as there is no valid previous measurement.
 	 */
-	boolean skipfirst = 1000*lastboot < midnight;
+	boolean skipfirst = 1000 * lastboot < midnight;
 	do {
 	    KstatFilter ksf = new KstatFilter(sjkstat);
 	    /*
@@ -183,42 +183,42 @@ public class GraphiteFSstat {
 	// this is the interval
 	long snapdelta = snaptime - oldsnaptime;
 	// and the midpoint is half the interval before the current time
-	long midpoint = t - snapdelta/2000000;
+	long midpoint = t - snapdelta / 2000000;
 	midpoint /= 1000;
 
 	System.out.printf("%s %.2f %d\n",
 		"fsstat." + ks.getName() + ".ncreate",
-		ncreate*1000000000.0/snapdelta, midpoint);
+		ncreate * 1000000000.0 / snapdelta, midpoint);
 	System.out.printf("%s %.2f %d\n",
 		"fsstat." + ks.getName() + ".nrename",
-		nrename*1000000000.0/snapdelta, midpoint);
+		nrename * 1000000000.0 / snapdelta, midpoint);
 	System.out.printf("%s %.2f %d\n",
 		"fsstat." + ks.getName() + ".nremove",
-		nremove*1000000000.0/snapdelta, midpoint);
+		nremove * 1000000000.0 / snapdelta, midpoint);
 	System.out.printf("%s %.2f %d\n",
 		"fsstat." + ks.getName() + ".ngetattr",
-		ngetattr*1000000000.0/snapdelta, midpoint);
+		ngetattr * 1000000000.0 / snapdelta, midpoint);
 	System.out.printf("%s %.2f %d\n",
 		"fsstat." + ks.getName() + ".nsetattr",
-		nsetattr*1000000000.0/snapdelta, midpoint);
+		nsetattr * 1000000000.0 / snapdelta, midpoint);
 	System.out.printf("%s %.2f %d\n",
 		"fsstat." + ks.getName() + ".nlookup",
-		nlookup*1000000000.0/snapdelta, midpoint);
+		nlookup * 1000000000.0 / snapdelta, midpoint);
 	System.out.printf("%s %.2f %d\n",
 		"fsstat." + ks.getName() + ".nread",
-		nread*1000000000.0/snapdelta, midpoint);
+		nread * 1000000000.0 / snapdelta, midpoint);
 	System.out.printf("%s %.2f %d\n",
 		"fsstat." + ks.getName() + ".nreaddir",
-		nreaddir*1000000000.0/snapdelta, midpoint);
+		nreaddir * 1000000000.0 / snapdelta, midpoint);
 	System.out.printf("%s %.2f %d\n",
 		"fsstat." + ks.getName() + ".nwrite",
-		nwrite*1000000000.0/snapdelta, midpoint);
+		nwrite * 1000000000.0 / snapdelta, midpoint);
 	System.out.printf("%s %.2f %d\n",
 		"fsstat." + ks.getName() + ".read_bytes",
-		readbytes*1000000000.0/snapdelta, midpoint);
+		readbytes * 1000000000.0 / snapdelta, midpoint);
 	System.out.printf("%s %.2f %d\n",
 		"fsstat." + ks.getName() + ".write_bytes",
-		writebytes*1000000000.0/snapdelta, midpoint);
+		writebytes * 1000000000.0 / snapdelta, midpoint);
     }
 
     /*

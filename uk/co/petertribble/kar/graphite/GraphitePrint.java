@@ -97,7 +97,7 @@ public class GraphitePrint {
 		    i++;
 		    stime = args[i];
 		} else if ("M".equals(flag)) {
-		    if (i+1 < args.length) {
+		    if (i + 1 < args.length) {
 			mflag = true;
 			i++;
 			showmodule = args[i];
@@ -105,7 +105,7 @@ public class GraphitePrint {
 			usage("Error: missing argument to -M flag");
 		    }
 		} else if ("I".equals(flag)) {
-		    if (i+1 < args.length) {
+		    if (i + 1 < args.length) {
 			iflag = true;
 			i++;
 			showinstance = args[i];
@@ -113,7 +113,7 @@ public class GraphitePrint {
 			usage("Error: missing argument to -I flag");
 		    }
 		} else if ("N".equals(flag)) {
-		    if (i+1 < args.length) {
+		    if (i + 1 < args.length) {
 			nflag = true;
 			i++;
 			showname = args[i];
@@ -121,7 +121,7 @@ public class GraphitePrint {
 			usage("Error: missing argument to -N flag");
 		    }
 		} else if ("S".equals(flag)) {
-		    if (i+1 < args.length) {
+		    if (i + 1 < args.length) {
 			sflag = true;
 			i++;
 			showstatistic = args[i];
@@ -194,7 +194,7 @@ public class GraphitePrint {
 	    System.out.printf("%s:%s %d %d\n",
 			ks.getTriplet(), statistic,
 			ks.getData(statistic),
-			t/1000);
+			t / 1000);
 	}
     }
 

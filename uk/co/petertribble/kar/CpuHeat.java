@@ -179,7 +179,8 @@ public class CpuHeat {
 	 * Invert so the graph is the right way up (graphs have 0 at the
 	 * top, remember)
 	 */
-	int offset = 19 - (int) Math.floor((nusr+nsys)*19.99/(nusr+nsys+nidl));
+	int offset = 19 - (int) Math.floor((nusr + nsys) * 19.99
+					/ (nusr + nsys + nidl));
 	// accumulate into array at index given by offset
 	accvals[offset][thisval]++;
     }

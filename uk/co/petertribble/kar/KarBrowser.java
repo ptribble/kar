@@ -200,7 +200,7 @@ public final class KarBrowser extends JFrame implements ListSelectionListener,
 		String s = ((File) value).getName();
 		// starts ka-, so string 3 off the front
 		// ends .zip, so strip 4 off the end
-		setText(s.substring(3, s.length()-4));
+		setText(s.substring(3, s.length() - 4));
 	    } else {
 		setText(value.toString());
 	    }

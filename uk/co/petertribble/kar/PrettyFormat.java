@@ -92,7 +92,7 @@ public final class PrettyFormat {
 	double lvalue = l;
 	int i = 0;
 	while (lvalue > KMAX && i < 5) {
-	    lvalue = lvalue/KSCALE;
+	    lvalue = lvalue / KSCALE;
 	    i++;
 	}
 	return DF.format(lvalue) + NAMES[i];
@@ -127,7 +127,7 @@ public final class PrettyFormat {
 	}
 	long secs = (long) d;
 	long ssecs = secs % 60;
-	long mins = (secs - ssecs)/60;
+	long mins = (secs - ssecs) / 60;
 	return DF.format(mins) + ":" + DFT.format(ssecs);
     }
 
@@ -153,7 +153,7 @@ public final class PrettyFormat {
      */
     public static String date(long l) {
 	long now = System.currentTimeMillis();
-	long then = l*1000;
+	long then = l * 1000;
 	if ((now - then) < 3600000) {
 	    return dtt.format(new Date(then));
 	}
