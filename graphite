@@ -62,7 +62,8 @@ do
 done
 
 if [ -z "$fflag" ]; then
-    OFILE="ka-`/bin/date +'%F'`.zip"
+    NDATE=$(/bin/date +'%F')
+    OFILE="ka-${NDATE}.zip"
     INFILE="${ODIR}/${OFILE}"
     if [ -f "${INFILE}" ]; then
 	FLAGS="-f ${INFILE}"

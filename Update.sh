@@ -13,8 +13,9 @@ bail() {
     exit 1
 }
 
+SDIR=$(dirname "$0")
 if [ ! -f kadc ]; then
-    cd $(dirname "$0") || bail "cannot cd to find $0"
+    cd "${SDIR}" || bail "cannot cd to find $0"
 fi
 
 if [ ! -f kadc ]; then
@@ -25,9 +26,11 @@ if [ ! -f /usr/lib/ka/kadc ]; then
     bail "KAR not installed, please install rather than update."
 fi
 
+ARCH=$(/usr/bin/uname -p)
+
 /usr/bin/mkdir -m 0755 /usr/lib/ka
 /usr/bin/cp kadc kaclean README /usr/lib/ka
-/usr/bin/cp bin/$(/usr/bin/uname -p)/kar_collector /usr/lib/ka
+/usr/bin/cp bin/"${ARCH}"/kar_collector /usr/lib/ka
 
 if [ -d /usr/share/man/man1 ]; then
     /usr/bin/rm -f /usr/share/man/man1/kar.1

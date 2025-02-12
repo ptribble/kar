@@ -12,8 +12,9 @@ bail() {
     exit 1
 }
 
+SDIR=$(dirname "$0")
 if [ ! -f kadc ]; then
-    cd $(dirname "$0") || bail "cannot cd to find $0"
+    cd "${SDIR}" || bail "cannot cd to find $0"
 fi
 
 if [ ! -f kadc ]; then
@@ -24,9 +25,11 @@ if [ -f /usr/lib/ka/kadc ]; then
     bail "KAR already installed, please uninstall the old version first."
 fi
 
+ARCH=$(/usr/bin/uname -p)
+
 /usr/bin/mkdir -m 0755 /usr/lib/ka
 /usr/bin/cp kadc kaclean README /usr/lib/ka
-/usr/bin/cp bin/$(/usr/bin/uname -p)/kar_collector /usr/lib/ka
+/usr/bin/cp bin/"${ARCH}"/kar_collector /usr/lib/ka
 /usr/bin/mkdir -m 0755 /var/adm/ka
 /usr/bin/chown sys /var/adm/ka
 
