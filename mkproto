@@ -2,6 +2,8 @@
 #
 # SPDX-License-Identifier: CDDL-1.0
 #
+# Copyright 2025 Peter Tribble
+#
 # generate a prototype file for input to pkgmk
 #
 # feed to pkgmk like so:
