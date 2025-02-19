@@ -14,7 +14,7 @@
 # ./build pmd
 #    Runs the pmd static code analysis tool, if it's installed
 #
-# ./build doc
+# ./build javadoc
 #    Generates the javadoc
 #
 # ./build packages
@@ -44,7 +44,7 @@ PMDRULES="./pmd-ruleset.xml"
 PMDCACHE="${HOME}/.pmd/cache.kar"
 
 case $1 in
-doc|-doc)
+javadoc)
 	rm -fr javadoc
 	mkdir javadoc
 	javadoc -classpath "$BUILDJARS:." -d javadoc uk.co.petertribble.kar
