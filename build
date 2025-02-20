@@ -56,7 +56,7 @@ clean)
 	rm -fr javadoc
 	exit 0
 	;;
-pmd|-pmd)
+pmd)
 	if [ ! -d "${HOME}/.pmd" ]; then
 	    mkdir -p "${HOME}/.pmd"
 	fi
