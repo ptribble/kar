@@ -22,7 +22,7 @@ PKGTYPE="standalone"
 echo "i pkginfo=./pkginfo.${MYARCH}"
 
 if [ "X$2" = "Xdeps" ]; then
-  JFCVERS="1.5.4"
+  JFCVERS="1.5.5"
   JFCPKGVER="150"
   PKGTYPE="withdeps"
 cat > depend <<EOF
