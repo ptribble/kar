@@ -42,7 +42,6 @@ esac
 
 echo "f none /usr/lib/ka/kadc=kadc 0755 ${OWNER}"
 echo "f none /usr/lib/ka/kaclean=kaclean 0755 ${OWNER}"
-echo "f none /usr/lib/ka/README.md=README.md 0644 ${OWNER}"
 echo "f none /usr/bin/kar=kar.installed 0755 ${OWNER}"
 echo "d none /usr/share 0755 ${SYSOWNER}"
 echo "d none /usr/share/kar 0755 ${SYSOWNER}"

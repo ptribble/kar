@@ -1,11 +1,17 @@
-.TH "KAR" "1" "April 23, 2023"
+.TH "KAR" "1" "March 7, 2025"
 .SH "NAME"
 kar \- kstat activity reporter
 .SH "SYNOPSIS"
 kar subcommand [arguments]
 .SH DESCRIPTION
-The kar command displays data collected by the kstat activity reporter.
+The \fBkar\fR command displays data collected by the kstat activity
+reporter.
+.LP
+The \fBkar\fR utility is the display part of the kar
+subsystem, with \fBkadc\fR(8) responsible for the data collection.
 .LP
 To see the available subcommands, invoke kar without any arguments.
 .SH SEE ALSO
-kadc(8), kstat(8), kstat(3KSTAT)
+.BR kadc (8),
+.BR kstat (8),
+.BR kstat (3KSTAT)

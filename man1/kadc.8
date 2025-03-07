@@ -1,24 +1,53 @@
-.TH "KADC" "8" "May 26, 2020"
+.TH "KADC" "8" "March 7, 2025"
 .SH "NAME"
 kadc \- data collector for kar
 .SH "SYNOPSIS"
 /usr/lib/ka/kadc
 .SH DESCRIPTION
 The kstat activity reporter, kar, extends sar (the system activity
-reporter) by saving all kstats regularly, rather then a predefined
+reporter) by saving all kstats regularly, rather than a predefined
 subset. This allows a much wider range of statistics to be monitored,
 without having to choose which statistics to be monitored in advance.
 .LP
-The kadc script should be run regularly from the sys user's
+The \fBkadc\fR script should be run regularly from the sys user's
 crontab. Every 5 minutes is suggested. Less frequently means that data
 may not be collected with sufficient granularity, while more frequently
 may generate too much data to be stored.
 .LP
-The saved data may be analysed with the kar(1) utility.
+The saved data may be analysed with the \fBkar\fR(1) utility.
+.SH CRONTAB ENTRIES
+To collect activity data every 5 minutes, the \fIsys\fR user's crontab
+could contain an entry like:
+.sp
+.in +2
+.nf
+\fB0,5,10,15,20,25,30,35,40,45,50,55 * * * * /usr/lib/ka/kadc\fR
+.fi
+.in -2
+.sp
 .LP
-The data archives are zip files named by date, stored in the
+The collection process requires no special privileges, so there is no
+need t run the collection process as any particular user. The user
+performing the collection should be the owner of the /var/adm/ka
+directory.
+.LP
+You should also create a system for automatically archiving or removing
+old data. A simple kaclean script is provided, which cleans up records
+over 30 days old, and which can be added to the sys crontab as follows:
+.sp
+.in +2
+.nf
+\fB1 1 * * * /usr/lib/ka/kaclean
+\fR
+.fi
+.in -2
+.sp
+.SH FILES
+The data archives are zip files named by date, normally stored in the
 /var/adm/ka directory. The zip archives contain individual files for
-each reporting interval, the file being a dump of the entire kstat
-hierarchy in JSON format.
+each reporting interval, the file being a dump of the entire
+\fBkstat\fR(3KSTAT) hierarchy in JSON format.
 .SH SEE ALSO
-kar(1), kstat(8), kstat(3KSTAT)
+.BR kar (1),
+.BR kstat (8),
+.BR kstat (3KSTAT)
