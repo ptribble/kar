@@ -82,10 +82,8 @@ packages)
 	;;
 esac
 
-XFLAGS="-Xlint -Xlint:-rawtypes"
-
-${JAVAC} ${XFLAGS} -classpath ".:${BUILDJARS}" uk/co/petertribble/kar/*.java
-${JAVAC} ${XFLAGS} -classpath ".:${BUILDJARS}" uk/co/petertribble/kar/graphite/*.java
+${JAVAC} -Xlint -Xlint:-rawtypes -classpath ".:${BUILDJARS}" uk/co/petertribble/kar/*.java
+${JAVAC} -Xlint -classpath ".:${BUILDJARS}" uk/co/petertribble/kar/graphite/*.java
 
 jar -cf "${KJAR}" $(find uk/co/petertribble/kar -name '*.class') help/*
 
