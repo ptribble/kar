@@ -21,7 +21,7 @@
 #    Creates SVR4 packages
 #
 
-PATH=/usr/jdk/instances/jdk1.8.0/bin:$PATH
+PATH=/usr/jdk/instances/jdk11/bin:$PATH
 export PATH
 
 JKDIR=$(dirname "$0")
@@ -60,7 +60,7 @@ pmd)
 	if [ ! -d "${HOME}/.pmd" ]; then
 	    mkdir -p "${HOME}/.pmd"
 	fi
-	pmd check --cache "${PMDCACHE}" -d uk -R "${PMDRULES}" --use-version java-1.8 --aux-classpath $(echo lib/java/* | sed 's= =:=g') 2>/dev/null
+	pmd check --cache "${PMDCACHE}" -d uk -R "${PMDRULES}" --use-version java-11 --aux-classpath $(echo lib/java/* | sed 's= =:=g') 2>/dev/null
 	pmd check --cache "${PMDCACHE}.html" -d help/*.html  -R category/html/bestpractices.xml 2>/dev/null
 	exit 0
 	;;
