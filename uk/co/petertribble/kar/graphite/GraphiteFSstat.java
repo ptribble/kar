@@ -39,7 +39,7 @@ public class GraphiteFSstat {
 
     private String stime;
     private String etime;
-    private String filename; //NOPMD
+    private String filename;
     private Map<String, Kstat> lastMap;
 
     private long oldsnaptime;

@@ -40,7 +40,7 @@ public class GraphiteIOstat {
 
     private String stime;
     private String etime;
-    private String filename; //NOPMD
+    private String filename;
     private boolean diskhide;
     private boolean showpart;
     private Map<String, Kstat> lastMap;

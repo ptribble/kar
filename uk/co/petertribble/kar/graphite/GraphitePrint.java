@@ -40,7 +40,7 @@ public class GraphitePrint {
     private long daystart;
     private String etime;
     private long dayend;
-    private String filename; //NOPMD
+    private String filename;
     private Set<String> kstatPatterns;
 
     // usage 1 is [-M module] [-I instance] [-N name] [-S statistic]

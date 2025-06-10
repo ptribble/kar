@@ -35,7 +35,7 @@ public class GraphiteSar {
 
     private String stime;
     private String etime;
-    private String filename; //NOPMD
+    private String filename;
 
     /**
      * Display sar output.
