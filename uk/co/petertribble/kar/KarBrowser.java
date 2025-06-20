@@ -65,17 +65,50 @@ public final class KarBrowser extends JFrame implements ListSelectionListener,
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * A menu item to exit the application.
+     */
     private JMenuItem exitItem;
+    /**
+     * A menu item to clone the current window.
+     */
     private JMenuItem cloneItem;
+    /**
+     * A menu item to close the current window.
+     */
     private JMenuItem closeItem;
+    /**
+     * A menu item to show the help.
+     */
     private JMenuItem helpItem;
+    /**
+     * A menu item to show the license.
+     */
     private JMenuItem licenseItem;
 
+    /**
+     * The directory this browser is browsing.
+     */
     private File dir;
+    /**
+     * The main panel.
+     */
     private JPanel kpanel;
+    /**
+     * The panel for the chart builder.
+     */
     private JPanel cpanel;
+    /**
+     * The list of files being browsed.
+     */
     private JList<File> flist;
+    /**
+     * The kstat tree.
+     */
     private KstatTreePanel ktp;
+    /**
+     * The chart builder.
+     */
     private ChartBuilderPanel cbp;
 
     /**

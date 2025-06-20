@@ -47,7 +47,7 @@ case $1 in
 javadoc)
 	rm -fr javadoc
 	mkdir javadoc
-	javadoc -classpath "$BUILDJARS:." -d javadoc uk.co.petertribble.kar
+	javadoc -classpath "$BUILDJARS:." -Xdoclint:all -d javadoc uk.co.petertribble.kar
 	exit 0
 	;;
 clean)
