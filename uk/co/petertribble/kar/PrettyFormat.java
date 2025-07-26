@@ -21,8 +21,11 @@
 package uk.co.petertribble.kar;
 
 import java.text.DecimalFormat;
-import java.text.DateFormat;
-import java.util.Date;
+import java.time.format.DateTimeFormatter;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.TimeZone;
 
 /**
  * Utility methods to convert raw numbers into more aesthetically pleasing
@@ -42,8 +45,11 @@ public final class PrettyFormat {
     private static final DecimalFormat DF = new DecimalFormat("##0");
     private static final DecimalFormat DFS = new DecimalFormat("##0.0");
     private static final DecimalFormat DFT = new DecimalFormat("00");
-    private static DateFormat dt = DateFormat.getDateTimeInstance();
-    private static DateFormat dtt = DateFormat.getTimeInstance();
+    private static final DateTimeFormatter DT =
+	DateTimeFormatter.ofPattern("MMM d, H:mm");
+    private static final DateTimeFormatter DTT =
+	DateTimeFormatter.ofPattern("H:mm:ss");
+    private static final ZoneId ZID = TimeZone.getDefault().toZoneId();
 
     /**
      * Hide the constructor.
@@ -150,11 +156,10 @@ public final class PrettyFormat {
      * @return A scaled textual representation of the input date
      */
     public static String date(long l) {
-	long now = System.currentTimeMillis();
 	long then = l * 1000;
-	if ((now - then) < 3600000) {
-	    return dtt.format(new Date(then));
-	}
-	return dt.format(new Date(then));
+	Instant ndate = Instant.ofEpochMilli(then);
+	return System.currentTimeMillis() - then < 3600000
+	    ? DTT.format(LocalDateTime.ofInstant(ndate, ZID))
+	    : DT.format(LocalDateTime.ofInstant(ndate, ZID));
     }
 }
