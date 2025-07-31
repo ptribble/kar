@@ -41,6 +41,8 @@ SPDX-License-Identifier: CDDL-1.0
       <exclude name="CompareObjectsWithEquals"/>
       <exclude name="NullAssignment"/>
       <exclude name="DoNotCallGarbageCollectionExplicitly"/>
+      <exclude name="ReplaceJavaUtilCalendar"/>
+      <exclude name="ReplaceJavaUtilDate"/>
     </rule>
     <rule ref="category/java/bestpractices.xml">
       <exclude name="ReplaceVectorWithList"/>
