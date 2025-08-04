@@ -91,12 +91,13 @@ Licensing
 =========
 
 Kar is licensed under CDDL, just like the bulk of OpenSolaris - see
-the file LICENSE-CDDL.txt
+the file LICENSES/CDDL-1.0.txt
 
 Kar incorporates JFreeChart, Copyright 2000-present by David Gilbert and
-Contributors. JFreeChart is covered by the LGPL - see the file LICENSE-LGPL.txt,
-and can be obtained from https://www.jfree.org/jfreechart/.
+Contributors. JFreeChart is covered by the LGPL - see the file
+LICENSES/LGPL-2.1+.txt, and can be obtained from
+https://www.jfree.org/jfreechart/.
 
 Kar incorporates JHeatChart by Tom Castle. JHeatChart is covered by the
-LGPL - see the file LICENSE-LGPL.txt, and can be obtained from
+LGPL - see the file LICENSES/LGPL-2.1+.txt, and can be obtained from
 http://www.javaheatmap.com/
