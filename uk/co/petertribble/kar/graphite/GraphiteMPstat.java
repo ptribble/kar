@@ -218,46 +218,46 @@ public class GraphiteMPstat {
 	long dsys = Math.round(nsys * 100.0 / snapdelta);
 	long didl = Math.round(nidl * 100.0 / snapdelta);
 
-	System.out.printf("%s %d %d\n",
+	System.out.printf("%s %d %d%n",
 		"mpstat." + ks.getInstance() + ".minf",
 		dminf, midpoint);
-	System.out.printf("%s %d %d\n",
+	System.out.printf("%s %d %d%n",
 		"mpstat." + ks.getInstance() + ".mjf",
 		dmjf, midpoint);
-	System.out.printf("%s %d %d\n",
+	System.out.printf("%s %d %d%n",
 		"mpstat." + ks.getInstance() + ".xcal",
 		dxcal, midpoint);
-	System.out.printf("%s %d %d\n",
+	System.out.printf("%s %d %d%n",
 		"mpstat." + ks.getInstance() + ".intr",
 		dintr, midpoint);
-	System.out.printf("%s %d %d\n",
+	System.out.printf("%s %d %d%n",
 		"mpstat." + ks.getInstance() + ".ithr",
 		dithr, midpoint);
-	System.out.printf("%s %d %d\n",
+	System.out.printf("%s %d %d%n",
 		"mpstat." + ks.getInstance() + ".csw",
 		dcsw, midpoint);
-	System.out.printf("%s %d %d\n",
+	System.out.printf("%s %d %d%n",
 		"mpstat." + ks.getInstance() + ".icsw",
 		dicsw, midpoint);
-	System.out.printf("%s %d %d\n",
+	System.out.printf("%s %d %d%n",
 		"mpstat." + ks.getInstance() + ".migr",
 		dmigr, midpoint);
-	System.out.printf("%s %d %d\n",
+	System.out.printf("%s %d %d%n",
 		"mpstat." + ks.getInstance() + ".smtx",
 		dsmtx, midpoint);
-	System.out.printf("%s %d %d\n",
+	System.out.printf("%s %d %d%n",
 		"mpstat." + ks.getInstance() + ".srw",
 		dsrw, midpoint);
-	System.out.printf("%s %d %d\n",
+	System.out.printf("%s %d %d%n",
 		"mpstat." + ks.getInstance() + ".syscl",
 		dsyscl, midpoint);
-	System.out.printf("%s %d %d\n",
+	System.out.printf("%s %d %d%n",
 		"mpstat." + ks.getInstance() + ".usr",
 		dusr, midpoint);
-	System.out.printf("%s %d %d\n",
+	System.out.printf("%s %d %d%n",
 		"mpstat." + ks.getInstance() + ".sys",
 		dsys, midpoint);
-	System.out.printf("%s %d %d\n",
+	System.out.printf("%s %d %d%n",
 		"mpstat." + ks.getInstance() + ".idl",
 		didl, midpoint);
     }

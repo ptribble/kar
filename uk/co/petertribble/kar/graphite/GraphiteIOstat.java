@@ -208,34 +208,34 @@ public class GraphiteIOstat {
 	int dpw = (int) (0.5 + 100.0 * nwtime / snapdelta);
 	int dpb = (int) (0.5 + 100.0 * nrtime / snapdelta);
 
-	System.out.printf("%s %.2f %d\n",
+	System.out.printf("%s %.2f %d%n",
 		"iostat." + ks.getName() + ".reads",
 		dr, midpoint);
-	System.out.printf("%s %.2f %d\n",
+	System.out.printf("%s %.2f %d%n",
 		"iostat." + ks.getName() + ".writes",
 		dw, midpoint);
-	System.out.printf("%s %.2f %d\n",
+	System.out.printf("%s %.2f %d%n",
 		"iostat." + ks.getName() + ".kread",
 		dkr, midpoint);
-	System.out.printf("%s %.2f %d\n",
+	System.out.printf("%s %.2f %d%n",
 		"iostat." + ks.getName() + ".kwrite",
 		dkw, midpoint);
-	System.out.printf("%s %.2f %d\n",
+	System.out.printf("%s %.2f %d%n",
 		"iostat." + ks.getName() + ".wait",
 		dwait, midpoint);
-	System.out.printf("%s %.2f %d\n",
+	System.out.printf("%s %.2f %d%n",
 		"iostat." + ks.getName() + ".actv",
 		dactv, midpoint);
-	System.out.printf("%s %.2f %d\n",
+	System.out.printf("%s %.2f %d%n",
 		"iostat." + ks.getName() + ".wsvc_t",
 		dwsvc, midpoint);
-	System.out.printf("%s %.2f %d\n",
+	System.out.printf("%s %.2f %d%n",
 		"iostat." + ks.getName() + ".asvc_t",
 		dasvc, midpoint);
-	System.out.printf("%s %d %d\n",
+	System.out.printf("%s %d %d%n",
 		"iostat." + ks.getName() + ".pcwait",
 		dpw, midpoint);
-	System.out.printf("%s %d %d\n",
+	System.out.printf("%s %d %d%n",
 		"iostat." + ks.getName() + ".pcbusy",
 		dpb, midpoint);
     }

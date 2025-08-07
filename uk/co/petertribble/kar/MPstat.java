@@ -123,7 +123,7 @@ public class MPstat {
 	    sjkstat.next();
 	}
 	do {
-	    System.out.printf("%tT    %s\n", new Date(sjkstat.getTime()),
+	    System.out.printf("%tT    %s%n", new Date(sjkstat.getTime()),
 				"processor statistics");
 	    System.out.println("CPU minf mjf xcal  intr ithr  csw icsw migr "
 				+ "smtx  srw syscl  usr sys idl");
@@ -221,7 +221,7 @@ public class MPstat {
 	didl = Math.round(nidl * 100.0 / snapdelta);
 
 	System.out.printf(
-	    "%3d %4d %3d %4d %5d %4d %4d %4d %4d %4d %4d %5d  %3d %3d %3d\n",
+	    "%3d %4d %3d %4d %5d %4d %4d %4d %4d %4d %4d %5d  %3d %3d %3d%n",
 		ks.getInst(), dminf, dmjf, dxcal, dintr, dithr, dcsw, dicsw,
 		dmigr, dsmtx, dsrw, dsyscl, dusr, dsys, didl);
     }

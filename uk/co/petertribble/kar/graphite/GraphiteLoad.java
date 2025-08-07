@@ -98,11 +98,11 @@ public class GraphiteLoad {
 	do {
 	    Kstat ks = sjkstat.getKstat("unix", 0, "system_misc");
 	    long time = sjkstat.getTime() / 1000;
-	    System.out.printf("%s %f %d\n", "load.1min",
+	    System.out.printf("%s %f %d%n", "load.1min",
 			ks.longData("avenrun_1min") / 256.0, time);
-	    System.out.printf("%s %f %d\n", "load.5min",
+	    System.out.printf("%s %f %d%n", "load.5min",
 			ks.longData("avenrun_5min") / 256.0, time);
-	    System.out.printf("%s %f %d\n", "load.15min",
+	    System.out.printf("%s %f %d%n", "load.15min",
 			ks.longData("avenrun_15min") / 256.0, time);
 	} while (sjkstat.next() && sjkstat.getTime() < dayend);
     }

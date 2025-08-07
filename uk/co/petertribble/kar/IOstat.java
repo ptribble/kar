@@ -129,7 +129,7 @@ public class IOstat {
 	    sjkstat.next();
 	}
 	do {
-	    System.out.printf("%tT    %s\n", new Date(sjkstat.getTime()),
+	    System.out.printf("%tT    %s%n", new Date(sjkstat.getTime()),
 				"extended device statistics");
 	    KstatFilter ksf = new KstatFilter(sjkstat);
 	    ksf.setFilterType(KstatType.KSTAT_TYPE_IO);
@@ -223,7 +223,7 @@ public class IOstat {
 	dpw = (int) (0.5 + 100.0 * nwtime / snapdelta);
 	dpb = (int) (0.5 + 100.0 * nrtime / snapdelta);
 	System.out.printf(
-		"%7.1f %6.1f %6.1f %6.1f %4.1f %4.1f %6.1f %6.1f %3d %3d %s\n",
+		"%7.1f %6.1f %6.1f %6.1f %4.1f %4.1f %6.1f %6.1f %3d %3d %s%n",
 		dr, dw, dkr, dkw, dwait, dactv, dwsvc, dasvc, dpw, dpb,
 		ks.getName());
 	}

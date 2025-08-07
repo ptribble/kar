@@ -145,11 +145,11 @@ public class GraphiteSar {
 	    long dtot = dkernel + duser + didle;
 	    // FIXME slew to midpoint
 	    long time = sjkstat.getTime() / 1000;
-	    System.out.printf("%s %.2f %d\n", "user", 100.0 * duser / dtot,
+	    System.out.printf("%s %.2f %d%n", "user", 100.0 * duser / dtot,
 			time);
-	    System.out.printf("%s %.2f %d\n", "kernel", 100.0 * dkernel / dtot,
+	    System.out.printf("%s %.2f %d%n", "kernel", 100.0 * dkernel / dtot,
 			time);
-	    System.out.printf("%s %.2f %d\n", "idle", 100.0 * didle / dtot,
+	    System.out.printf("%s %.2f %d%n", "idle", 100.0 * didle / dtot,
 			time);
 	    okernel = nkernel;
 	    ouser = nuser;

@@ -202,24 +202,24 @@ public class Print {
     private void printOut(long t, Kstat ks, String statistic) {
 	if ("u".equals(ttype)) {
 	    if (ks.isNumeric(statistic)) {
-		System.out.printf("%d\t%s:%s\t%8d\n",
+		System.out.printf("%d\t%s:%s\t%8d%n",
 			t / 1000,
 			ks.getTriplet(), statistic,
 			ks.getData(statistic));
 	    } else {
-		System.out.printf("%d\t%s:%s\t%s\n",
+		System.out.printf("%d\t%s:%s\t%s%n",
 			t / 1000,
 			ks.getTriplet(), statistic,
 			ks.getData(statistic));
 	    }
 	} else {
 	    if (ks.isNumeric(statistic)) {
-		System.out.printf("%tT\t%s:%s\t%8d\n",
+		System.out.printf("%tT\t%s:%s\t%8d%n",
 			new Date(t),
 			ks.getTriplet(), statistic,
 			ks.getData(statistic));
 	    } else {
-		System.out.printf("%tT\t%s:%s\t%s\n",
+		System.out.printf("%tT\t%s:%s\t%s%n",
 			new Date(t),
 			ks.getTriplet(), statistic,
 			ks.getData(statistic));

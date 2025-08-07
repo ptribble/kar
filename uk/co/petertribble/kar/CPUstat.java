@@ -113,7 +113,7 @@ public class CPUstat {
 	    sjkstat.next();
 	}
 	do {
-	    System.out.printf("%tT    %s\n", new Date(sjkstat.getTime()),
+	    System.out.printf("%tT    %s%n", new Date(sjkstat.getTime()),
 				"cpu statistics");
 	    System.out.println("Load 1min   5min  15min   "
 				+ "exec     in    sy    cs   us  sy  id");
@@ -176,7 +176,7 @@ public class CPUstat {
 	didl = Math.round(nidl * 100.0 / snapdelta);
 
 	System.out.printf(
-	    "   %6.2f %6.2f %6.2f   %4.1f  %5d %5d %5d  %3d %3d %3d\n",
+	    "   %6.2f %6.2f %6.2f   %4.1f  %5d %5d %5d  %3d %3d %3d%n",
 		ksl.longData("avenrun_1min") / 256.0,
 		ksl.longData("avenrun_5min") / 256.0,
 		ksl.longData("avenrun_15min") / 256.0,

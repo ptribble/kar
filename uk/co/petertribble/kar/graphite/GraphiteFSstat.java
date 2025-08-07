@@ -184,37 +184,37 @@ public class GraphiteFSstat {
 	long midpoint = t - snapdelta / 2000000;
 	midpoint /= 1000;
 
-	System.out.printf("%s %.2f %d\n",
+	System.out.printf("%s %.2f %d%n",
 		"fsstat." + ks.getName() + ".ncreate",
 		ncreate * 1000000000.0 / snapdelta, midpoint);
-	System.out.printf("%s %.2f %d\n",
+	System.out.printf("%s %.2f %d%n",
 		"fsstat." + ks.getName() + ".nrename",
 		nrename * 1000000000.0 / snapdelta, midpoint);
-	System.out.printf("%s %.2f %d\n",
+	System.out.printf("%s %.2f %d%n",
 		"fsstat." + ks.getName() + ".nremove",
 		nremove * 1000000000.0 / snapdelta, midpoint);
-	System.out.printf("%s %.2f %d\n",
+	System.out.printf("%s %.2f %d%n",
 		"fsstat." + ks.getName() + ".ngetattr",
 		ngetattr * 1000000000.0 / snapdelta, midpoint);
-	System.out.printf("%s %.2f %d\n",
+	System.out.printf("%s %.2f %d%n",
 		"fsstat." + ks.getName() + ".nsetattr",
 		nsetattr * 1000000000.0 / snapdelta, midpoint);
-	System.out.printf("%s %.2f %d\n",
+	System.out.printf("%s %.2f %d%n",
 		"fsstat." + ks.getName() + ".nlookup",
 		nlookup * 1000000000.0 / snapdelta, midpoint);
-	System.out.printf("%s %.2f %d\n",
+	System.out.printf("%s %.2f %d%n",
 		"fsstat." + ks.getName() + ".nread",
 		nread * 1000000000.0 / snapdelta, midpoint);
-	System.out.printf("%s %.2f %d\n",
+	System.out.printf("%s %.2f %d%n",
 		"fsstat." + ks.getName() + ".nreaddir",
 		nreaddir * 1000000000.0 / snapdelta, midpoint);
-	System.out.printf("%s %.2f %d\n",
+	System.out.printf("%s %.2f %d%n",
 		"fsstat." + ks.getName() + ".nwrite",
 		nwrite * 1000000000.0 / snapdelta, midpoint);
-	System.out.printf("%s %.2f %d\n",
+	System.out.printf("%s %.2f %d%n",
 		"fsstat." + ks.getName() + ".read_bytes",
 		readbytes * 1000000000.0 / snapdelta, midpoint);
-	System.out.printf("%s %.2f %d\n",
+	System.out.printf("%s %.2f %d%n",
 		"fsstat." + ks.getName() + ".write_bytes",
 		writebytes * 1000000000.0 / snapdelta, midpoint);
     }

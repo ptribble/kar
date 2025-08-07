@@ -101,7 +101,7 @@ public class Sar {
 	Kstat ksb = sjkstat.getKstat("unix", 0, "system_misc");
 	long boottime = 1000 * ksb.longData("boot_time");
 	long firsttime = boottime > daystart ? boottime : daystart;
-	System.out.printf("%tT%8s%8s%8s%8s\n", new Date(firsttime),
+	System.out.printf("%tT%8s%8s%8s%8s%n", new Date(firsttime),
 			"%usr", "%sys", "%wio", "%idle");
 	// times, both current and accumulated
 	long okernel = 0;
@@ -111,7 +111,7 @@ public class Sar {
 	long tidle = 0;
 	long tuser = 0;
 	if (boottime > daystart) {
-	    System.out.printf("%tT        unix restarts\n",
+	    System.out.printf("%tT        unix restarts%n",
 			new Date(1000 * ksb.longData("boot_time")));
 	} else {
 	    // reset times based on first data
@@ -148,7 +148,7 @@ public class Sar {
 		ouser = 0;
 		oidle = 0;
 		ksb = sjkstat.getKstat("unix", 0, "system_misc");
-		System.out.printf("%tT        unix restarts\n",
+		System.out.printf("%tT        unix restarts%n",
 				new Date(1000 * ksb.longData("boot_time")));
 	    }
 	    long dkernel = nkernel - okernel;
@@ -159,7 +159,7 @@ public class Sar {
 	    int fkernel = (int) (0.5 + 100.0 * dkernel / dtot);
 	    int fuser = (int) (0.5 + 100.0 * duser / dtot);
 	    int fidle = (int) (0.5 + 100.0 * didle / dtot);
-	    System.out.printf("%tT%8d%8d%8d%8d\n", new Date(sjkstat.getTime()),
+	    System.out.printf("%tT%8d%8d%8d%8d%n", new Date(sjkstat.getTime()),
 				fuser, fkernel, 0, fidle);
 	    okernel = nkernel;
 	    ouser = nuser;
@@ -173,7 +173,7 @@ public class Sar {
 	int fkernel = (int) (0.5 + 100.0 * tkernel / ttot);
 	int fuser = (int) (0.5 + 100.0 * tuser / ttot);
 	int fidle = (int) (0.5 + 100.0 * tidle / ttot);
-	System.out.printf("Average %8d%8d%8d%8d\n",
+	System.out.printf("Average %8d%8d%8d%8d%n",
 				fuser, fkernel, 0, fidle);
     }
 

@@ -189,7 +189,7 @@ public class GraphitePrint {
      */
     private void printOut(long t, Kstat ks, String statistic) {
 	if (ks.isNumeric(statistic)) {
-	    System.out.printf("%s:%s %d %d\n",
+	    System.out.printf("%s:%s %d %d%n",
 			ks.getTriplet(), statistic,
 			ks.getData(statistic),
 			t / 1000);

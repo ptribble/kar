@@ -107,7 +107,7 @@ public class FSstat {
 	    sjkstat.next();
 	}
 	do {
-	    System.out.printf("%tT    %s\n", new Date(sjkstat.getTime()),
+	    System.out.printf("%tT    %s%n", new Date(sjkstat.getTime()),
 				"file system statistics");
 	    KstatFilter ksf = new KstatFilter(sjkstat);
 	    /*
@@ -177,7 +177,7 @@ public class FSstat {
 		&& nwrite == 0 && writebytes == 0)) {
 
 	    System.out.printf(
-		"%5s %5s %5s %5s %5s %5s %5s %5s %5s %5s %5s %s\n",
+		"%5s %5s %5s %5s %5s %5s %5s %5s %5s %5s %5s %s%n",
 		PrettyFormat.memscale(ncreate), PrettyFormat.memscale(nrename),
 		PrettyFormat.memscale(nremove), PrettyFormat.memscale(ngetattr),
 		PrettyFormat.memscale(nsetattr), PrettyFormat.memscale(nlookup),
