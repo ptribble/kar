@@ -64,6 +64,15 @@ pmd)
 	pmd check --cache "${PMDCACHE}.html" -d help/*.html  -R category/html/bestpractices.xml 2>/dev/null
 	exit 0
 	;;
+spotbugs)
+	#
+	# spotbugs works on the class files, so those need to be available
+	#
+	${JAVAC} -Xlint -Xlint:-rawtypes -classpath ".:${BUILDJARS}" uk/co/petertribble/kar/*.java
+	${JAVAC} -Xlint -classpath ".:${BUILDJARS}" uk/co/petertribble/kar/graphite/*.java
+	spotbugs -auxclasspath $(echo lib/java/* | sed 's= =:=g') uk
+	exit 0
+	;;
 packages)
 	sed 's:^JARLIBDIR=.*$:JARLIBDIR=/usr/share/kar:' kar > kar.installed
 	./mkproto i386 $2 > prototype.i386
