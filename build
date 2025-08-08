@@ -79,6 +79,7 @@ spotbugs)
 	javac -Xlint -Xlint:-rawtypes -classpath ".:${BUILDJARS}" uk/co/petertribble/kar/*.java
 	javac -Xlint -classpath ".:${BUILDJARS}" uk/co/petertribble/kar/graphite/*.java
 	spotbugs -auxclasspath $(echo lib/java/* | sed 's= =:=g') uk
+	rm -f $(find uk/co/petertribble/kar -type f -name '*.class')
 	exit 0
 	;;
 packages)
@@ -103,3 +104,5 @@ javac -Xlint -Xlint:-rawtypes -classpath ".:${BUILDJARS}" uk/co/petertribble/kar
 javac -Xlint -classpath ".:${BUILDJARS}" uk/co/petertribble/kar/graphite/*.java
 
 jar -cf "${KJAR}" $(find uk/co/petertribble/kar -name '*.class') help/*
+
+rm -f $(find uk/co/petertribble/kar -type f -name '*.class')
