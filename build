@@ -9,7 +9,10 @@
 # Usage:
 #
 # ./build
-#    Builds all the java classes, and recompiles the native library.
+#    Builds all the java classes and creates the jar
+#
+# ./build collector
+#    Builds the native collector for this platform
 #
 # ./build pmd
 #    Runs the pmd static code analysis tool, if it's installed
@@ -44,6 +47,12 @@ PMDRULES="./pmd-ruleset.xml"
 PMDCACHE="${HOME}/.pmd/cache.kar"
 
 case $1 in
+collector)
+	ARCH=$(/usr/bin/uname -p)
+	mkdir -p bin/"${ARCH}"
+	gcc -m64 -o bin/"${ARCH}"/kar_collector -lkstat src/kar_collector.c
+	exit 0
+	;;
 javadoc)
 	rm -fr javadoc
 	mkdir javadoc
@@ -95,7 +104,3 @@ ${JAVAC} -Xlint -Xlint:-rawtypes -classpath ".:${BUILDJARS}" uk/co/petertribble/
 ${JAVAC} -Xlint -classpath ".:${BUILDJARS}" uk/co/petertribble/kar/graphite/*.java
 
 jar -cf "${KJAR}" $(find uk/co/petertribble/kar -name '*.class') help/*
-
-ARCH=$(/usr/bin/uname -p)
-mkdir -p bin/"${ARCH}"
-gcc -m64 -o bin/"${ARCH}"/kar_collector -lkstat src/kar_collector.c
