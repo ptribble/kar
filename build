@@ -30,7 +30,6 @@ export PATH
 JKDIR=$(dirname "$0")
 LIBDIR=${JKDIR}/lib
 JARLIBDIR=${LIBDIR}/java
-JAVAC=javac
 JKJAR=${JARLIBDIR}/jkstat.jar
 KJAR=${JARLIBDIR}/kar.jar
 HJAR=${JARLIBDIR}/jheatchart-0.6.jar
@@ -77,8 +76,8 @@ spotbugs)
 	#
 	# spotbugs works on the class files, so those need to be available
 	#
-	${JAVAC} -Xlint -Xlint:-rawtypes -classpath ".:${BUILDJARS}" uk/co/petertribble/kar/*.java
-	${JAVAC} -Xlint -classpath ".:${BUILDJARS}" uk/co/petertribble/kar/graphite/*.java
+	javac -Xlint -Xlint:-rawtypes -classpath ".:${BUILDJARS}" uk/co/petertribble/kar/*.java
+	javac -Xlint -classpath ".:${BUILDJARS}" uk/co/petertribble/kar/graphite/*.java
 	spotbugs -auxclasspath $(echo lib/java/* | sed 's= =:=g') uk
 	exit 0
 	;;
@@ -100,7 +99,7 @@ packages)
 	;;
 esac
 
-${JAVAC} -Xlint -Xlint:-rawtypes -classpath ".:${BUILDJARS}" uk/co/petertribble/kar/*.java
-${JAVAC} -Xlint -classpath ".:${BUILDJARS}" uk/co/petertribble/kar/graphite/*.java
+javac -Xlint -Xlint:-rawtypes -classpath ".:${BUILDJARS}" uk/co/petertribble/kar/*.java
+javac -Xlint -classpath ".:${BUILDJARS}" uk/co/petertribble/kar/graphite/*.java
 
 jar -cf "${KJAR}" $(find uk/co/petertribble/kar -name '*.class') help/*
