@@ -32,8 +32,6 @@ usage() {
     echo " mpstat [-e time] [-f zipfile] [-s time]"
     echo " cpustat [-e time] [-f zipfile] [-s time]"
     echo " graphs [-f zipfile] -o dir"
-    echo " cpuheat [-e time] [-f zipfile] [-o output_png] [-s time]"
-    echo " ioheat [-e time] [-f zipfile] [-o output_png] [-s time]"
     echo " areagraph [-f zipfile] -o filename kstat_spec"
     echo " linegraph [-f zipfile] -o filename kstat_spec"
     echo " print [-e time] [-f zipfile] [-s time] pattern [ ... ]"
@@ -58,8 +56,7 @@ KJAR=${JARLIBDIR}/kar.jar
 JFJAR=${JARLIBDIR}/jfreechart-1.5.6.jar
 JFJARS=${JFJAR}
 JUMBLEJAR=${JARLIBDIR}/jumble.jar
-HJAR=${JARLIBDIR}/jheatchart-0.6.jar
-ALLJARS=${JKJAR}:${KJAR}:${HJAR}:${JFJARS}
+ALLJARS=${JKJAR}:${KJAR}:${JFJARS}
 GRAPHJARS=${ALLJARS}:${JFJARS}:${JUMBLEJAR}
 
 make_graphs() {
@@ -153,16 +150,6 @@ case $SUBCOMMAND in
 
 'cpustat')
     JKCLASS=uk.co.petertribble.kar.CPUstat
-    ;;
-
-'cpuheat')
-    JFLAGS="-Djava.awt.headless=true -Xmx2500m"
-    JKCLASS=uk.co.petertribble.kar.CpuHeat
-    ;;
-
-'ioheat')
-    JFLAGS="-Djava.awt.headless=true -Xmx2500m"
-    JKCLASS=uk.co.petertribble.kar.IOHeat
     ;;
 
 'print')

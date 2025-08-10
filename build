@@ -32,8 +32,7 @@ LIBDIR=${JKDIR}/lib
 JARLIBDIR=${LIBDIR}/java
 JKJAR=${JARLIBDIR}/jkstat.jar
 KJAR=${JARLIBDIR}/kar.jar
-HJAR=${JARLIBDIR}/jheatchart-0.6.jar
-BUILDJARS=${JKJAR}:${HJAR}
+BUILDJARS=${JKJAR}
 
 #
 # run
