@@ -64,6 +64,7 @@ else
 	pname=${path##*/}
 	echo "s none /${JARDIR}/${pname}=../jfreechart-${JFCVERS}/${pname}"
   done
+  # shellcheck disable=SC2010
   for path in $(ls -1 lib/java/*.jar | grep -v /jfreechart)
   do
 	pname=${path##*/}

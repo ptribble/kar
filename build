@@ -58,7 +58,9 @@ javadoc)
 	exit 0
 	;;
 clean)
+	# shellcheck disable=SC2046
 	rm -f $(find uk/co -type f -name '*.class')
+	# shellcheck disable=SC2046
 	rm -f $(find . -type f -name '*~')
 	rm -fr javadoc
 	exit 0
@@ -67,6 +69,7 @@ pmd)
 	if [ ! -d "${HOME}/.pmd" ]; then
 	    mkdir -p "${HOME}/.pmd"
 	fi
+	# shellcheck disable=SC2046
 	pmd check --cache "${PMDCACHE}" -d uk -R "${PMDRULES}" --use-version java-11 --aux-classpath $(echo lib/java/* | sed 's= =:=g') 2>/dev/null
 	pmd check --cache "${PMDCACHE}.html" -d help/*.html  -R category/html/bestpractices.xml 2>/dev/null
 	exit 0
@@ -77,18 +80,23 @@ spotbugs)
 	#
 	javac -Xlint -Xlint:-rawtypes -classpath ".:${BUILDJARS}" uk/co/petertribble/kar/*.java
 	javac -Xlint -classpath ".:${BUILDJARS}" uk/co/petertribble/kar/graphite/*.java
+	# shellcheck disable=SC2046
 	spotbugs -auxclasspath $(echo lib/java/* | sed 's= =:=g') uk
+	# shellcheck disable=SC2046
 	rm -f $(find uk/co/petertribble/kar -type f -name '*.class')
 	exit 0
 	;;
 packages)
 	sed 's:^JARLIBDIR=.*$:JARLIBDIR=/usr/share/kar:' kar > kar.installed
+	# shellcheck disable=SC2086
 	./mkproto i386 $2 > prototype.i386
+	# shellcheck disable=SC2086
 	./mkproto sparc $2 > prototype.sparc
-	pkgmk -d /tmp -f prototype.i386 -r $(pwd) TRIBkar
+	MYPWD=$(pwd)
+	pkgmk -d /tmp -f prototype.i386 -r "${MYPWD}" TRIBkar
 	pkgtrans -s /tmp /tmp/TRIBkar-i386.pkg TRIBkar
 	rm -fr /tmp/TRIBkar
-	pkgmk -d /tmp -f prototype.sparc -r $(pwd) TRIBkar
+	pkgmk -d /tmp -f prototype.sparc -r "${MYPWD}" TRIBkar
 	pkgtrans -s /tmp /tmp/TRIBkar-sparc.pkg TRIBkar
 	rm -fr /tmp/TRIBkar
 	ls -l /tmp/TRIBkar-sparc.pkg /tmp/TRIBkar-i386.pkg
@@ -102,6 +110,8 @@ esac
 javac -Xlint -Xlint:-rawtypes -classpath ".:${BUILDJARS}" uk/co/petertribble/kar/*.java
 javac -Xlint -classpath ".:${BUILDJARS}" uk/co/petertribble/kar/graphite/*.java
 
+# shellcheck disable=SC2046
 jar -cf "${KJAR}" $(find uk/co/petertribble/kar -name '*.class') help/*
 
+# shellcheck disable=SC2046
 rm -f $(find uk/co/petertribble/kar -type f -name '*.class')

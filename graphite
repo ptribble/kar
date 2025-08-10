@@ -8,9 +8,7 @@
 #
 
 JKDIR=$(dirname "$0")
-LIBDIR=${JKDIR}/lib
-JARLIBDIR=${LIBDIR}/java
-JAVA=/usr/bin/java
+JARLIBDIR=${JKDIR}/lib/java
 
 ODIR="/var/adm/ka"
 OFILE="ka-$(/bin/date +'%F')"
@@ -24,12 +22,12 @@ usage() {
     echo " mpstat [-e time] [-f zipfile] [-s time]"
     echo " print [-e time] [-f zipfile] [-s time] pattern [ ... ]"
     echo " load [-f zipfile]"
+    exit 2
 }
 
 case $# in
 0)
     usage
-    exit 2
     ;;
 *)
     SUBCOMMAND=$1
@@ -98,7 +96,6 @@ case $SUBCOMMAND in
 
 *)
     usage
-    exit 2
     ;;
 
 esac
@@ -106,4 +103,5 @@ esac
 #
 # launch the class specified
 #
-$JAVA -cp "${ALLJARS}" ${JKCLASS} $FLAGS "$@"
+# shellcheck disable=SC2086
+java -cp "${ALLJARS}" ${JKCLASS} $FLAGS "$@"
