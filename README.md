@@ -87,6 +87,60 @@ builder, by means of:
 
 ./kar browser
 
+Plotting graphs with ploticus
+=============================
+
+Ploticus is a simple graphing package
+
+http://ploticus.sourceforge.net/
+
+You can use ploticus in combination with kar to graph pretty much
+anything.
+
+You'll need to create an input file. The simplest way is to use the kar
+print subcommand and then filter the output with grep. (It would be
+nice to think that kar would have sophisticated filtering, but it
+doesn't really.)
+
+So, suppose I was interested in writes to disk device sd4. The
+following would generate a data file that ploticus could use:
+
+./kar print :::writes | grep sd4:writes > datafile
+
+And then I could use the chron prefab in ploticus to graph that, with
+the data=datafile argument. The important thing here is that field 1 is
+a time (so you need to tell ploticus that it's a time with the
+unittype=time parameter) and the value is in field 3
+
+pl -prefab chron unittype=time title="Writes to sd4" xlbl="Time" ylbl="bytes/s" mode=line data=datafile x=1 y=3
+
+Pushing data into Graphite
+==========================
+
+If you want performance metrics from a Solaris system, then one option is
+to simply throw kstats into graphite and let it handle the graphing.
+
+http://graphiteapp.org/
+
+The graphite command here will extract the statistics out of kar archives
+and transform it into the correct form for graphite to consume. It
+has a subset of the normal kar subcommands - so you can generate the
+right output for iostat, mpstat, and the like.
+
+This isn't a complete solution. I'm expecting that you may wish to process
+the data. In particular, you may wish to prefix each line to match your
+graphite naming convention (adding the hostname would be a good idea).
+And you may wish to trim the statistics.
+
+If you just want *everything* raw, then try
+
+graphite print :::
+
+The simplest way to add a prefix is with sed:
+
+graphite iostat | sed 's:^:myhost.:'
+
+
 Licensing
 =========
 
