@@ -85,7 +85,7 @@ public class Graphs {
      * Actually build the graphs. If a graph fails, carry on with the next one.
      */
     private void makeGraphs(SequencedJKstat sjkstat) {
-	for (String sline : JumbleFile.getLines(new File(sfilename))) {
+	for (String sline : JumbleFile.readAllLines(sfilename)) {
 	    try {
 		makeGraph(sjkstat, sline);
 	    } catch (Exception e) {
