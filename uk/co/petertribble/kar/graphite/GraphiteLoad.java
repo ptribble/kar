@@ -42,7 +42,7 @@ public class GraphiteLoad {
      *
      * @param args  The command line arguments
      */
-    public GraphiteLoad(String[] args) {
+    public GraphiteLoad(final String[] args) {
 	parseArgs(args);
 	try {
 	    accumulate(new ParseableJSONZipJKstat(filename));
@@ -54,7 +54,7 @@ public class GraphiteLoad {
     /*
      * Argument parser.
      */
-    private void parseArgs(String[] args) {
+    private void parseArgs(final String[] args) {
 	for (int i = 0; i < args.length; i++) {
 	    /*
 	     * All flags start with a -, we pick out the arguments to any
@@ -82,7 +82,7 @@ public class GraphiteLoad {
      * Go through the input reading all the entries, and accumulating
      * statistics.
      */
-    private void accumulate(SequencedJKstat sjkstat) {
+    private void accumulate(final SequencedJKstat sjkstat) {
 	long daystart = 0;
 	long dayend = 0;
 	try {
@@ -119,7 +119,7 @@ public class GraphiteLoad {
     /*
      * Emit usage message and exit.
      */
-    private void usage(String s) {
+    private void usage(final String s) {
 	System.err.println(s);
 	usage();
     }
@@ -129,7 +129,7 @@ public class GraphiteLoad {
      *
      * @param args  The command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	new GraphiteLoad(args);
     }
 }

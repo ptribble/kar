@@ -116,7 +116,7 @@ public final class KarBrowser extends JFrame implements ListSelectionListener,
      *
      * @param indir The directory containing kar output files.
      */
-    public KarBrowser(File indir) {
+    public KarBrowser(final File indir) {
 	dir = indir;
 
 	addWindowListener(new WindowExit());
@@ -194,14 +194,14 @@ public final class KarBrowser extends JFrame implements ListSelectionListener,
 	System.exit(1);
     }
 
-    private static void usage(String s) {
+    private static void usage(final String s) {
 	System.err.println(s);
 	usage();
     }
 
     class WindowExit extends WindowAdapter {
 	@Override
-	public void windowClosing(WindowEvent we) {
+	public void windowClosing(final WindowEvent we) {
 	    JingleMultiFrame.unregister(KarBrowser.this);
 	}
     }
@@ -211,7 +211,7 @@ public final class KarBrowser extends JFrame implements ListSelectionListener,
      */
     class KarFileFilter implements FilenameFilter {
 	@Override
-	public boolean accept(File f, String name) {
+	public boolean accept(final File f, final String name) {
 	    return name.startsWith("ka-") && name.endsWith(".zip");
 	}
     }
@@ -222,11 +222,11 @@ public final class KarBrowser extends JFrame implements ListSelectionListener,
     class KarListCellRenderer extends DefaultListCellRenderer {
 	private static final long serialVersionUID = 1L;
 	@Override
-	public Component getListCellRendererComponent(JList list,
-							Object value,
-							int index,
-							boolean isSelected,
-							boolean cellHasFocus) {
+	public Component getListCellRendererComponent(final JList list,
+						final Object value,
+						final int index,
+						final boolean isSelected,
+						final boolean cellHasFocus) {
 	    if (value instanceof File) {
 		String s = ((File) value).getName();
 		// starts ka-, so string 3 off the front
@@ -245,7 +245,7 @@ public final class KarBrowser extends JFrame implements ListSelectionListener,
      *
      * @param args  The command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	if (args.length == 1) {
 	    File f = new File(args[0]);
 	    if (!f.exists()) {
@@ -264,7 +264,7 @@ public final class KarBrowser extends JFrame implements ListSelectionListener,
      * Show a file. Kill off anything we already have. Read the new file, and
      * create a new kstat browser and chart builder.
      */
-    private void showFile(File f) {
+    private void showFile(final File f) {
 	Cursor c = getCursor();
 	setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 	try {
@@ -297,14 +297,14 @@ public final class KarBrowser extends JFrame implements ListSelectionListener,
     }
 
     @Override
-    public void valueChanged(ListSelectionEvent e) {
+    public void valueChanged(final ListSelectionEvent e) {
         if (!e.getValueIsAdjusting() && flist.getSelectedIndex() != -1) {
 	    showFile(flist.getSelectedValue());
         }
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	if (e.getSource() == cloneItem) {
 	    new KarBrowser(dir);
 	}

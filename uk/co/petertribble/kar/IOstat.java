@@ -68,7 +68,7 @@ public class IOstat {
      *
      * @param args  The command line arguments
      */
-    public IOstat(String[] args) {
+    public IOstat(final String[] args) {
 	lastMap = new HashMap<>();
 	parseArgs(args);
 	try {
@@ -82,7 +82,7 @@ public class IOstat {
      * iostat [-z] [-M] [-P] [-p] [-e time] [-f filename] [-s time]
      *
      */
-    private void parseArgs(String[] args) {
+    private void parseArgs(final String[] args) {
 	for (int i = 0; i < args.length; i++) {
 	    /*
 	     * All flags start with a -, we pick out the arguments to any
@@ -118,7 +118,7 @@ public class IOstat {
      * Go through the input reading all the entries, and accumulating
      * statistics.
      */
-    private void accumulate(SequencedJKstat sjkstat) {
+    private void accumulate(final SequencedJKstat sjkstat) {
 	try {
 	    daystart = KarTime.getStartTimeInMillis(sjkstat, stime);
 	    dayend = KarTime.getEndTimeInMillis(sjkstat, etime);
@@ -179,7 +179,7 @@ public class IOstat {
 	} while (sjkstat.next() && sjkstat.getTime() < dayend);
     }
 
-    private void doPrint(Kstat ks) {
+    private void doPrint(final Kstat ks) {
 	long nr = ks.longData("reads");
 	long nw = ks.longData("writes");
 	long nkr = ks.longData("nread");
@@ -241,7 +241,7 @@ public class IOstat {
     /*
      * Print error, followed by usage message and exit.
      */
-    private void usage(String s) {
+    private void usage(final String s) {
 	System.err.println(s);
 	usage();
     }
@@ -251,7 +251,7 @@ public class IOstat {
      *
      * @param args  The command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	new IOstat(args);
     }
 }

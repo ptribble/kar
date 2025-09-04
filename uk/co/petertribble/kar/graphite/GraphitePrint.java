@@ -58,7 +58,7 @@ public class GraphitePrint {
      *
      * @param args  The command line arguments
      */
-    public GraphitePrint(String[] args) {
+    public GraphitePrint(final String[] args) {
 	kstatPatterns = new HashSet<>();
 	parseArgs(args);
 	if (kstatPatterns.isEmpty()) {
@@ -77,7 +77,7 @@ public class GraphitePrint {
      * print [-e time] [-f filename] [-s time] pattern [...]
      *
      */
-    private void parseArgs(String[] args) {
+    private void parseArgs(final String[] args) {
 	for (int i = 0; i < args.length; i++) {
 	    /*
 	     * All flags start with a -, we pick out the arguments to any
@@ -156,7 +156,7 @@ public class GraphitePrint {
      * Go through the input reading all the entries, and accumulating
      * statistics.
      */
-    private void accumulate(SequencedJKstat sjkstat) {
+    private void accumulate(final SequencedJKstat sjkstat) {
 	KstatFilter ksf = new KstatFilter(sjkstat);
 	for (String s : kstatPatterns) {
 	    ksf.addFilter(s);
@@ -187,7 +187,8 @@ public class GraphitePrint {
     /*
      * Print a line of output. Silently ignore non-numeric statistics.
      */
-    private void printOut(long t, Kstat ks, String statistic) {
+    private void printOut(final long t, final Kstat ks,
+			  final String statistic) {
 	if (ks.isNumeric(statistic)) {
 	    System.out.printf("%s:%s %d %d%n",
 			ks.getTriplet(), statistic,
@@ -209,7 +210,7 @@ public class GraphitePrint {
     /*
      * Emit usage message and exit.
      */
-    private void usage(String s) {
+    private void usage(final String s) {
 	System.err.println(s);
 	usage();
     }
@@ -219,7 +220,7 @@ public class GraphitePrint {
      *
      * @param args  The command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	new GraphitePrint(args);
     }
 }

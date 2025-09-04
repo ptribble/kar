@@ -66,7 +66,7 @@ public final class PrettyFormat {
      *
      * @return A scaled textual representation of the input value
      */
-    public static String memscale(Long l) {
+    public static String memscale(final Long l) {
 	return (l == null) ? memscale(0.0) : memscale(l.longValue());
     }
 
@@ -79,7 +79,7 @@ public final class PrettyFormat {
      *
      * @return A scaled textual representation of the input value
      */
-    public static String memscale(long l) {
+    public static String memscale(final long l) {
 	return memscale((double) l);
     }
 
@@ -92,7 +92,7 @@ public final class PrettyFormat {
      *
      * @return A scaled textual representation of the input value
      */
-    public static String memscale(double l) {
+    public static String memscale(final double l) {
 	double lvalue = l;
 	int i = 0;
 	while (lvalue > KMAX && i < 5) {
@@ -110,7 +110,7 @@ public final class PrettyFormat {
      *
      * @return A scaled textual representation of the input time
      */
-    public static String timescale(Double d) {
+    public static String timescale(final Double d) {
 	return (d == null) ? timescale(0.0) : timescale(d.doubleValue());
     }
 
@@ -122,7 +122,7 @@ public final class PrettyFormat {
      *
      * @return A scaled textual representation of the input time
      */
-    public static String timescale(double d) {
+    public static String timescale(final double d) {
 	if (d < 10.0) {
 	    return DFS.format(d);
 	}
@@ -143,7 +143,7 @@ public final class PrettyFormat {
      *
      * @return A scaled textual representation of the input date
      */
-    public static String date(Long l) {
+    public static String date(final Long l) {
 	return (l == null) ? "-" : date(l.longValue());
     }
 
@@ -155,7 +155,7 @@ public final class PrettyFormat {
      *
      * @return A scaled textual representation of the input date
      */
-    public static String date(long l) {
+    public static String date(final long l) {
 	long then = l * 1000;
 	Instant ndate = Instant.ofEpochMilli(then);
 	return System.currentTimeMillis() - then < 3600000

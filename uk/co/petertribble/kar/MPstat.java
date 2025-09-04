@@ -68,7 +68,7 @@ public class MPstat {
      *
      * @param args  The command line arguments
      */
-    public MPstat(String[] args) {
+    public MPstat(final String[] args) {
 	lastMap = new HashMap<>();
 	parseArgs(args);
 	try {
@@ -82,7 +82,7 @@ public class MPstat {
      * mpstat [-e time] [-f filename] [-s time]
      *
      */
-    private void parseArgs(String[] args) {
+    private void parseArgs(final String[] args) {
 	for (int i = 0; i < args.length; i++) {
 	    /*
 	     * All flags start with a -, we pick out the arguments to any
@@ -111,7 +111,7 @@ public class MPstat {
      * Go through the input reading all the entries, and accumulating
      * statistics.
      */
-    private void accumulate(SequencedJKstat sjkstat) {
+    private void accumulate(final SequencedJKstat sjkstat) {
 	try {
 	    daystart = KarTime.getStartTimeInMillis(sjkstat, stime);
 	    dayend = KarTime.getEndTimeInMillis(sjkstat, etime);
@@ -158,7 +158,7 @@ public class MPstat {
 	} while (sjkstat.next() && sjkstat.getTime() < dayend);
     }
 
-    private void doPrint(Kstat ks, Kstat ksf) {
+    private void doPrint(final Kstat ks, final Kstat ksf) {
 
 	// get the new values
 	long nminf = ksf.longData("hat_fault") + ksf.longData("as_fault");
@@ -237,7 +237,7 @@ public class MPstat {
     /*
      * Print usage message and exit.
      */
-    private void usage(String s) {
+    private void usage(final String s) {
 	System.err.println(s);
 	usage();
     }
@@ -247,7 +247,7 @@ public class MPstat {
      *
      * @param args  The command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	new MPstat(args);
     }
 }

@@ -50,7 +50,7 @@ public class GraphiteMPstat {
      *
      * @param args  The command line arguments
      */
-    public GraphiteMPstat(String[] args) {
+    public GraphiteMPstat(final String[] args) {
 	lastMap = new HashMap<>();
 	parseArgs(args);
 	try {
@@ -64,7 +64,7 @@ public class GraphiteMPstat {
      * mpstat [-e time] [-f filename] [-s time]
      *
      */
-    private void parseArgs(String[] args) {
+    private void parseArgs(final String[] args) {
 	for (int i = 0; i < args.length; i++) {
 	    /*
 	     * All flags start with a -, we pick out the arguments to any
@@ -93,7 +93,7 @@ public class GraphiteMPstat {
      * Go through the input reading all the entries, and accumulating
      * statistics.
      */
-    private void accumulate(SequencedJKstat sjkstat) {
+    private void accumulate(final SequencedJKstat sjkstat) {
 	long daystart = 0;
 	long dayend = 0;
 	long midnight = 0;
@@ -147,7 +147,7 @@ public class GraphiteMPstat {
 	} while (sjkstat.next() && sjkstat.getTime() < dayend);
     }
 
-    private void doPrint(long t, Kstat ks, Kstat ksf) {
+    private void doPrint(final long t, final Kstat ks, final Kstat ksf) {
 
 	long snaptime = ks.getSnaptime();
 	long fsnaptime = ksf.getSnaptime();
@@ -273,7 +273,7 @@ public class GraphiteMPstat {
     /*
      * Emit usage message and exit.
      */
-    private void usage(String s) {
+    private void usage(final String s) {
 	System.err.println(s);
 	usage();
     }
@@ -283,7 +283,7 @@ public class GraphiteMPstat {
      *
      * @param args  The command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	new GraphiteMPstat(args);
     }
 }

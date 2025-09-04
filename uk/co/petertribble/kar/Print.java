@@ -60,7 +60,7 @@ public class Print {
      *
      * @param args  The command line arguments
      */
-    public Print(String[] args) {
+    public Print(final String[] args) {
 	kstatPatterns = new HashSet<>();
 	parseArgs(args);
 	if (kstatPatterns.isEmpty()) {
@@ -79,7 +79,7 @@ public class Print {
      * print [-e time] [-f filename] [-s time] pattern [...]
      *
      */
-    private void parseArgs(String[] args) {
+    private void parseArgs(final String[] args) {
 	for (int i = 0; i < args.length; i++) {
 	    /*
 	     * All flags start with a -, we pick out the arguments to any
@@ -168,7 +168,7 @@ public class Print {
      * Go through the input reading all the entries, and accumulating
      * statistics.
      */
-    private void accumulate(SequencedJKstat sjkstat) {
+    private void accumulate(final SequencedJKstat sjkstat) {
 	KstatFilter ksf = new KstatFilter(sjkstat);
 	for (String s : kstatPatterns) {
 	    ksf.addFilter(s);
@@ -199,7 +199,8 @@ public class Print {
     /*
      * Print a line of output.
      */
-    private void printOut(long t, Kstat ks, String statistic) {
+    private void printOut(final long t, final Kstat ks,
+			  final String statistic) {
 	if ("u".equals(ttype)) {
 	    if (ks.isNumeric(statistic)) {
 		System.out.printf("%d\t%s:%s\t%8d%n",
@@ -241,7 +242,7 @@ public class Print {
     /*
      * Print usage message and exit.
      */
-    private void usage(String s) {
+    private void usage(final String s) {
 	System.err.println(s);
 	usage();
     }
@@ -251,7 +252,7 @@ public class Print {
      *
      * @param args  The command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	new Print(args);
     }
 }

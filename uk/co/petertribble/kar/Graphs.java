@@ -43,7 +43,7 @@ public class Graphs {
      *
      * @param args  The command line arguments
      */
-    public Graphs(String[] args) {
+    public Graphs(final String[] args) {
 	parseArgs(args);
 	try {
 	    makeGraphs(new ParseableJSONZipJKstat(zfilename, true));
@@ -58,7 +58,7 @@ public class Graphs {
      * graphs -f zipfile -s input-file
      *
      */
-    private void parseArgs(String[] args) {
+    private void parseArgs(final String[] args) {
 	for (int i = 0; i < args.length; i++) {
 	    /*
 	     * All flags start with a -, we pick out the arguments to any
@@ -84,7 +84,7 @@ public class Graphs {
     /*
      * Actually build the graphs. If a graph fails, carry on with the next one.
      */
-    private void makeGraphs(SequencedJKstat sjkstat) {
+    private void makeGraphs(final SequencedJKstat sjkstat) {
 	for (String sline : JumbleFile.readAllLines(sfilename)) {
 	    try {
 		makeGraph(sjkstat, sline);
@@ -98,7 +98,7 @@ public class Graphs {
      * Create an individual graph. Each line in the input has a type, then
      * a filename, then a kstat specifier of arbitrary length.
      */
-    private void makeGraph(SequencedJKstat sjkstat, String spec) {
+    private void makeGraph(final SequencedJKstat sjkstat, final String spec) {
 	String[] sargs = spec.split("\\s+", 3);
 	if ("Line".equals(sargs[0])) {
 	    KstatPngImage.makeGraph(sargs[2].split("\\s+"), sjkstat,
@@ -127,7 +127,7 @@ public class Graphs {
     /*
      * Print usage message and exit.
      */
-    private void usage(String s) {
+    private void usage(final String s) {
 	System.err.println(s);
 	usage();
     }
@@ -137,7 +137,7 @@ public class Graphs {
      *
      * @param args  The command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	new Graphs(args);
     }
 }

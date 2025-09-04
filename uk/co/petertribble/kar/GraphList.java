@@ -40,7 +40,7 @@ public class GraphList {
      *
      * @param args  The command line arguments
      */
-    public GraphList(String[] args) {
+    public GraphList(final String[] args) {
 	parseArgs(args);
 	try {
 	    makeGraphs(new ParseableJSONZipJKstat(zfilename));
@@ -54,7 +54,7 @@ public class GraphList {
      *
      * graphs -f zipfile
      */
-    private void parseArgs(String[] args) {
+    private void parseArgs(final String[] args) {
 	for (int i = 0; i < args.length; i++) {
 	    /*
 	     * All flags start with a -, we pick out the arguments to any
@@ -77,7 +77,7 @@ public class GraphList {
     /*
      * Actually build the graphs. If a graph fails, carry on with the next one.
      */
-    private void makeGraphs(SequencedJKstat sjkstat) {
+    private void makeGraphs(final SequencedJKstat sjkstat) {
 	System.out.println("Area XX_DIR/cpu.png cpu_stat:: kernel user idle");
 	for (Kstat ks : sjkstat.getKstats()) {
 	    if ("cpu_stat".equals(ks.getModule())) {
@@ -139,7 +139,7 @@ public class GraphList {
     /*
      * Print usage message and exit.
      */
-    private void usage(String s) {
+    private void usage(final String s) {
 	System.err.println(s);
 	usage();
     }
@@ -149,7 +149,7 @@ public class GraphList {
      *
      * @param args  The command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	new GraphList(args);
     }
 }

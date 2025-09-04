@@ -44,7 +44,7 @@ public class Sar {
      *
      * @param args  The command line arguments
      */
-    public Sar(String[] args) {
+    public Sar(final String[] args) {
 	parseArgs(args);
 	try {
 	    accumulate(new ParseableJSONZipJKstat(filename));
@@ -59,7 +59,7 @@ public class Sar {
      * sar [-aAbcdgkmpqruvwy] [-e time] [-f filename] [-s time]
      *
      */
-    private void parseArgs(String[] args) {
+    private void parseArgs(final String[] args) {
 	for (int i = 0; i < args.length; i++) {
 	    /*
 	     * All flags start with a -, we pick out the arguments to any
@@ -87,7 +87,7 @@ public class Sar {
      * Go through the input reading all the entries, and accumulating
      * statistics.
      */
-    private void accumulate(SequencedJKstat sjkstat) {
+    private void accumulate(final SequencedJKstat sjkstat) {
 	try {
 	    daystart = KarTime.getStartTimeInMillis(sjkstat, stime);
 	    dayend = KarTime.getEndTimeInMillis(sjkstat, etime);
@@ -189,7 +189,7 @@ public class Sar {
     /*
      * Print usage message and exit.
      */
-    private void usage(String s) {
+    private void usage(final String s) {
 	System.err.println(s);
 	usage();
     }
@@ -199,7 +199,7 @@ public class Sar {
      *
      * @param args  The command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	new Sar(args);
     }
 }

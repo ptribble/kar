@@ -52,7 +52,7 @@ public class GraphiteIOstat {
      *
      * @param args  The command line arguments
      */
-    public GraphiteIOstat(String[] args) {
+    public GraphiteIOstat(final String[] args) {
 	lastMap = new HashMap<>();
 	parseArgs(args);
 	try {
@@ -66,7 +66,7 @@ public class GraphiteIOstat {
      * iostat [-z] [-e time] [-f filename] [-s time]
      *
      */
-    private void parseArgs(String[] args) {
+    private void parseArgs(final String[] args) {
 	for (int i = 0; i < args.length; i++) {
 	    /*
 	     * All flags start with a -, we pick out the arguments to any
@@ -98,7 +98,7 @@ public class GraphiteIOstat {
      * Go through the input reading all the entries, and accumulating
      * statistics.
      */
-    private void accumulate(SequencedJKstat sjkstat) {
+    private void accumulate(final SequencedJKstat sjkstat) {
 	long daystart = 0;
 	long dayend = 0;
 	long midnight = 0;
@@ -162,7 +162,7 @@ public class GraphiteIOstat {
 	} while (sjkstat.next() && sjkstat.getTime() < dayend);
     }
 
-    private void doPrint(long t, Kstat ks) {
+    private void doPrint(final long t, final Kstat ks) {
 	long snaptime = ks.getSnaptime();
 	long nr = ks.longData("reads");
 	long nw = ks.longData("writes");
@@ -252,7 +252,7 @@ public class GraphiteIOstat {
     /*
      * Emit usage message and exit.
      */
-    private void usage(String s) {
+    private void usage(final String s) {
 	System.err.println(s);
 	usage();
     }
@@ -262,7 +262,7 @@ public class GraphiteIOstat {
      *
      * @param args  The command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	new GraphiteIOstat(args);
     }
 }

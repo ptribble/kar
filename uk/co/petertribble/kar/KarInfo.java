@@ -42,7 +42,7 @@ public class KarInfo {
      *
      * @param sjkstat a SequencedJKstat
      */
-    public KarInfo(SequencedJKstat sjkstat) {
+    public KarInfo(final SequencedJKstat sjkstat) {
 	firstKstats = new HashMap<>();
 	lastKstats = new HashMap<>();
 	readAll(sjkstat);
@@ -55,7 +55,7 @@ public class KarInfo {
      * map. We add all kstats to the lastKstats map. As they're constantly
      * replaced, it ends up containing the kstat from the last time we saw it.
      */
-    private void readAll(SequencedJKstat sjkstat) {
+    private void readAll(final SequencedJKstat sjkstat) {
 	do {
 	    for (Kstat ks : sjkstat.getKstats()) {
 		String kst = ks.getTriplet();
@@ -108,7 +108,7 @@ public class KarInfo {
 	System.out.println("Kstats changed: " + numkschanged);
     }
 
-    private static void usage(String message) {
+    private static void usage(final String message) {
 	System.err.println("ERROR: " + message);
 	System.err.println("Usage: info -f zipfile");
 	System.exit(1);
@@ -119,7 +119,7 @@ public class KarInfo {
      *
      * @param args  The command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	if (args.length != 2) {
 	    usage("Missing arguments.");
 	}

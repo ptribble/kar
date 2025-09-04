@@ -52,7 +52,7 @@ public class FSstat {
      *
      * @param args  The command line arguments
      */
-    public FSstat(String[] args) {
+    public FSstat(final String[] args) {
 	lastMap = new HashMap<>();
 	parseArgs(args);
 	try {
@@ -66,7 +66,7 @@ public class FSstat {
      * fsstat [-z] [-e time] [-f filename] [-s time]
      *
      */
-    private void parseArgs(String[] args) {
+    private void parseArgs(final String[] args) {
 	for (int i = 0; i < args.length; i++) {
 	    /*
 	     * All flags start with a -, we pick out the arguments to any
@@ -96,7 +96,7 @@ public class FSstat {
      * Go through the input reading all the entries, and accumulating
      * statistics.
      */
-    private void accumulate(SequencedJKstat sjkstat) {
+    private void accumulate(final SequencedJKstat sjkstat) {
 	try {
 	    daystart = KarTime.getStartTimeInMillis(sjkstat, stime);
 	    dayend = KarTime.getEndTimeInMillis(sjkstat, etime);
@@ -143,7 +143,7 @@ public class FSstat {
 	} while (sjkstat.next() && sjkstat.getTime() < dayend);
     }
 
-    private void doPrint(Kstat ks) {
+    private void doPrint(final Kstat ks) {
 	long ncreate = ks.longData("ncreate");
 	long nrename = ks.longData("nrename");
 	long nremove = ks.longData("nremove");
@@ -201,7 +201,7 @@ public class FSstat {
     /*
      * Print usage message and exit.
      */
-    private void usage(String s) {
+    private void usage(final String s) {
 	System.err.println(s);
 	usage();
     }
@@ -211,7 +211,7 @@ public class FSstat {
      *
      * @param args  The command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	new FSstat(args);
     }
 }

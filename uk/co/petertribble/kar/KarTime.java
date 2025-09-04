@@ -45,8 +45,8 @@ public final class KarTime {
      * @return The time in milliseconds since the epoch corresponding to the
      * desired start time.
      */
-    public static long getStartTimeInMillis(SequencedJKstat sjkstat,
-				String stime) {
+    public static long getStartTimeInMillis(final SequencedJKstat sjkstat,
+				final String stime) {
 	int startHour = 0;
 	int startMin = 0;
 	int startSec = 0;
@@ -99,8 +99,8 @@ public final class KarTime {
      * @return The time in milliseconds since the epoch corresponding to the
      * desired end time.
      */
-    public static long getEndTimeInMillis(SequencedJKstat sjkstat,
-				String etime) {
+    public static long getEndTimeInMillis(final SequencedJKstat sjkstat,
+				final String etime) {
 	int endHour = 23;
 	int endMin = 59;
 	int endSec = 59;
