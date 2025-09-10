@@ -40,7 +40,7 @@ public class GraphiteSar {
     /**
      * Display sar output.
      *
-     * @param args  The command line arguments
+     * @param args the command line arguments
      */
     public GraphiteSar(final String[] args) {
 	parseArgs(args);
@@ -176,7 +176,7 @@ public class GraphiteSar {
     /**
      * Display sar output.
      *
-     * @param args  The command line arguments
+     * @param args the command line arguments
      */
     public static void main(final String[] args) {
 	new GraphiteSar(args);

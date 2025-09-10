@@ -48,7 +48,7 @@ public class GraphiteMPstat {
     /**
      * Display MPstat output.
      *
-     * @param args  The command line arguments
+     * @param args the command line arguments
      */
     public GraphiteMPstat(final String[] args) {
 	lastMap = new HashMap<>();
@@ -281,7 +281,7 @@ public class GraphiteMPstat {
     /**
      * Display mpstat output.
      *
-     * @param args  The command line arguments
+     * @param args the command line arguments
      */
     public static void main(final String[] args) {
 	new GraphiteMPstat(args);

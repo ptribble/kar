@@ -50,7 +50,7 @@ public class GraphiteIOstat {
     /**
      * Display iostat output.
      *
-     * @param args  The command line arguments
+     * @param args the command line arguments
      */
     public GraphiteIOstat(final String[] args) {
 	lastMap = new HashMap<>();
@@ -260,7 +260,7 @@ public class GraphiteIOstat {
     /**
      * Display iostat output.
      *
-     * @param args  The command line arguments
+     * @param args the command line arguments
      */
     public static void main(final String[] args) {
 	new GraphiteIOstat(args);

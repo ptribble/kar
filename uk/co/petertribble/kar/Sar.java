@@ -42,7 +42,7 @@ public class Sar {
     /**
      * Display sar output.
      *
-     * @param args  The command line arguments
+     * @param args the command line arguments
      */
     public Sar(final String[] args) {
 	parseArgs(args);
@@ -197,7 +197,7 @@ public class Sar {
     /**
      * Display sar output.
      *
-     * @param args  The command line arguments
+     * @param args the command line arguments
      */
     public static void main(final String[] args) {
 	new Sar(args);

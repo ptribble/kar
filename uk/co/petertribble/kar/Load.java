@@ -42,7 +42,7 @@ public class Load {
     /**
      * Display load averages.
      *
-     * @param args  The command line arguments
+     * @param args the command line arguments
      */
     public Load(final String[] args) {
 	parseArgs(args);
@@ -130,7 +130,7 @@ public class Load {
     /**
      * Display sar output.
      *
-     * @param args  The command line arguments
+     * @param args the command line arguments
      */
     public static void main(final String[] args) {
 	new Load(args);

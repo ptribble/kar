@@ -38,7 +38,7 @@ public class GraphList {
     /**
      * Generate Kar graphs.
      *
-     * @param args  The command line arguments
+     * @param args the command line arguments
      */
     public GraphList(final String[] args) {
 	parseArgs(args);
@@ -147,7 +147,7 @@ public class GraphList {
     /**
      * Generate Kar graphs.
      *
-     * @param args  The command line arguments
+     * @param args the command line arguments
      */
     public static void main(final String[] args) {
 	new GraphList(args);

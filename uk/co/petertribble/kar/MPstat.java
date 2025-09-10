@@ -66,7 +66,7 @@ public class MPstat {
     /**
      * Display MPstat output.
      *
-     * @param args  The command line arguments
+     * @param args the command line arguments
      */
     public MPstat(final String[] args) {
 	lastMap = new HashMap<>();
@@ -245,7 +245,7 @@ public class MPstat {
     /**
      * Display mpstat output.
      *
-     * @param args  The command line arguments
+     * @param args the command line arguments
      */
     public static void main(final String[] args) {
 	new MPstat(args);

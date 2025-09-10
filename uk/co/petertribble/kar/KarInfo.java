@@ -117,7 +117,7 @@ public class KarInfo {
     /**
      * Display information on the file or directory given on the command line.
      *
-     * @param args  The command line arguments
+     * @param args the command line arguments
      */
     public static void main(final String[] args) {
 	if (args.length != 2) {

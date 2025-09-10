@@ -243,7 +243,7 @@ public final class KarBrowser extends JFrame implements ListSelectionListener,
      * Browse kar output. Expects a single argument naming a directory
      * that contains kar output files.
      *
-     * @param args  The command line arguments
+     * @param args the command line arguments
      */
     public static void main(final String[] args) {
 	if (args.length == 1) {

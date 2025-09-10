@@ -71,7 +71,7 @@ pmd)
 	fi
 	# shellcheck disable=SC2046
 	pmd check --cache "${PMDCACHE}" -d uk -R "${PMDRULES}" --use-version java-11 --aux-classpath $(echo lib/java/* | sed 's= =:=g') 2>/dev/null
-	pmd check --cache "${PMDCACHE}.html" -d help/*.html  -R category/html/bestpractices.xml 2>/dev/null
+	pmd check --cache "${PMDCACHE}.html" -d help/*.html -R category/html/bestpractices.xml 2>/dev/null
 	exit 0
 	;;
 spotbugs)

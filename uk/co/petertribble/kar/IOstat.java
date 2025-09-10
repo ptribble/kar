@@ -66,7 +66,7 @@ public class IOstat {
     /**
      * Display iostat output.
      *
-     * @param args  The command line arguments
+     * @param args the command line arguments
      */
     public IOstat(final String[] args) {
 	lastMap = new HashMap<>();
@@ -249,7 +249,7 @@ public class IOstat {
     /**
      * Display iostat output.
      *
-     * @param args  The command line arguments
+     * @param args the command line arguments
      */
     public static void main(final String[] args) {
 	new IOstat(args);

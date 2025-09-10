@@ -57,7 +57,7 @@ public class CPUstat {
     /**
      * Display CPUstat output.
      *
-     * @param args  The command line arguments
+     * @param args the command line arguments
      */
     public CPUstat(final String[] args) {
 	parseArgs(args);
@@ -204,7 +204,7 @@ public class CPUstat {
     /**
      * Display cpu output.
      *
-     * @param args  The command line arguments
+     * @param args the command line arguments
      */
     public static void main(final String[] args) {
 	new CPUstat(args);

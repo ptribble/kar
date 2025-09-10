@@ -50,7 +50,7 @@ public class FSstat {
     /**
      * Display fsstat output.
      *
-     * @param args  The command line arguments
+     * @param args the command line arguments
      */
     public FSstat(final String[] args) {
 	lastMap = new HashMap<>();
@@ -209,7 +209,7 @@ public class FSstat {
     /**
      * Display fsstat output.
      *
-     * @param args  The command line arguments
+     * @param args the command line arguments
      */
     public static void main(final String[] args) {
 	new FSstat(args);

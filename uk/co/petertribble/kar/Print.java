@@ -58,7 +58,7 @@ public class Print {
     /**
      * Display sar output.
      *
-     * @param args  The command line arguments
+     * @param args the command line arguments
      */
     public Print(final String[] args) {
 	kstatPatterns = new HashSet<>();
@@ -250,7 +250,7 @@ public class Print {
     /**
      * Display sar output.
      *
-     * @param args  The command line arguments
+     * @param args the command line arguments
      */
     public static void main(final String[] args) {
 	new Print(args);
