@@ -1,0 +1,16 @@
+version = 1
+
+[[annotations]]
+path = [ "README.*", "CHANGES", "help/*", "pkginfo.*", "bin/*/kar_collector", "lib/java/jingle.jar", "lib/java/jumble.jar", "lib/java/jstripchart.jar", "lib/java/jkstat.jar", "lib/java/kar.jar" ]
+SPDX-FileCopyrightText = "2025 Peter Tribble"
+SPDX-License-Identifier = "CDDL-1.0"
+
+[[annotations]]
+path = [ "lib/java/jfreechart-*.jar" ]
+SPDX-FileCopyrightText = "2000-present David Gilbert and Contributors"
+SPDX-License-Identifier = "LGPL-2.1-or-later"
+
+[[annotations]]
+path = [ "lib/java/openjson-*.jar" ]
+SPDX-FileCopyrightText = "(C) 2010 The Android Open Source Project"
+SPDX-License-Identifier = "Apache-2.0"
