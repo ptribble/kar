@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -35,14 +35,14 @@ import java.util.Date;
  *
  * @author Peter Tribble
  */
-public class MPstat {
+public final class MPstat {
 
     private String stime;
     private long daystart;
     private String etime;
     private long dayend;
     private String filename;
-    private Map<String, Kstat> lastMap;
+    private final Map<String, Kstat> lastMap;
 
     private long oldsnaptime;
     private long foldsnaptime;

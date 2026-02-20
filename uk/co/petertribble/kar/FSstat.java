@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -35,7 +35,7 @@ import java.util.Date;
  *
  * @author Peter Tribble
  */
-public class FSstat {
+public final class FSstat {
 
     private String stime;
     private long daystart;
@@ -43,7 +43,7 @@ public class FSstat {
     private long dayend;
     private String filename;
     private boolean zerohide;
-    private Map<String, Kstat> lastMap;
+    private final Map<String, Kstat> lastMap;
 
     private long lastboot;
 

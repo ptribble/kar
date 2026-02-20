@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -34,14 +34,14 @@ import java.util.HashSet;
  *
  * @author Peter Tribble
  */
-public class Print {
+public final class Print {
 
     private String stime;
     private long daystart;
     private String etime;
     private long dayend;
     private String filename;
-    private Set<String> kstatPatterns;
+    private final Set<String> kstatPatterns;
 
     // usage 1 is [-M module] [-I instance] [-N name] [-S statistic]
     private boolean mflag;

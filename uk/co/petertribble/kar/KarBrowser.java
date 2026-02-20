@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -68,40 +68,40 @@ public final class KarBrowser extends JFrame implements ListSelectionListener,
     /**
      * A menu item to exit the application.
      */
-    private JMenuItem exitItem;
+    private final JMenuItem exitItem;
     /**
      * A menu item to clone the current window.
      */
-    private JMenuItem cloneItem;
+    private final JMenuItem cloneItem;
     /**
      * A menu item to close the current window.
      */
-    private JMenuItem closeItem;
+    private final JMenuItem closeItem;
     /**
      * A menu item to show the help.
      */
-    private JMenuItem helpItem;
+    private final JMenuItem helpItem;
     /**
      * A menu item to show the license.
      */
-    private JMenuItem licenseItem;
+    private final JMenuItem licenseItem;
 
     /**
      * The directory this browser is browsing.
      */
-    private File dir;
+    private final File dir;
     /**
      * The main panel.
      */
-    private JPanel kpanel;
+    private final JPanel kpanel;
     /**
      * The panel for the chart builder.
      */
-    private JPanel cpanel;
+    private final JPanel cpanel;
     /**
      * The list of files being browsed.
      */
-    private JList<File> flist;
+    private final JList<File> flist;
     /**
      * The kstat tree.
      */

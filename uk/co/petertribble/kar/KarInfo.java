@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -32,10 +32,10 @@ import uk.co.petertribble.jkstat.parse.ParseableJSONZipJKstat;
  *
  * @author Peter Tribble
  */
-public class KarInfo {
+public final class KarInfo {
 
-    private Map<String, Kstat> firstKstats;
-    private Map<String, Kstat> lastKstats;
+    private final Map<String, Kstat> firstKstats;
+    private final Map<String, Kstat> lastKstats;
 
     /**
      * Create an new KarInfo object.

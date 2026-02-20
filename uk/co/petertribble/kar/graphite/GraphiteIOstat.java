@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -36,14 +36,14 @@ import uk.co.petertribble.kar.KarTime;
  *
  * @author Peter Tribble
  */
-public class GraphiteIOstat {
+public final class GraphiteIOstat {
 
     private String stime;
     private String etime;
     private String filename;
     private boolean diskhide;
     private boolean showpart;
-    private Map<String, Kstat> lastMap;
+    private final Map<String, Kstat> lastMap;
 
     private long oldsnaptime;
 

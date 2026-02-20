@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -36,7 +36,7 @@ import java.util.Date;
  *
  * @author Peter Tribble
  */
-public class IOstat {
+public final class IOstat {
 
     private String stime;
     private long daystart;
@@ -47,7 +47,7 @@ public class IOstat {
     private boolean diskhide;
     private boolean showpart;
     private boolean megabytes;
-    private Map<String, Kstat> lastMap;
+    private final Map<String, Kstat> lastMap;
 
     private long oldsnaptime;
     private long lastboot;
