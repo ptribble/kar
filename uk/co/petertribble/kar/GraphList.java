@@ -21,9 +21,9 @@
 package uk.co.petertribble.kar;
 
 import java.io.IOException;
-import uk.co.petertribble.jkstat.api.SequencedJKstat;
 import uk.co.petertribble.jkstat.api.Kstat;
 import uk.co.petertribble.jkstat.api.KstatType;
+import uk.co.petertribble.jkstat.api.SequencedJKstat;
 import uk.co.petertribble.jkstat.parse.ParseableJSONZipJKstat;
 
 /**

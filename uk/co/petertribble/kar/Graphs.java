@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -22,11 +22,11 @@ package uk.co.petertribble.kar;
 
 import java.io.File;
 import java.io.IOException;
-import uk.co.petertribble.jumble.JumbleFile;
 import uk.co.petertribble.jkstat.api.SequencedJKstat;
-import uk.co.petertribble.jkstat.parse.ParseableJSONZipJKstat;
-import uk.co.petertribble.jkstat.gui.KstatPngImage;
 import uk.co.petertribble.jkstat.gui.KstatAreaPngImage;
+import uk.co.petertribble.jkstat.gui.KstatPngImage;
+import uk.co.petertribble.jkstat.parse.ParseableJSONZipJKstat;
+import uk.co.petertribble.jumble.JumbleFile;
 
 /**
  * Generate a set of kar graphs based on an input list read from a file.

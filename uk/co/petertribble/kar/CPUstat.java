@@ -14,20 +14,20 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
 package uk.co.petertribble.kar;
 
 import java.io.IOException;
+import java.util.Date;
 import uk.co.petertribble.jkstat.api.Kstat;
 import uk.co.petertribble.jkstat.api.KstatAggregate;
 import uk.co.petertribble.jkstat.api.KstatFilter;
 import uk.co.petertribble.jkstat.api.KstatSet;
 import uk.co.petertribble.jkstat.api.SequencedJKstat;
 import uk.co.petertribble.jkstat.parse.ParseableJSONZipJKstat;
-import java.util.Date;
 
 /**
  * Main driver to give cpu information from kar input.
@@ -95,7 +95,6 @@ public class CPUstat {
 	    }
 	}
     }
-
 
     /*
      * Go through the input reading all the entries, and accumulating

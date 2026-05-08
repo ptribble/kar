@@ -20,11 +20,19 @@
 
 package uk.co.petertribble.kar;
 
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.FilenameFilter;
-import java.util.List;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import java.util.Vector;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JFrame;
@@ -39,20 +47,12 @@ import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Cursor;
-import uk.co.petertribble.jingle.JingleMultiFrame;
 import uk.co.petertribble.jingle.JingleInfoFrame;
+import uk.co.petertribble.jingle.JingleMultiFrame;
 import uk.co.petertribble.jkstat.api.JKstat;
-import uk.co.petertribble.jkstat.gui.KstatResources;
-import uk.co.petertribble.jkstat.gui.ChartBuilderPanel;
 import uk.co.petertribble.jkstat.browser.KstatTreePanel;
+import uk.co.petertribble.jkstat.gui.ChartBuilderPanel;
+import uk.co.petertribble.jkstat.gui.KstatResources;
 import uk.co.petertribble.jkstat.parse.ParseableJSONZipJKstat;
 
 /**
@@ -221,6 +221,7 @@ public final class KarBrowser extends JFrame implements ListSelectionListener,
      */
     class KarListCellRenderer extends DefaultListCellRenderer {
 	private static final long serialVersionUID = 1L;
+
 	@Override
 	public Component getListCellRendererComponent(final JList list,
 						final Object value,

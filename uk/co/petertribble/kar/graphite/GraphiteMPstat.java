@@ -20,9 +20,9 @@
 
 package uk.co.petertribble.kar.graphite;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import uk.co.petertribble.jkstat.api.Kstat;
 import uk.co.petertribble.jkstat.api.KstatFilter;
 import uk.co.petertribble.jkstat.api.KstatSet;
@@ -87,7 +87,6 @@ public final class GraphiteMPstat {
 	    }
 	}
     }
-
 
     /*
      * Go through the input reading all the entries, and accumulating

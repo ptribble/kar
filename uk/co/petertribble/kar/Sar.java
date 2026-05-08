@@ -21,10 +21,10 @@
 package uk.co.petertribble.kar;
 
 import java.io.IOException;
+import java.util.Date;
 import uk.co.petertribble.jkstat.api.Kstat;
 import uk.co.petertribble.jkstat.api.SequencedJKstat;
 import uk.co.petertribble.jkstat.parse.ParseableJSONZipJKstat;
-import java.util.Date;
 
 /**
  * Main driver to emulate sar output given kar input.

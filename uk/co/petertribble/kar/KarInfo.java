@@ -20,9 +20,9 @@
 
 package uk.co.petertribble.kar;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import uk.co.petertribble.jkstat.api.Kstat;
 import uk.co.petertribble.jkstat.api.SequencedJKstat;
 import uk.co.petertribble.jkstat.parse.ParseableJSONZipJKstat;
