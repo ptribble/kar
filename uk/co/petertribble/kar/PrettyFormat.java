@@ -45,10 +45,10 @@ public final class PrettyFormat {
     private static final DecimalFormat DF = new DecimalFormat("##0");
     private static final DecimalFormat DFS = new DecimalFormat("##0.0");
     private static final DecimalFormat DFT = new DecimalFormat("00");
-    private static final DateTimeFormatter DT =
-	DateTimeFormatter.ofPattern("MMM d, H:mm");
-    private static final DateTimeFormatter DTT =
-	DateTimeFormatter.ofPattern("H:mm:ss");
+    private static final DateTimeFormatter DT
+	= DateTimeFormatter.ofPattern("MMM d, H:mm");
+    private static final DateTimeFormatter DTT
+	= DateTimeFormatter.ofPattern("H:mm:ss");
     private static final ZoneId ZID = TimeZone.getDefault().toZoneId();
 
     /**
